@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform" xmlns:form="sap.ui.layout.form"
+	xmlns:smartField="sap.ui.comp.smartfield">
+	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
+		<content>
+			<smartForm:SmartForm id="form" editable="true" entityType="ZPSTA_CFG_SCRIPTS" >
+				<smartForm:Group id="detailGroup">
+					<smartForm:GroupElement>
+						<smartField:SmartField value="{Script}" id="empresa"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement>
+						<smartField:SmartField value="{Field}" id="evento_negocio"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement>
+						<smartField:SmartField value="{TtField}" id="descricao_evento_negocio"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement>
+						<smartField:SmartField value="{ScriptTechnicalName}" id="script"/>
+					</smartForm:GroupElement>
+				</smartForm:Group>
+			</smartForm:SmartForm>
+		</content>
+		<beginButton>
+			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
+		</beginButton>
+		<endButton>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancel" press=".onCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,173 @@
+{
+    "_version": "1.37.0",
+    "sap.app": {
+        "id": "portoseguro.zpstaparametros",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.7.6",
+            "toolsId": "f00756d6-dc44-4816-b03f-89ce03326419"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },"annotation": {
+				"type": "ODataAnnotation",
+				"uri": "annotations/annotation.xml",
+				"settings": {
+					"localUri": "annotations/annotation.xml"
+				}
+			}
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "portoseguro-zpstaparametros-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "ZSOFPSL",
+                    "action": "zpsta_params",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.96.6",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "portoseguro.zpstaparametros.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Request",
+                    "defaultUpdateMethod": "sap.ui.model.odata.UpdateMethod.Put",
+                    "useBatch": true
+                }
+            },
+            "@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			}
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "portoseguro.zpstaparametros.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteHome",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetHome"
+                    ]
+                },{
+                    "name": "cfg_scripts",
+                    "pattern": "cfg_scripts",
+                    "target": "cfg_scripts"
+                },
+                {
+                    "pattern": "emp_eve",
+                    "name": "emp_eve",
+                    "target": "emp_eve"
+                }
+            ],
+            "targets": {
+                "TargetHome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Home",
+                    "viewName": "Home"
+                },
+                "cfg_scripts": {
+					"viewId": "cfg_scripts",
+					"viewName": "ZPSTA_CFG_SCRIPTS",
+					"viewLevel": 2
+				},
+                "emp_eve": {
+					"viewId": "emp_eve",
+					"viewName": "ZPSTA_CFG_EMP_EVE",
+					"viewLevel": 2
+				}
+            }
+        },
+        "rootView": {
+            "viewName": "portoseguro.zpstaparametros.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

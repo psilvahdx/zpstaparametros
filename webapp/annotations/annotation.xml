@@ -1,0 +1,104 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata">
+		<edmx:Include Alias="Metadata" Namespace="ZPSGW_CONFIG_SRV"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="portoseguro.annotation.ZPSGW_CONFIG_SRV">
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/Script">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SCRIPT}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/Field">
+				<Annotation Term="Common.Label" String="{@i18n&gt;FIELD}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/TtField">
+				<Annotation Term="Common.Label" String="{@i18n&gt;TT_FIELD}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/ScriptTechnicalName">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SCRIPT_TECHNICAL_NAME}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS">
+                <Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>Script</PropertyPath>
+						<PropertyPath>Field</PropertyPath>									
+                        <PropertyPath>TtField</PropertyPath>									                        									                        
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Script"/>
+						</Record>		
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Field"/>
+						</Record>										
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TtField"/>
+						</Record>
+                        <Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ScriptTechnicalName"/>
+						</Record>	
+						 <Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="IDSEC"/>
+						</Record>	
+					</Collection>
+				</Annotation>
+			</Annotations>
+			
+			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE">
+				<Annotation Term="UI.DataPoint">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Title" String="{@i18n&gt;COD_EMPRESA}"/>
+						<PropertyValue Property="Value" Path="CodigoEmpresa"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodigoEmpresa"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodEveNegocio"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DescEveNegocio"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Pivot"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Script"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Table"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE/CodigoEmpresa">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE/CodEveNegocio">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EVT_NEG}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE/DescEveNegocio">
+				<Annotation Term="Common.Label" String="{@i18n&gt;DSC_EVENTO}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE/Script">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SCRIPT}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE/Table">
+				<Annotation Term="Common.Label" String="{@i18n&gt;TABLE}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE/Pivot">
+				<Annotation Term="Common.Label" String="{@i18n&gt;PIVOT}"/>
+			</Annotations>			
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
