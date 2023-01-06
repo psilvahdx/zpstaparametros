@@ -98,6 +98,31 @@
 			</Annotations>
 			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE/Pivot">
 				<Annotation Term="Common.Label" String="{@i18n&gt;PIVOT}"/>
+			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_CFG_RAMO_PASS">
+				<Annotation Term="UI.DataPoint">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Title" String="{@i18n&gt;COD_RAMO}"/>
+						<PropertyValue Property="Value" Path="CodigoRamo"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodigoRamo"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="GrupoRamoPassivo"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_RAMO_PASS/CodigoRamo">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_RAMO}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_RAMO_PASS/GrupoRamoPassivo">
+				<Annotation Term="Common.Label" String="{@i18n&gt;GRP_RAMO_PASSIVO}"/>
 			</Annotations>			
 		</Schema>
 	</edmx:DataServices>

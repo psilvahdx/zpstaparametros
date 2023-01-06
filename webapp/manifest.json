@@ -141,6 +141,10 @@
                     "pattern": "emp_eve",
                     "name": "emp_eve",
                     "target": "emp_eve"
+                }, {
+                    "pattern": "ramo_pass",
+                    "name": "ramo_pass",
+                    "target": "ramo_pass"
                 }
             ],
             "targets": {
@@ -159,6 +163,11 @@
                 "emp_eve": {
 					"viewId": "emp_eve",
 					"viewName": "ZPSTA_CFG_EMP_EVE",
+					"viewLevel": 2
+				},
+				"ramo_pass": {
+					"viewId": "ramo_pass",
+					"viewName": "ZPSTA_CFG_GP_RAMO_PASS",
 					"viewLevel": 2
 				}
             }
