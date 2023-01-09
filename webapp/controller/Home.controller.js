@@ -13,7 +13,7 @@ sap.ui.define([
 			    //oPage.setBusy(false);	
             },
 
-            onNavToZPSTA_CFG_EMP_EVE: function () {
+                onNavToZPSTA_CFG_EMP_EVE: function () {
                 //	var oPage = this.getView().byId("HomePage");
                 //	oPage.setBusy(true);
                     this.getRouter().navTo("emp_eve");
