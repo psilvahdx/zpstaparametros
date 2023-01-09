@@ -145,6 +145,10 @@
                     "pattern": "ramo_pass",
                     "name": "ramo_pass",
                     "target": "ramo_pass"
+                }, {
+                    "pattern": "depara_premio",
+                    "name": "depara_premio",
+                    "target": "depara_premio"
                 }
             ],
             "targets": {
@@ -169,7 +173,12 @@
 					"viewId": "ramo_pass",
 					"viewName": "ZPSTA_CFG_GP_RAMO_PASS",
 					"viewLevel": 2
-				}
+				},
+                "depara_premio": {
+					"viewId": "depara_premio",
+					"viewName": "ZPSTA_CFG_DEPARA_PREMIO",
+					"viewLevel": 2
+                }
             }
         },
         "rootView": {
