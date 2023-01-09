@@ -67,7 +67,7 @@
 						</tileContent>
 					</GenericTile>
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_DEPARA_PREMIODesc}"
-						subheader="{i18n>ZPSTA_CFG_DEPARA_PREMIO}" press=".onNavToOZPSTA_CFG_DEPARA_PREMIO">
+						subheader="{i18n>ZPSTA_CFG_DEPARA_PREMIO}" press=".onNavToZPSTA_CFG_DEPARA_PREMIO">
 						<tileContent>
 							<TileContent>
 								<content>
