@@ -132,7 +132,8 @@
                     "target": [
                         "TargetHome"
                     ]
-                },{
+                },
+                {
                     "name": "cfg_scripts",
                     "pattern": "cfg_scripts",
                     "target": "cfg_scripts"
@@ -141,11 +142,13 @@
                     "pattern": "emp_eve",
                     "name": "emp_eve",
                     "target": "emp_eve"
-                }, {
+                }, 
+                {
                     "pattern": "ramo_pass",
                     "name": "ramo_pass",
                     "target": "ramo_pass"
-                }, {
+                }, 
+                {
                     "pattern": "depara_premio",
                     "name": "depara_premio",
                     "target": "depara_premio"
