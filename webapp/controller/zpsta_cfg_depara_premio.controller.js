@@ -11,11 +11,13 @@ sap.ui.define([
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact");
 
+
 		},
 
 		onSave: function () {
 			var oModel = this.getOwnerComponent().getModel();
-
+			    oModel.setUseBatch(true);
+				
 			var mParameters = {
 				sucess: function (oData, response) {
 					MessageToast.show("Salvo com sucesso!");
