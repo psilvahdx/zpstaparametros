@@ -2,6 +2,23 @@
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZPSGW_CONFIG_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZPSTA_CFG_DEPARA_PREM" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CodEveNegocio"/>
+                    <PropertyRef Name="NumeroEndosso"/>
+                    <PropertyRef Name="Ro"/>
+                    <PropertyRef Name="Tpmoid"/>
+                    <PropertyRef Name="Cmpid"/>
+                    <PropertyRef Name="CodigoEmpresa"/>
+                </Key>
+                <Property Name="CodEveNegocio" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="COD_EVE_NEGOCIO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NumeroEndosso" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="NUMERO_ENDOSSO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ro" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="RO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tpmoid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="TPMOID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cmpid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CMPID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CodigoEmpresa" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="CODIGO_EMPRESA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            
             <EntityType Name="ZPSTA_CFG_SCRIPTS" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="IDSEC"/>
@@ -32,6 +49,7 @@
                 <Property Name="CodigoRamo" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="CODIGO_RAMO"/>
                 <Property Name="GrupoRamoPassivo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="GRUPO_RAMO_PASSIVO"/>
             </EntityType>
+<<<<<<< HEAD
             <EntityType Name="ZPSTA_CFG_DEPARA_PREM" sap:content-version="1">
                 <Key>
                 <PropertyRef Name="CodEveNegocio"/>
@@ -48,11 +66,27 @@
                 <Property Name="Cmpid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="CodigoEmpresa" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 </EntityType>
+=======
+            <EntityType Name="ZPSTA_CFG_ITC" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Idsec"/>
+                    <PropertyRef Name="Client"/>
+                    <PropertyRef Name="ItcCnpjRaiz"/>
+                </Key>
+                <Property Name="Idsec" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="IDSEC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="CLIENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItcCnpjRaiz" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ITC_CNPJ_RAIZ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItcLegalEntity" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ITC_LEGAL_ENTITY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItcRazaoSocial" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="ITC_RAZAO_SOCIAL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItcTipo" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="ITC_TIPO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+>>>>>>> 491b5ceceb5abb40a879809f22c62c64ceb65748
             <EntityContainer Name="ZPSGW_CONFIG_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="OZPSTA_CFG_DEPARA_PREM" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_DEPARA_PREM" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="OZPSTA_CFG_SCRIPTS" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_SCRIPTS" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="OZPSTA_CFG_EMP_EVE" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_EMP_EVE" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="OZPSTA_CFG_RAMO_PASS" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_RAMO_PASS" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="OZPSTA_CFG_ITC" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_ITC" sap:searchable="true" sap:content-version="1"/>
             </EntityContainer>
             <atom:link rel="self" href="http://li5762.portoseguro.brasil:8200/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="http://li5762.portoseguro.brasil:8200/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
