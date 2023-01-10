@@ -49,7 +49,6 @@
                 <Property Name="CodigoRamo" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="CODIGO_RAMO"/>
                 <Property Name="GrupoRamoPassivo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="GRUPO_RAMO_PASSIVO"/>
             </EntityType>
-<<<<<<< HEAD
             <EntityType Name="ZPSTA_CFG_DEPARA_PREM" sap:content-version="1">
                 <Key>
                 <PropertyRef Name="CodEveNegocio"/>
@@ -66,21 +65,6 @@
                 <Property Name="Cmpid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="CodigoEmpresa" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 </EntityType>
-=======
-            <EntityType Name="ZPSTA_CFG_ITC" sap:content-version="1">
-                <Key>
-                    <PropertyRef Name="Idsec"/>
-                    <PropertyRef Name="Client"/>
-                    <PropertyRef Name="ItcCnpjRaiz"/>
-                </Key>
-                <Property Name="Idsec" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="IDSEC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="CLIENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="ItcCnpjRaiz" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ITC_CNPJ_RAIZ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="ItcLegalEntity" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ITC_LEGAL_ENTITY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="ItcRazaoSocial" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="ITC_RAZAO_SOCIAL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="ItcTipo" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="ITC_TIPO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-            </EntityType>
->>>>>>> 491b5ceceb5abb40a879809f22c62c64ceb65748
             <EntityContainer Name="ZPSGW_CONFIG_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="OZPSTA_CFG_DEPARA_PREM" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_DEPARA_PREM" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="OZPSTA_CFG_SCRIPTS" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_SCRIPTS" sap:searchable="true" sap:content-version="1"/>
