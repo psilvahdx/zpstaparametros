@@ -128,43 +128,43 @@
 				<Annotation Term="UI.LineItem">
 					<Collection>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="RO"/>
+							<PropertyValue Property="Value" Path="Ro"/>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="cmpid"/>
+							<PropertyValue Property="Value" Path="Cmpid"/>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="codigo_evento_negocio"/>
+							<PropertyValue Property="Value" Path="CodEveNegocio"/>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="numero_endosso"/>
+							<PropertyValue Property="Value" Path="NumeroEndosso"/>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="tpmoid"/>
+							<PropertyValue Property="Value" Path="Tpmoid"/>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="codigo_empresa"/>
+							<PropertyValue Property="Value" Path="CodigoEmpresa"/>
 						</Record>
 					</Collection>
 				</Annotation>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/codigo_evento_negocio">
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/CodEveNegocio">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EVT_NEG}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/numero_endosso">
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/NumeroEndosso">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;NUMERO_ENDOSSO}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/tpmoid">
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/Tpmoid">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;TPMOID}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/cmpid">
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/Cmpid">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;CMPID}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/RO">
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/Ro">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;RO}"/>
 			</Annotations>		
