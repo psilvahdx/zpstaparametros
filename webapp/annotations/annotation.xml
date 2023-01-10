@@ -124,7 +124,7 @@
 			<Annotations Target="Metadata.ZPSTA_CFG_RAMO_PASS/GrupoRamoPassivo">
 				<Annotation Term="Common.Label" String="{@i18n&gt;GRP_RAMO_PASSIVO}"/>
 			</Annotations>	
-			
+
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM">
 				<Annotation Term="UI.LineItem">
 					<Collection>
