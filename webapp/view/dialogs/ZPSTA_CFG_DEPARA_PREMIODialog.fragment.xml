@@ -2,7 +2,7 @@
 	xmlns:smartField="sap.ui.comp.smartfield">
 	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
 		<content>
-			<smartForm:SmartForm id="form" editable="true" entityType="ZPSTA_CFG_DEPARA_PREMIOType">
+			<smartForm:SmartForm id="form" editable="true" entityType="ZPSTA_CFG_DEPARA_PREM">
 				<smartForm:Group id="detailGroup">
 					<smartForm:GroupElement>
 						<smartField:SmartField value="{codigo_evento_negocio}" id="codigo_evento_negocio"/>
