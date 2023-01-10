@@ -29,6 +29,7 @@
                 <Property Name="TtField" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="TT_FIELD"/>
                 <Property Name="ScriptTechnicalName" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="SCRIPT_TECHNICAL_NAME"/>
             </EntityType>
+
             <EntityType Name="ZPSTA_CFG_EMP_EVE" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Idsec"/>
@@ -41,6 +42,7 @@
                 <Property Name="Table" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="TABLE"/>
                 <Property Name="Pivot" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="PIVOT"/>
             </EntityType>
+            
             <EntityType Name="ZPSTA_CFG_RAMO_PASS" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Idsec"/>
@@ -49,6 +51,7 @@
                 <Property Name="CodigoRamo" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="CODIGO_RAMO"/>
                 <Property Name="GrupoRamoPassivo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="GRUPO_RAMO_PASSIVO"/>
             </EntityType>
+            
             <EntityType Name="ZPSTA_CFG_ITC" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Idsec"/>
