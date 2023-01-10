@@ -123,7 +123,27 @@
 			</Annotations>
 			<Annotations Target="Metadata.ZPSTA_CFG_RAMO_PASS/GrupoRamoPassivo">
 				<Annotation Term="Common.Label" String="{@i18n&gt;GRP_RAMO_PASSIVO}"/>
-			</Annotations>			
+			</Annotations>	
+			<Annotations Target="Metadata.OZPSTA_CFG_DEPARA_PREMIOType/codigo_evento_negocio">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EVT_NEG}"/>
+			</Annotations>
+			<Annotations Target="Metadata.OZPSTA_CFG_DEPARA_PREMIOType/numero_endosso">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;NUMERO_ENDOSSO}"/>
+			</Annotations>
+			<Annotations Target="Metadata.OZPSTA_CFG_DEPARA_PREMIOType/tpmoid">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;TPMOID}"/>
+			</Annotations>
+			<Annotations Target="Metadata.OZPSTA_CFG_DEPARA_PREMIOType/cmpid">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;CMPID}"/>
+			</Annotations>
+			<Annotations Target="Metadata.OZPSTA_CFG_DEPARA_PREMIOType/RO">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;RO}"/>
+			</Annotations>		
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
