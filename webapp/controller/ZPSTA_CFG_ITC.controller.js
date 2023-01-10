@@ -6,11 +6,10 @@ sap.ui.define([
 ) {
 	"use strict";
 
-	return BaseController.extend("portoseguro.zpstaparametros.controller.ZPSTA_CFG_SCRIPTS", {
+	return BaseController.extend("portoseguro.zpstaparametros.controller.ZPSTA_CFG_ITC", {
 
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact");
-
 		},
 
 		onSave: function () {
@@ -47,7 +46,6 @@ sap.ui.define([
 						var oModel = that.getOwnerComponent().getModel();
 						oModel.remove(context.getPath());
 						oModel.setUseBatch(false);
-
 					});
 
 				} else {
@@ -60,35 +58,36 @@ sap.ui.define([
 
 		},
 
-
 		onNew: function () {
 			var newItem = {
-				"Script": "",
-				"Field": "",
-				"TtField": "",
-				"ScriptTechnicalName": ""
+				"Client": null,
+				"ItcCnpjRaiz": "",
+				"ItcLegalEntity": "",
+				"ItcRazaoSocial": "",
+				"ItcTipo": ""
 			};
 
+
 			var oModel = this.getOwnerComponent().getModel();
-			oModel.setUseBatch(true);
-			var oContext = oModel.createEntry("/OZPSTA_CFG_SCRIPTS", {
+			var oContext = oModel.createEntry("/OZPSTA_CFG_ITC", {
 				properties: newItem
 			});
-
-			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_SCRIPTSDialog");
+			oModel.setUseBatch(true);
+			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_ITCDialog");
 			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
+
 			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
 			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
 			var boundItem = model.getProperty(path);
 			var that = this;
 			var mParameters = {
 				success: function (oData, response) {
-					console.log(oData);
+					MessageToast.show("Salvo com sucesso!");
 					that.closeDialog();
 				},
 				error: function (oError) {

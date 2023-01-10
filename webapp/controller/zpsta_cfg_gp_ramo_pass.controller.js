@@ -6,7 +6,7 @@ sap.ui.define([
 ) {
 	"use strict";
 
-	return BaseController.extend("portoseguro.psta_parametros.controller.ZPSTA_CFG_GP_RAMO_PASS", {
+	return BaseController.extend("portoseguro.zpstaparametros.controller.ZPSTA_CFG_GP_RAMO_PASS", {
 
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact");
