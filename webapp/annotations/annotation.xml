@@ -168,6 +168,10 @@
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;RO}"/>
 			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/CodigoEmpresa">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;CODIGO_EMPRESA}"/>
+			</Annotations>
 
 			<Annotations Target="Metadata.ZPSTA_CFG_ITC">
 				<Annotation Term="UI.LineItem">

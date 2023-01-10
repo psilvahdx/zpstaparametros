@@ -47,6 +47,7 @@ sap.ui.define([
 
 						var context = tblDados.getContextByIndex(selectedIndex);
 						var oModel = that.getOwnerComponent().getModel();
+						oModel.setUseBatch(false);
 						oModel.remove(context.getPath());
 
 					});
@@ -63,16 +64,17 @@ sap.ui.define([
 
 		onNew: function () {
 			var newItem = {
-				"codigo_evento_negocio": "",
-				"numero_endosso": "",
-				"tpmoid": "",
-				"cmpid": "",
-				"RO": "",
-				"codigo_empresa": ""
+				"CodEveNegocio": "",
+				"NumeroEndosso": "",
+				"Ro": "",
+				"Tpmoid": "",
+				"Cmpid": "",
+				"CodigoEmpresa": ""
 			};
 
 			var oModel = this.getOwnerComponent().getModel();
-			var oContext = oModel.createEntry("/OZPSTA_CFG_DEPARA_PREMIO", {
+			oModel.setUseBatch(true);
+			var oContext = oModel.createEntry("/OZPSTA_CFG_DEPARA_PREM", {
 				properties: newItem
 			});
 
