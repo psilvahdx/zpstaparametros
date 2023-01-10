@@ -167,6 +167,45 @@
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/Ro">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;RO}"/>
+			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Client"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ItcCnpjRaiz"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ItcLegalEntity"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ItcRazaoSocial"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ItcTipo"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/Client">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;CLIENT}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcCnpjRaiz">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_CNPJ_RAIZ}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcLegalEntity">
+				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_LEGAL_ENTITY}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcRazaoSocial">
+				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_RAZAO_SOCIAL}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcTipo">
+				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_TIPO}"/>
 			</Annotations>		
 		</Schema>
 	</edmx:DataServices>
