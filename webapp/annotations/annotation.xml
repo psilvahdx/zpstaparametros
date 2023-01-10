@@ -124,6 +124,30 @@
 			<Annotations Target="Metadata.ZPSTA_CFG_RAMO_PASS/GrupoRamoPassivo">
 				<Annotation Term="Common.Label" String="{@i18n&gt;GRP_RAMO_PASSIVO}"/>
 			</Annotations>	
+			<Annotations Target="Metadata.OZPSTA_CFG_DEPARA_PREMIOType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="RO"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="cmpid"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="codigo_evento_negocio"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="numero_endosso"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="tpmoid"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="codigo_empresa"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
 			<Annotations Target="Metadata.OZPSTA_CFG_DEPARA_PREMIOType/codigo_evento_negocio">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EVT_NEG}"/>
