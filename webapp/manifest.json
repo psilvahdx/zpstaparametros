@@ -156,6 +156,10 @@
                     "pattern": "cfg_itc",
                     "name": "cfg_itc",
                     "target": "cfg_itc"
+                },{
+                    "pattern": "cfg_ent",
+                    "name": "cfg_ent",
+                    "target": "cfg_ent"	
                 }
             ],
             "targets": {
@@ -189,6 +193,11 @@
 				"cfg_itc": {
 					"viewId": "cfg_itc",
 					"viewName": "ZPSTA_CFG_ITC",
+					"viewLevel": 2
+				},
+				"cfg_ent": {
+					"viewId": "cfg_ent",
+					"viewName": "ZPSTA_ATCFG_ENT",
 					"viewLevel": 2
 				}
             }
