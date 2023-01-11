@@ -1,8 +1,9 @@
 sap.ui.define([
 	"portoseguro/zpstaparametros/controller/BaseController",
-	"sap/m/MessageToast"
+	"sap/m/MessageToast",
+	"sap/ui/core/routing/History"
 ], function (
-	BaseController, MessageToast
+	BaseController, MessageToast, History
 ) {
 	"use strict";
 
@@ -116,6 +117,17 @@ sap.ui.define([
 
 			model.submitChanges(mParameters);
 			model.refresh();
+		},
+		onNavBack: function () {
+			var oHistory = History.getInstance();
+			var sPreviousHash = oHistory.getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				var oRouter = this.getOwnerComponent().getRouter();
+				oRouter.navTo("overview", {}, true);
+			}
 		}
 
 	});
