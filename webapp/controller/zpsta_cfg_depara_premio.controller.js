@@ -3,16 +3,15 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/ui/core/routing/History"
 ], function (
-	BaseController, MessageToast, History
+	BaseController,
+	MessageToast,
+	History
 ) {
 	"use strict";
 
-	return BaseController.extend("portoseguro.psta_parametros.controller.ZPSTA_CFG_DEPARA_PREMIO", {
-
+	return BaseController.extend("portoseguro.psta_parametros.controller.zpsta_cfg_depara_premio", {
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact");
-
-
 		},
 
 		onSave: function () {
