@@ -36,7 +36,7 @@ sap.ui.define([
 		onDelete: function () {
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosEmpEnt").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -45,8 +45,8 @@ sap.ui.define([
 
 						var context = tblDados.getContextByIndex(selectedIndex);
 						var oModel = that.getOwnerComponent().getModel();
+                        oModel.setUseBatch(false);
 						oModel.remove(context.getPath());
-
 					});
 
 				} else {
@@ -61,19 +61,25 @@ sap.ui.define([
 
 		
 		onNew: function () {
-			
-			
+			var currDate = new Date();
+			var currDay, currMonth, currYear, currUTCTime, fullDateStr;
+            currDay = ''+currDate.toLocaleString('pt-BR', {day: 'numeric' });
+            currMonth = ''+currDate.toLocaleString('pt-BR', {month: 'numeric'});
+            currMonth.length < 2? currMonth = '0' + currMonth : 'Hello World'; 
+            currYear = ''+currDate.toLocaleString('pt-BR', {year: 'numeric'});
+            currUTCTime = currDate.toLocaleString('pt-BR', {hour: 'numeric', minute: 'numeric', second: 'numeric'});
+            fullDateStr = `${currYear}-${currMonth}-${currDay} ${currUTCTime}.000000000`;
 			
 			var newItem = {
-				"CodEmpresa": null,
+				"CodEmpresa": 0,
 				"NomeEmpresa": "",
 				"CodLegalEntity": "",
-				"DtInclusaoReg":  new Date(),   //"2020-09-09 19:39:59.999999999"
-				"Status": "",
-				"Client": null
+				"DtInclusaoReg":  fullDateStr,
+				"Status": ""
 			};
 
 			var oModel = this.getOwnerComponent().getModel();
+            oModel.setUseBatch(true);
 			var oContext = oModel.createEntry("/OZPSTA_ATCFG_ENT", {
 				properties: newItem
 			});
@@ -81,40 +87,43 @@ sap.ui.define([
 			this._oContext = oContext;
 
 			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_ATCFG_ENTDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			sap.ui.core.Fragment.byId("frmDialog", "formEmpEnt").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialog", "formEmpEnt").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialog", "formEmpEnt").getModel();
 			var boundItem = model.getProperty(path);
 			var that = this;
 			var mParameters = {
 				success: function (oData, response) {
 					MessageToast.show("Salvo com sucesso!");
 					that.closeDialog();
+                    that.getView().byId('tblDadosEmpEnt').rebindTable();
 				},
 				error: function (oError) {
-					if (oError) {
-						if (oError.responseText) {
-							var oErrorMessage = JSON.parse(oError.responseText);
-							sap.m.MessageBox.alert(oErrorMessage.error.message.value);
-							that.closeDialog();
-						}
-					}
+					// if (oError) {
+					// 	if (oError.responseText) {
+					// 		var oErrorMessage = JSON.parse(oError.responseText);
+					// 		sap.m.MessageBox.alert(oErrorMessage.error.message.value);
+					// 		that.closeDialog();
+					// 	}
+					// }
+                    that.getView().byId('tblDadosEmpEnt').rebindTable();
 				}
 			};
 
 			model.submitChanges(mParameters);
 			model.refresh();
+            that.closeDialog();
 		},
 		
 		onDataReceived: function () {
 
-			var oTable = this.byId("tblDados");
+			var oTable = this.byId("tblDadosEmpEnt");
 			oTable.getTable().getColumns().forEach(function (oLine) {
 				oLine.setProperty("width", "200px");
 			});

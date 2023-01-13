@@ -39,7 +39,7 @@ sap.ui.define([
 		onDelete: function () {
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosDepPrm").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -80,15 +80,15 @@ sap.ui.define([
 			});
 
 			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_PREMIODialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			sap.ui.core.Fragment.byId("frmDialog", "formDepPrm").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialog", "formDepPrm").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialog", "formDepPrm").getModel();
 			var boundItem = model.getProperty(path);
 			
 			var uEntities = model.mChangedEntities;

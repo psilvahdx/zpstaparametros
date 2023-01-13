@@ -7,7 +7,7 @@
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>
 				<f:DynamicPageHeader pinnable="true">
-					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="OZPSTA_CFG_SCRIPTS" persistencyKey="SmartFilter_Explored"
+					<smartFilterBar:SmartFilterBar id="smartFilterBarCfgSct" entitySet="OZPSTA_CFG_SCRIPTS" persistencyKey="SmartFilter_Explored"
 					>
 						<smartFilterBar:controlConfiguration>
 							<!--	<smartFilterBar:ControlConfiguration key="codigo_atena"></smartFilterBar:ControlConfiguration>
@@ -17,10 +17,10 @@
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<smartTable:SmartTable entitySet="OZPSTA_CFG_SCRIPTS" app:useSmartField="true" smartFilterId="smartFilterBar" editTogglable="true"
+				<smartTable:SmartTable entitySet="OZPSTA_CFG_SCRIPTS" app:useSmartField="true" smartFilterId="smartFilterBarCfgSct" editTogglable="true"
 					editable="false" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false"
 					useTablePersonalisation="true" header="Qtd. Registros" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored"
-					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDados" showFullScreenButton="true" dataReceived=".onDataReceived">
+					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDadosCfgSct" showFullScreenButton="true" dataReceived=".onDataReceived">
 					<l:VerticalLayout class="sapUiContentPadding" id="oVerticalContent" width="100%"></l:VerticalLayout>
 					<smartTable:layoutData>
 						<FlexItemData growFactor="1" baseSize="0%"/>

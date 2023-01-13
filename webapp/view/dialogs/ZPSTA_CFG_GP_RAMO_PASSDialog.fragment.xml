@@ -2,7 +2,7 @@
 	xmlns:smartField="sap.ui.comp.smartfield">
 	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
 		<content>
-			<smartForm:SmartForm id="form" editable="true" entityType="OZPSTA_CFG_GP_RAMO_PASSType">
+			<smartForm:SmartForm id="formRamPass" editable="true" entityType="OZPSTA_CFG_GP_RAMO_PASSType">
 
 				<smartForm:Group id="detailGroup">
 					<smartForm:GroupElement>
@@ -19,7 +19,7 @@
 			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
 		</beginButton>
 		<endButton>
-			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancel" press=".onCancel"/>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancelRamPass" press=".onCancel('RamPass')"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

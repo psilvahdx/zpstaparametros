@@ -87,7 +87,7 @@
                 <EntitySet Name="OZPSTA_CFG_EMP_EVE" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_EMP_EVE" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="OZPSTA_CFG_RAMO_PASS" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_RAMO_PASS" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="OZPSTA_CFG_ITC" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_ITC" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZPSTA_ATCFG_ENT" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_ATCFG_ENT" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="OZPSTA_ATCFG_ENT" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_ATCFG_ENT" sap:searchable="true" sap:content-version="1"/>
             </EntityContainer>
             <atom:link rel="self" href="http://li5762.portoseguro.brasil:8200/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="http://li5762.portoseguro.brasil:8200/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>

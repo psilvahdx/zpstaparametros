@@ -38,7 +38,7 @@ sap.ui.define([
 		onDelete: function () {
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosEmpEve").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -81,15 +81,15 @@ sap.ui.define([
 				this._oContext = oContext;
 
 			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_EMP_EVEDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			sap.ui.core.Fragment.byId("frmDialog", "formEmpEve").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialog", "formEmpEve").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialog", "formEmpEve").getModel();
 			var boundItem = model.getProperty(path);
 			var that = this;
 			var mParameters = {
@@ -116,29 +116,29 @@ sap.ui.define([
 		
 		onDataReceived: function () {
 
-			var oTable = this.byId("tblDados");
-			var i = 0;
-			oTable.getTable().getColumns().forEach(function (oLine) {
+			// var oTable = this.byId("tblDados");
+			// var i = 0;
+			// oTable.getTable().getColumns().forEach(function (oLine) {
 
-				var oFieldName = oLine.getId();
-				oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
+			// 	var oFieldName = oLine.getId();
+			// 	oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
 
-				switch (oFieldName) {
-				case "codigo_empresa":
-				case "codigo_evento_negocio":
-				case "script":
-					oLine.setProperty("width", "150px");
-					break;
-				case "pivot":
-					oLine.setProperty("width", "80px");
-					break;
-				default:
-					oLine.setProperty("width", "200px");
-					break;
-				}
+			// 	switch (oFieldName) {
+			// 	case "codigo_empresa":
+			// 	case "codigo_evento_negocio":
+			// 	case "script":
+			// 		oLine.setProperty("width", "150px");
+			// 		break;
+			// 	case "pivot":
+			// 		oLine.setProperty("width", "80px");
+			// 		break;
+			// 	default:
+			// 		oLine.setProperty("width", "200px");
+			// 		break;
+			// 	}
 
-				i++;
-			});
+			// 	i++;
+			// });
 
 		}
 

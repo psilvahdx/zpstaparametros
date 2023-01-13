@@ -2,11 +2,8 @@
     xmlns:form="sap.ui.layout.form" xmlns:smartField="sap.ui.comp.smartfield">
 	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
 		<content>
-			<smartForm:SmartForm id="form" editable="true" entityType="ZPSTA_CFG_ITC">
+			<smartForm:SmartForm id="formCfgItc" editable="true" entityType="ZPSTA_CFG_ITC">
 				<smartForm:Group id="detailGroup">
-					<smartForm:GroupElement>
-						<smartField:SmartField value="{Client}" id="client"/>
-					</smartForm:GroupElement>
 					<smartForm:GroupElement>
 						<smartField:SmartField value="{ItcCnpjRaiz}" id="itc_cnpj_raiz"/>
 					</smartForm:GroupElement>
@@ -26,7 +23,7 @@
 			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
 		</beginButton>
 		<endButton>
-			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancel" press=".onCancel"/>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancelCfgItc" press=".onCancel('CfgItc')"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

@@ -36,7 +36,7 @@ sap.ui.define([
 		onDelete: function () {
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosRamPass").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -63,8 +63,7 @@ sap.ui.define([
 		onNew: function () {
 			var newItem = {
 				"CodigoRamo": null,
-				"GrupoRamoPassivo": "",
-				// "IDSEC": 99 //Necessário passar um código fake para ser alterado na exit do OData
+				"GrupoRamoPassivo": ""
 			};
 
 			var oModel = this.getOwnerComponent().getModel();
@@ -74,15 +73,15 @@ sap.ui.define([
 			});
 
 			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_GP_RAMO_PASSDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			sap.ui.core.Fragment.byId("frmDialog", "formRamPass").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialog", "formRamPass").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialog", "formRamPass").getModel();
 			var boundItem = model.getProperty(path);
 			var that = this;
 			var mParameters = {

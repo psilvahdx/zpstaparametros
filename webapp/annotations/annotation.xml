@@ -77,6 +77,11 @@
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="Table"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="1rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 					</Collection>
 				</Annotation>
@@ -178,9 +183,6 @@
 				<Annotation Term="UI.LineItem">
 					<Collection>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Client"/>
-						</Record>
-						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="ItcCnpjRaiz"/>
 						</Record>
 						<Record Type="UI.DataField">
@@ -194,10 +196,6 @@
 						</Record>
 					</Collection>
 				</Annotation>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_ITC/Client">
-				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
-				<Annotation Term="Common.Label" String="{@i18n&gt;CLIENT}"/>
 			</Annotations>
 			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcCnpjRaiz">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
@@ -216,9 +214,6 @@
 			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT">
 				<Annotation Term="UI.LineItem">
 					<Collection>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Client"/>
-						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="CodEmpresa"/>
 						</Record>
@@ -253,10 +248,6 @@
 			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/Status">
 				<Annotation Term="Common.Label" String="{@i18n&gt;STATUS}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/Client">
-				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
-				<Annotation Term="Common.Label" String="{@i18n&gt;CLIENT}"/>
-			</Annotations>		
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
