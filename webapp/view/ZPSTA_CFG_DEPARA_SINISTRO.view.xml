@@ -1,0 +1,42 @@
+<mvc:View 
+controllerName="portoseguro.zpstaparametros.controller.ZPSTA_CFG_DEPARA_SINISTRO" 
+xmlns="sap.m"
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+xmlns:smartTable="sap.ui.comp.smarttable" 
+xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" 
+xmlns:l="sap.ui.layout" 
+xmlns:f="sap.f" 
+displayBlock="true">
+	<Page title="{i18n>ZPSTA_CFG_DEPARA_SINISTROTitle}" showNavButton="true" navButtonPress=".onNavBack">
+		<f:DynamicPage id="dynamicPageId">
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="OZPSTA_CFG_DEPARA_SIN" persistencyKey="SmartFilter_Explored">
+					</smartFilterBar:SmartFilterBar>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<smartTable:SmartTable entitySet="OZPSTA_CFG_DEPARA_SIN" app:useSmartField="true" smartFilterId="smartFilterBar" editTogglable="false"
+					editable="false" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false"
+					useTablePersonalisation="true" header="Qtd. Registros" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored"
+					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDados" showFullScreenButton="true" beforeRebindTable="onDataReceived">
+					<l:VerticalLayout class="sapUiContentPadding" id="oVerticalContent" width="100%"></l:VerticalLayout>
+					<smartTable:layoutData>
+						<FlexItemData growFactor="1" baseSize="0%"/>
+					</smartTable:layoutData>
+					<smartTable:customToolbar>
+						<OverflowToolbar width="100%" id="toolbar2">
+							<content>
+								<ToolbarSpacer/>
+								<Button xmlns="sap.m" id="btnNew" icon="sap-icon://add" press=".onNew"/>
+								<Button xmlns="sap.m" id="btnDel" icon="sap-icon://delete" press=".onDelete"/>
+								<Button xmlns="sap.m" id="btnSave" icon="sap-icon://save" press=".onSave"/>
+							</content>
+						</OverflowToolbar>
+					</smartTable:customToolbar>
+				</smartTable:SmartTable>
+			</f:content>
+		</f:DynamicPage>
+	</Page>
+</mvc:View>

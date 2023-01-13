@@ -156,6 +156,11 @@
                     "pattern": "cfg_itc",
                     "name": "cfg_itc",
                     "target": "cfg_itc"
+                },
+                {
+                    "pattern": "depara_sinistro",
+                    "name": "depara_sinistro",
+                    "target": "depara_sinistro"	
                 },{
                     "pattern": "cfg_ent",
                     "name": "cfg_ent",
@@ -190,6 +195,11 @@
 					"viewName": "ZPSTA_CFG_DEPARA_PREMIO",
 					"viewLevel": 2
                 },
+                "depara_sinistro": {
+					"viewId": "depara_sinistro",
+					"viewName": "ZPSTA_CFG_DEPARA_SINISTRO",
+					"viewLevel": 2
+				},
 				"cfg_itc": {
 					"viewId": "cfg_itc",
 					"viewName": "ZPSTA_CFG_ITC",

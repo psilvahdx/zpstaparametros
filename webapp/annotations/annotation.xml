@@ -154,6 +154,39 @@
 					</Collection>
 				</Annotation>
 			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ro"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Cmpid"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodEveNegocio"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodMovSinistro"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="JuridicoFlag"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TipoMovimento"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TpSin"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Tpmoid"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodEmpresa"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/CodEveNegocio">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EVT_NEG}"/>
@@ -177,6 +210,42 @@
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/CodigoEmpresa">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;CODIGO_EMPRESA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/CodEveNegocio">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EVT_NEG}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/CodMovSinistro">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_MOV_SINISTRO}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/JuridicoFlag">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;JURIDICO_FLAG}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/Tpmoid">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;TPMOID}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/Cmpid">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;CMPID}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/TipoMovimento">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;TIPO_MOVIMENTO}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/TpSin">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;TP_SIN}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/Ro">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;RO}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/CodEmpresa">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
 			</Annotations>
 
 			<Annotations Target="Metadata.ZPSTA_CFG_ITC">
