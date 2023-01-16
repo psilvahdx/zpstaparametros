@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform" xmlns:form="sap.ui.layout.form"
+	xmlns:smartField="sap.ui.comp.smartfield">
+	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
+		<content>
+			<smartForm:SmartForm id="formCfgOri" editable="true" entityType="OZPSTA_ATCFG_ORIGEMType">
+				<smartForm:Group id="detailGroup">
+					<smartForm:GroupElement>
+						<smartField:SmartField value="{CodSistOrigem}" id="cod_sist_origem"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement>
+						<smartField:SmartField value="{NomeSistOrigem}" id="nome_sist_origem"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement>
+						<smartField:SmartField value="{DtInclusaoReg}" id="dt_inclusao_reg"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement>
+						<smartField:SmartField value="{SourceSystem}" id="source_system"/>
+					</smartForm:GroupElement>
+				</smartForm:Group>
+			</smartForm:SmartForm>
+		</content>
+		<beginButton>
+			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
+		</beginButton>
+		<endButton>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancelCfgOri" press=".onCancel('CfgOri')"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

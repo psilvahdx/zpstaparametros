@@ -61,14 +61,7 @@ sap.ui.define([
 
 		
 		onNew: function () {
-			var currDate = new Date();
-			var currDay, currMonth, currYear, currUTCTime, fullDateStr;
-            currDay = ''+currDate.toLocaleString('pt-BR', {day: 'numeric' });
-            currMonth = ''+currDate.toLocaleString('pt-BR', {month: 'numeric'});
-            currMonth.length < 2? currMonth = '0' + currMonth : 'Hello World'; 
-            currYear = ''+currDate.toLocaleString('pt-BR', {year: 'numeric'});
-            currUTCTime = currDate.toLocaleString('pt-BR', {hour: 'numeric', minute: 'numeric', second: 'numeric'});
-            fullDateStr = `${currYear}-${currMonth}-${currDay} ${currUTCTime}.000000000`;
+			var fullDateStr = this.onGetNewDate();
 			
 			var newItem = {
 				"CodEmpresa": 0,

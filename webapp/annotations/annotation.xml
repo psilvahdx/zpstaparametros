@@ -317,6 +317,41 @@
 			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/Status">
 				<Annotation Term="Common.Label" String="{@i18n&gt;STATUS}"/>
 			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Idsec"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodSistOrigem"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DtInclusaoReg"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="NomeSistOrigem"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SourceSystem"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/CodSistOrigem">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_SIST_ORIGEM}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/NomeSistOrigem">
+				<Annotation Term="Common.Label" String="{@i18n&gt;NOME_SIST_ORIGEM}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/DtInclusaoReg">
+				<Annotation Term="Common.Label" String="{@i18n&gt;DT_INCLUSAO_REG}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/SourceSystem">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SOURCE_SYSTEM}"/>
+			</Annotations>
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
