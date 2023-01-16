@@ -9,16 +9,20 @@ xmlns:f="sap.f">
     <Page id="depara_premio" title="{i18n>zpsta_cfg_depara_premioTitle}" showNavButton="true" navButtonPress=".onNavBack">
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>
-				<f:DynamicPageHeader id="DynamicPageHeader" pinnable="true">
-					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="OZPSTA_CFG_DEPARA_PREM" persistencyKey="SmartFilter_Explored">
+				<f:DynamicPageHeader pinnable="true">
+					<smartFilterBar:SmartFilterBar id="smartFilterBarDepPrm" entitySet="OZPSTA_CFG_DEPARA_PREM" persistencyKey="SmartFilter_Explored">
+						<smartFilterBar:controlConfiguration>
+							<!--	<smartFilterBar:ControlConfiguration key="codigo_atena"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="data"></smartFilterBar:ControlConfiguration>-->
+						</smartFilterBar:controlConfiguration>
 					</smartFilterBar:SmartFilterBar>
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<smartTable:SmartTable entitySet="OZPSTA_CFG_DEPARA_PREM" app:useSmartField="true" smartFilterId="smartFilterBar" editTogglable="false"
+				<smartTable:SmartTable entitySet="OZPSTA_CFG_DEPARA_PREM" app:useSmartField="true" smartFilterId="smartFilterBarDepPrm" editTogglable="false"
 					editable="false" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false"
 					useTablePersonalisation="true" header="Qtd. Registros" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored"
-					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDados" showFullScreenButton="true" beforeRebindTable="onDataReceived">
+					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDadosDepPrm" showFullScreenButton="true" dataReceived="onDataReceived">
 					<l:VerticalLayout class="sapUiContentPadding" id="oVerticalContent" width="100%"></l:VerticalLayout>
 					<smartTable:layoutData>
 						<FlexItemData id="FlexItemDataId" growFactor="1" baseSize="0%"/>

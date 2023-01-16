@@ -36,7 +36,7 @@ sap.ui.define([
 		onDelete: function () {
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosCfgSct").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -76,14 +76,14 @@ sap.ui.define([
 			});
 
 			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_SCRIPTSDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			sap.ui.core.Fragment.byId("frmDialog", "formCfgSct").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
-			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialog", "formCfgSct").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialog", "formCfgSct").getModel();
 			var boundItem = model.getProperty(path);
 			var that = this;
 			var mParameters = {
@@ -108,7 +108,7 @@ sap.ui.define([
 		
 		onDataReceived: function () {
 
-			var oTable = this.byId("tblDados");
+			var oTable = this.byId("tblDadosCfgSct");
 			oTable.getTable().getColumns().forEach(function (oLine) {
 				oLine.setProperty("width", "200px");
 			});

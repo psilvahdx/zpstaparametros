@@ -2,7 +2,7 @@
 	xmlns:smartField="sap.ui.comp.smartfield">
 	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
 		<content>
-			<smartForm:SmartForm id="form" editable="true" entityType="ZPSTA_CFG_SCRIPTS" >
+			<smartForm:SmartForm id="formCfgSct" editable="true" entityType="ZPSTA_CFG_SCRIPTS" >
 				<smartForm:Group id="detailGroup">
 					<smartForm:GroupElement>
 						<smartField:SmartField value="{Script}" id="empresa"/>
@@ -23,7 +23,7 @@
 			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
 		</beginButton>
 		<endButton>
-			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancel" press=".onCancel"/>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancelCfgSct" press=".onCancel('CfgSct')"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

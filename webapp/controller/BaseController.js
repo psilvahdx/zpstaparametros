@@ -100,8 +100,8 @@ sap.ui.define([
 			this.getView().getElementBinding().refresh(true);*/
 		},
 
-		onCancel: function () {
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
+		onCancel: function (evt) {
+			var model = sap.ui.core.Fragment.byId("frmDialog", "form"+evt).getModel();
 			model.deleteCreatedEntry(this._oContext);
 			this.closeDialog();
 		},
