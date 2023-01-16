@@ -16,6 +16,7 @@ sap.ui.define([
 
 		onSave: function () {
 			var oModel = this.getOwnerComponent().getModel();
+			    oModel.setUseBatch(true);
 
 			var mParameters = {
 				sucess: function (oData, response) {
@@ -46,6 +47,7 @@ sap.ui.define([
 
 						var context = tblDados.getContextByIndex(selectedIndex);
 						var oModel = that.getOwnerComponent().getModel();
+						oModel.setUseBatch(false);
 						oModel.remove(context.getPath());
 
 					});
@@ -62,15 +64,15 @@ sap.ui.define([
 
 		onNew: function () {
 			var newItem = {
-				"codigo_evento_negocio": "",
-				"codigo_mov_sinistro": "",
-				"juridico_flag": "",
-				"tipo_movimento": "",
-				"tpmoid": "",
-				"cmpid": "",
-				"tp_sin": "",
-				"RO": "",
-				"codigo_empresa": ""
+				"CodEveNegocio": "",
+				"CodMovSinistro": "",
+				"JuridicoFlag": "",
+				"Ro": "",
+				"Tpmoid": "",
+				"TipoMovimento": "",
+				"Cmpid": "",
+				"TpSin": "",
+				"CodEmpresa": ""
 			};
             
 			var oModel = this.getOwnerComponent().getModel();
