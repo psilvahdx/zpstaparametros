@@ -79,15 +79,15 @@ sap.ui.define([
 			});
 
 			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_PREMIODialog");
-			sap.ui.core.Fragment.byId("frmDialog", "formDepPrm").bindElement(oContext.getPath());
+			sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "formDepPrm").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "formDepPrm").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getModel();
 			var boundItem = model.getProperty(path);
 			
 			var uEntities = model.mChangedEntities;
