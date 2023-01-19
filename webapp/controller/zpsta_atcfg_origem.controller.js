@@ -78,8 +78,8 @@ sap.ui.define([
 				properties: newItem
 			});
 
-			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_ATCFG_ORIGEMDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "formCfgOri").bindElement(oContext.getPath());
+			var dialog = this._getDialog("frmDialogCfgOri", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_ATCFG_ORIGEMDialog");
+			sap.ui.core.Fragment.byId("frmDialogCfgOri", "formCfgOri").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
@@ -87,8 +87,8 @@ sap.ui.define([
 		onAdd: function () {
 
 			var that = this;
-			var path = sap.ui.core.Fragment.byId("frmDialog", "formCfgOri").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "formCfgOri").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialogCfgOri", "formCfgOri").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogCfgOri", "formCfgOri").getModel();
 			var boundItem = model.getProperty(path);
 
 			if (boundItem.CodSistOrigem) {
@@ -133,10 +133,10 @@ sap.ui.define([
 		},
 		onDataReceived: function () {
 
-			var oTable = this.byId("tblDadosCfgOri");
-			oTable.getTable().getColumns().forEach(function (oLine) {
-				oLine.setProperty("width", "200px");
-			});
+			// var oTable = this.byId("tblDadosCfgOri");
+			// oTable.getTable().getColumns().forEach(function (oLine) {
+			// 	oLine.setProperty("width", "200px");
+			// });
 
 		}
 

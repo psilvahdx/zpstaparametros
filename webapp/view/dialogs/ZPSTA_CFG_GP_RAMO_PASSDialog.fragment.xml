@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform" xmlns:form="sap.ui.layout.form"
 	xmlns:smartField="sap.ui.comp.smartfield">
-	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
+	<Dialog id="InsertDialogRamPass" title="{i18n>insertTitle}">
 		<content>
 			<smartForm:SmartForm id="formRamPass" editable="true" entityType="OZPSTA_CFG_GP_RAMO_PASSType">
 

@@ -16,9 +16,9 @@ sap.ui.define([
 		
 		formatter: formatter,
 
-		_getDialog: function (fragmentDialog) {
+		_getDialog: function (dialogId,fragmentDialog) {
 			if (!this._oDialog) {
-				this._oDialog = sap.ui.xmlfragment("frmDialog", fragmentDialog, this);
+				this._oDialog = sap.ui.xmlfragment(dialogId, fragmentDialog, this);
 				this.getView().addDependent(this._oDialog);
 			}
 			return this._oDialog;
@@ -101,20 +101,20 @@ sap.ui.define([
 		},
 
 		onCancel: function (evt) {
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form"+evt).getModel();
+			var model = sap.ui.core.Fragment.byId("frmDialog"+evt, "form"+evt).getModel();
 			model.deleteCreatedEntry(this._oContext);
 			this.closeDialog();
 		},
 
 		onDataReceived: function () {
 
-			var oTable = this.byId("tblDados");
-			var i = 0;
-			oTable.getTable().getColumns().forEach(function (oLine) {
-				oLine.setWidth("100%");
-				oLine.getParent().autoResizeColumn(i);
-				i++;
-			});
+			// var oTable = this.byId("tblDados");
+			// var i = 0;
+			// oTable.getTable().getColumns().forEach(function (oLine) {
+			// 	oLine.setWidth("100%");
+			// 	oLine.getParent().autoResizeColumn(i);
+			// 	i++;
+			// });
 
 			//this.customizeTableColumnLabels(oTable);
 
