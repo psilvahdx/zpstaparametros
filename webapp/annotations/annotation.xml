@@ -1,4 +1,7 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/HTML5.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
 	<edmx:Reference Uri="/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata">
 		<edmx:Include Alias="Metadata" Namespace="ZPSGW_CONFIG_SRV"/>
 	</edmx:Reference>
@@ -394,7 +397,7 @@
 			</Annotations>
 			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/Idsec">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
-				<Annotation Term="Common.Label" String="{@i18n&gt;IDSEC}"/>
+				<Annotation Term="Common.Label" String="{@i18n>IDSEC}"/>
 			</Annotations>	
 
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM">
@@ -604,16 +607,7 @@
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodEmpresa">
-				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
-				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/Descricao">
-				<Annotation Term="Common.Label" String="{@i18n&gt;DESC}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodCia">
-				<Annotation Term="Common.Label" String="{@i18n&gt;COD_CIA}"/>
-			</Annotations>
+			
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP">
 				<Annotation Term="UI.LineItem">
 					<Collection>
@@ -629,7 +623,16 @@
 					</Collection>
 				</Annotation>
 			</Annotations>
-
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodEmpresa">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/Descricao">
+				<Annotation Term="Common.Label" String="{@i18n&gt;DESC}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodCia">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_CIA}"/>
+			</Annotations>
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
