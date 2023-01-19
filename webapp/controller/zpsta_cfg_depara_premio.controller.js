@@ -88,6 +88,8 @@ sap.ui.define([
 
 			var path = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getElementBinding().getPath();
 			var model = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getModel();
 			var boundItem = model.getProperty(path);
 			
 			var uEntities = model.mChangedEntities;

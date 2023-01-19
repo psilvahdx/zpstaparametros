@@ -604,6 +604,31 @@
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
 			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodEmpresa">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/Descricao">
+				<Annotation Term="Common.Label" String="{@i18n&gt;DESC}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodCia">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_CIA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodEmpresa"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Descricao"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodCia"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
 
 		</Schema>
 	</edmx:DataServices>

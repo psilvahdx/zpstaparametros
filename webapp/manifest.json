@@ -170,6 +170,11 @@
                     "pattern": "cfg_origem",
                     "name": "cfg_origem",
                     "target": "cfg_origem"	
+                },
+                {
+                    "pattern": "depara_empresa",
+                    "name": "depara_empresa",
+                    "target": "depara_empresa"	
                 }
             ],
             "targets": {
@@ -218,6 +223,11 @@
 				"cfg_origem": {
 					"viewId": "cfg_origem",
 					"viewName": "ZPSTA_ATCFG_ORIGEM",
+					"viewLevel": 2
+				},
+                "depara_empresa": {
+					"viewId": "depara_empresa",
+					"viewName": "ZPSTA_CFG_DEPARA_EMPRESA",
 					"viewLevel": 2
 				}
             }
