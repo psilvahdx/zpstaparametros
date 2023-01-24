@@ -72,16 +72,16 @@ sap.ui.define([
 				properties: newItem
 			});
 
-			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_GP_RAMO_PASSDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "formRamPass").bindElement(oContext.getPath());
+			var dialog = this._getDialog("frmDialogRamPass","portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_GP_RAMO_PASSDialog");
+			sap.ui.core.Fragment.byId("frmDialogRamPass", "formRamPass").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "formRamPass").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "formRamPass").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialogRamPass", "formRamPass").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogRamPass", "formRamPass").getModel();
 			var boundItem = model.getProperty(path);
 			var that = this;
 			var mParameters = {

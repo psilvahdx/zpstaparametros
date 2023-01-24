@@ -79,16 +79,16 @@ sap.ui.define([
 			
 			this._oContext = oContext;
 
-			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_ATCFG_ENTDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "formEmpEnt").bindElement(oContext.getPath());
+			var dialog = this._getDialog("frmDialogEmpEnt", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_ATCFG_ENTDialog");
+			sap.ui.core.Fragment.byId("frmDialogEmpEnt", "formEmpEnt").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "formEmpEnt").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "formEmpEnt").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialogEmpEnt", "formEmpEnt").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogEmpEnt", "formEmpEnt").getModel();
 			var boundItem = model.getProperty(path);
 			var that = this;
 			var mParameters = {
@@ -116,10 +116,10 @@ sap.ui.define([
 		
 		onDataReceived: function () {
 
-			var oTable = this.byId("tblDadosEmpEnt");
-			oTable.getTable().getColumns().forEach(function (oLine) {
-				oLine.setProperty("width", "200px");
-			});
+			// var oTable = this.byId("tblDadosEmpEnt");
+			// oTable.getTable().getColumns().forEach(function (oLine) {
+			// 	oLine.setProperty("width", "200px");
+			// });
 
 		}
 

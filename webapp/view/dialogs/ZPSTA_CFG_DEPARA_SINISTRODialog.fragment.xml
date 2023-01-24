@@ -2,7 +2,7 @@
 	xmlns:smartField="sap.ui.comp.smartfield">
 	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
 		<content>
-			<smartForm:SmartForm id="form" editable="true" entityType="ZPSTA_CFG_DEPARA_SIN">
+			<smartForm:SmartForm id="formDepSin" editable="true" entityType="ZPSTA_CFG_DEPARA_SIN">
 				<smartForm:Group id="detailGroup">
 					<smartForm:GroupElement>
 						<smartField:SmartField id="codigo_evento_negocio" value="{CodEveNegocio}"/>
@@ -38,7 +38,7 @@
 			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
 		</beginButton>
 		<endButton>
-			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancel" press=".onCancel"/>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancel" press=".onCancel('DepSin')"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

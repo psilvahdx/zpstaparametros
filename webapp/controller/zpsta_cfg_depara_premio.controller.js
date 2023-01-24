@@ -78,7 +78,7 @@ sap.ui.define([
 				properties: newItem
 			});
 
-			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_PREMIODialog");
+			var dialog = this._getDialog("frmDialogDepPrm", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_PREMIODialog");
 			sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").bindElement(oContext.getPath());
 			dialog.open();
 
@@ -86,6 +86,8 @@ sap.ui.define([
 
 		onAdd: function () {
 
+			var path = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getModel();
 			var path = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getElementBinding().getPath();
 			var model = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getModel();
 			var boundItem = model.getProperty(path);

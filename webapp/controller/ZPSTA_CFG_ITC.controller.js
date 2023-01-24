@@ -72,16 +72,16 @@ sap.ui.define([
 				properties: newItem
 			});
 			oModel.setUseBatch(true);
-			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_ITCDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "formCfgItc").bindElement(oContext.getPath());
+			var dialog = this._getDialog("frmDialogCfgItc", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_ITCDialog");
+			sap.ui.core.Fragment.byId("frmDialogCfgItc", "formCfgItc").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "formCfgItc").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "formCfgItc").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialogCfgItc", "formCfgItc").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogCfgItc", "formCfgItc").getModel();
 			var boundItem = model.getProperty(path);
 			var that = this;
 			var mParameters = {

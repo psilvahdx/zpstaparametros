@@ -38,7 +38,7 @@ sap.ui.define([
 		onDelete: function () {
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosDepSin").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -80,16 +80,16 @@ sap.ui.define([
 				properties: newItem
 			});
 
-			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_SINISTRODialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			var dialog = this._getDialog("frmDialogDepSin", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_SINISTRODialog");
+			sap.ui.core.Fragment.byId("frmDialogDepSin", "formDepSin").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onAdd: function () {
 
-			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialogDepSin", "form").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogDepSin", "form").getModel();
 			var boundItem = model.getProperty(path);
 			
 			var uEntities = model.mChangedEntities;

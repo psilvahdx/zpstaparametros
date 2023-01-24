@@ -1,4 +1,7 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/HTML5.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
 	<edmx:Reference Uri="/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata">
 		<edmx:Include Alias="Metadata" Namespace="ZPSGW_CONFIG_SRV"/>
 	</edmx:Reference>
@@ -10,48 +13,15 @@
 	</edmx:Reference>
 	<edmx:DataServices>
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="portoseguro.annotation.ZPSGW_CONFIG_SRV">
-			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/Script">
-				<Annotation Term="Common.Label" String="{@i18n&gt;SCRIPT}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/Field">
-				<Annotation Term="Common.Label" String="{@i18n&gt;FIELD}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/TtField">
-				<Annotation Term="Common.Label" String="{@i18n&gt;TT_FIELD}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/ScriptTechnicalName">
-				<Annotation Term="Common.Label" String="{@i18n&gt;SCRIPT_TECHNICAL_NAME}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS">
-                <Annotation Term="UI.SelectionFields">
-					<Collection>
-						<PropertyPath>Script</PropertyPath>
-						<PropertyPath>Field</PropertyPath>									
-                        <PropertyPath>TtField</PropertyPath>									                        									                        
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.LineItem">
-					<Collection>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Script"/>
-						</Record>		
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Field"/>
-						</Record>										
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="TtField"/>
-						</Record>
-                        <Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="ScriptTechnicalName"/>
-						</Record>	
-						 <Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="IDSEC"/>
-						</Record>	
-					</Collection>
-				</Annotation>
-			</Annotations>
 			
 			<Annotations Target="Metadata.ZPSTA_CFG_EMP_EVE">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodigoEmpresa</PropertyPath>
+						<PropertyPath>CodEveNegocio</PropertyPath>									
+                        <PropertyPath>Script</PropertyPath>									                        									                        
+					</Collection>
+				</Annotation>
 				<Annotation Term="UI.DataPoint">
 					<Record Type="UI.DataPointType">
 						<PropertyValue Property="Title" String="{@i18n&gt;COD_EMPRESA}"/>
@@ -62,24 +32,49 @@
 					<Collection>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="CodigoEmpresa"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="CodEveNegocio"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="DescEveNegocio"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="15rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="Pivot"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="Script"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="Table"/>
 							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
 								<Record>
-									<PropertyValue Property="width" String="1rem"/>
+									<PropertyValue Property="width" String="22rem"/>
 								</Record>
 							</Annotation>
 						</Record>
@@ -106,6 +101,12 @@
 			</Annotations>
 
 			<Annotations Target="Metadata.ZPSTA_CFG_RAMO_PASS">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodigoRamo</PropertyPath>
+						<PropertyPath>GrupoRamoPassivo</PropertyPath>								                        									                        
+					</Collection>
+				</Annotation>
 				<Annotation Term="UI.DataPoint">
 					<Record Type="UI.DataPointType">
 						<PropertyValue Property="Title" String="{@i18n&gt;COD_RAMO}"/>
@@ -116,9 +117,19 @@
 					<Collection>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="CodigoRamo"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="GrupoRamoPassivo"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 					</Collection>
 				</Annotation>
@@ -128,61 +139,324 @@
 			</Annotations>
 			<Annotations Target="Metadata.ZPSTA_CFG_RAMO_PASS/GrupoRamoPassivo">
 				<Annotation Term="Common.Label" String="{@i18n&gt;GRP_RAMO_PASSIVO}"/>
-			</Annotations>	
+			</Annotations>
 
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM">
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC">
 				<Annotation Term="UI.LineItem">
 					<Collection>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Ro"/>
+							<PropertyValue Property="Value" Path="ItcCnpjRaiz"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Cmpid"/>
+							<PropertyValue Property="Value" Path="ItcLegalEntity"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodEveNegocio"/>
+							<PropertyValue Property="Value" Path="ItcRazaoSocial"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="40rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="NumeroEndosso"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Tpmoid"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodigoEmpresa"/>
+							<PropertyValue Property="Value" Path="ItcTipo"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 					</Collection>
 				</Annotation>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN">
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcCnpjRaiz">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_CNPJ_RAIZ}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcLegalEntity">
+				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_LEGAL_ENTITY}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcRazaoSocial">
+				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_RAZAO_SOCIAL}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcTipo">
+				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_TIPO}"/>
+			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS">
+                <Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>Script</PropertyPath>
+						<PropertyPath>Field</PropertyPath>									
+                        <PropertyPath>TtField</PropertyPath>									                        									                        
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Script"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>		
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Field"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="15rem"/>
+								</Record>
+							</Annotation>
+						</Record>										
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TtField"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+                        <Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ScriptTechnicalName"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="20rem"/>
+								</Record>
+							</Annotation>
+						</Record>	
+						 <Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="IDSEC"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>	
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/Script">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SCRIPT}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/Field">
+				<Annotation Term="Common.Label" String="{@i18n&gt;FIELD}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/TtField">
+				<Annotation Term="Common.Label" String="{@i18n&gt;TT_FIELD}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_SCRIPTS/ScriptTechnicalName">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SCRIPT_TECHNICAL_NAME}"/>
+			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodEmpresa</PropertyPath>
+						<PropertyPath>CodLegalEntity</PropertyPath>									
+                        <PropertyPath>NomeEmpresa</PropertyPath>									                        									                        
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodEmpresa"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodLegalEntity"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DtInclusaoReg"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="15rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="NomeEmpresa"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="20rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Status"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/CodEmpresa">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/NomeEmpresa">
+				<Annotation Term="Common.Label" String="{@i18n&gt;NOME_EMPRESA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/CodLegalEntity">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_LEGAL_ENTITY}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/DtInclusaoReg">
+				<Annotation Term="Common.Label" String="{@i18n&gt;DT_INCLUSAO_REG}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/Status">
+				<Annotation Term="Common.Label" String="{@i18n&gt;STATUS}"/>
+			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodSistOrigem</PropertyPath>
+						<PropertyPath>NomeSistOrigem</PropertyPath>									
+                        <PropertyPath>SourceSystem</PropertyPath>									                        									                        
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Idsec"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodSistOrigem"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DtInclusaoReg"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="15rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="NomeSistOrigem"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="15rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SourceSystem"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/CodSistOrigem">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_SIST_ORIGEM}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/NomeSistOrigem">
+				<Annotation Term="Common.Label" String="{@i18n&gt;NOME_SIST_ORIGEM}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/DtInclusaoReg">
+				<Annotation Term="Common.Label" String="{@i18n&gt;DT_INCLUSAO_REG}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/SourceSystem">
+				<Annotation Term="Common.Label" String="{@i18n&gt;SOURCE_SYSTEM}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/Idsec">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n>IDSEC}"/>
+			</Annotations>	
+
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodigoEmpresa</PropertyPath>
+						<PropertyPath>CodEveNegocio</PropertyPath>									
+                        <PropertyPath>NumeroEndosso</PropertyPath>									                        									                        
+					</Collection>
+				</Annotation>
 				<Annotation Term="UI.LineItem">
 					<Collection>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="Ro"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="Cmpid"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="CodEveNegocio"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodMovSinistro"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="JuridicoFlag"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="TipoMovimento"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="TpSin"/>
+							<PropertyValue Property="Value" Path="NumeroEndosso"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="Tpmoid"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodEmpresa"/>
+							<PropertyValue Property="Value" Path="CodigoEmpresa"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
 						</Record>
 					</Collection>
 				</Annotation>
@@ -210,6 +484,92 @@
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM/CodigoEmpresa">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;CODIGO_EMPRESA}"/>
+			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodEmpresa</PropertyPath>
+						<PropertyPath>CodEveNegocio</PropertyPath>									
+                        <PropertyPath>CodMovSinistro</PropertyPath>									                        									                        
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ro"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Cmpid"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodEveNegocio"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodMovSinistro"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="JuridicoFlag"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TipoMovimento"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TpSin"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Tpmoid"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodEmpresa"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+					</Collection>
+				</Annotation>
 			</Annotations>
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_SIN/CodEveNegocio">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
@@ -247,16 +607,7 @@
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodEmpresa">
-				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
-				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/Descricao">
-				<Annotation Term="Common.Label" String="{@i18n&gt;DESC}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodCia">
-				<Annotation Term="Common.Label" String="{@i18n&gt;COD_CIA}"/>
-			</Annotations>
+			
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP">
 				<Annotation Term="UI.LineItem">
 					<Collection>
@@ -272,110 +623,15 @@
 					</Collection>
 				</Annotation>
 			</Annotations>
-
-			<Annotations Target="Metadata.ZPSTA_CFG_ITC">
-				<Annotation Term="UI.LineItem">
-					<Collection>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="ItcCnpjRaiz"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="ItcLegalEntity"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="ItcRazaoSocial"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="ItcTipo"/>
-						</Record>
-					</Collection>
-				</Annotation>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcCnpjRaiz">
-				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
-				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_CNPJ_RAIZ}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcLegalEntity">
-				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_LEGAL_ENTITY}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcRazaoSocial">
-				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_RAZAO_SOCIAL}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_CFG_ITC/ItcTipo">
-				<Annotation Term="Common.Label" String="{@i18n&gt;ITC_TIPO}"/>
-			</Annotations>
-
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT">
-				<Annotation Term="UI.LineItem">
-					<Collection>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodEmpresa"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodLegalEntity"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="DtInclusaoReg"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="NomeEmpresa"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Status"/>
-						</Record>
-					</Collection>
-				</Annotation>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/CodEmpresa">
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodEmpresa">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/NomeEmpresa">
-				<Annotation Term="Common.Label" String="{@i18n&gt;NOME_EMPRESA}"/>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/Descricao">
+				<Annotation Term="Common.Label" String="{@i18n&gt;DESC}"/>
 			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/CodLegalEntity">
-				<Annotation Term="Common.Label" String="{@i18n&gt;COD_LEGAL_ENTITY}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/DtInclusaoReg">
-				<Annotation Term="Common.Label" String="{@i18n&gt;DT_INCLUSAO_REG}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ENT/Status">
-				<Annotation Term="Common.Label" String="{@i18n&gt;STATUS}"/>
-			</Annotations>
-
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM">
-				<Annotation Term="UI.LineItem">
-					<Collection>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Idsec"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodSistOrigem"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="DtInclusaoReg"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="NomeSistOrigem"/>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="SourceSystem"/>
-						</Record>
-					</Collection>
-				</Annotation>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/CodSistOrigem">
-				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
-				<Annotation Term="Common.Label" String="{@i18n&gt;COD_SIST_ORIGEM}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/NomeSistOrigem">
-				<Annotation Term="Common.Label" String="{@i18n&gt;NOME_SIST_ORIGEM}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/DtInclusaoReg">
-				<Annotation Term="Common.Label" String="{@i18n&gt;DT_INCLUSAO_REG}"/>
-			</Annotations>
-			<Annotations Target="Metadata.ZPSTA_ATCFG_ORIGEM/SourceSystem">
-				<Annotation Term="Common.Label" String="{@i18n&gt;SOURCE_SYSTEM}"/>
+			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodCia">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_CIA}"/>
 			</Annotations>
 		</Schema>
 	</edmx:DataServices>
