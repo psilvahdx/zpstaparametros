@@ -131,7 +131,44 @@ sap.ui.define([
             fullDateStr = `${currYear}-${currMonth}-${currDay} ${currUTCTime}.000000000`;
 
 			return fullDateStr;
-		}
+		},
+
+		onGetServData : function (sPath) {
+			// var oModel = this.getView().getModel();
+			// // var that = this; 
+			// var arrData;
+			// oModel.read(sPath, {
+			// 	success: function (oData) {
+			// 		// for(let i = 0; i < oData.results.length; i++){
+			// 		// 	arrData.push(oData.results[i].Script);
+			// 		// }
+			// 		arrData = oData.results;
+			// 		console.log(arrData);
+			// 		return arrData;
+			// 	},
+		
+			// 	error: function (oError) {
+			// 		console.log(oError);
+			// 	}
+			// });
+		},
+
+		geti18NResourceBundle: function() {
+			if (this.getView()) {
+				// return this.getView().getModel("i18n").getResourceBundle();
+				return this.getOwnerComponent().getModel('i18n').getResourceBundle();
+			} else {
+				return null;
+			}
+		},
+	
+		geti18NText: function(key) {
+			if (this.geti18NResourceBundle()) {
+				return this.geti18NResourceBundle().getText(key);
+			} else {
+				return null;
+			}
+		}	
 
 	});
 

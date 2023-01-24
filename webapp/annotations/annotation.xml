@@ -55,14 +55,6 @@
 							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Pivot"/>
-							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
-								<Record>
-									<PropertyValue Property="width" String="5rem"/>
-								</Record>
-							</Annotation>
-						</Record>
-						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="Script"/>
 							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
 								<Record>
@@ -75,6 +67,14 @@
 							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
 								<Record>
 									<PropertyValue Property="width" String="22rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Pivot"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
 								</Record>
 							</Annotation>
 						</Record>
@@ -403,15 +403,15 @@
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_PREM">
 				<Annotation Term="UI.SelectionFields">
 					<Collection>
-						<PropertyPath>CodigoEmpresa</PropertyPath>
-						<PropertyPath>CodEveNegocio</PropertyPath>									
+						<PropertyPath>CodEveNegocio</PropertyPath>
+						<PropertyPath>CodigoEmpresa</PropertyPath>								
                         <PropertyPath>NumeroEndosso</PropertyPath>									                        									                        
 					</Collection>
 				</Annotation>
 				<Annotation Term="UI.LineItem">
 					<Collection>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Ro"/>
+							<PropertyValue Property="Value" Path="CodEveNegocio"/>
 							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
 								<Record>
 									<PropertyValue Property="width" String="10rem"/>
@@ -419,15 +419,7 @@
 							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="Cmpid"/>
-							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
-								<Record>
-									<PropertyValue Property="width" String="5rem"/>
-								</Record>
-							</Annotation>
-						</Record>
-						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodEveNegocio"/>
+							<PropertyValue Property="Value" Path="CodigoEmpresa"/>
 							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
 								<Record>
 									<PropertyValue Property="width" String="10rem"/>
@@ -451,7 +443,15 @@
 							</Annotation>
 						</Record>
 						<Record Type="UI.DataField">
-							<PropertyValue Property="Value" Path="CodigoEmpresa"/>
+							<PropertyValue Property="Value" Path="Cmpid"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ro"/>
 							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
 								<Record>
 									<PropertyValue Property="width" String="10rem"/>

@@ -12,6 +12,8 @@ sap.ui.define([
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact");
 
+			this.byId('smartFilterBarDepSin-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
+			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
 		},
 
 		onSave: function () {
