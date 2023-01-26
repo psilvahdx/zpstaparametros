@@ -7,17 +7,9 @@
 			<smartForm:SmartForm id="formEmpEve" editable="true" entityType="ZPSTA_CFG_EMP_EVE">
 				<smartForm:Group id="detailGroup">
 					<smartForm:GroupElement label="CodigoEmpresa">
-						<ComboBox selectedKey="01" id="empresa" required="true">
-							<items>
-								<core:Item key="01" text="01 - PORTO SEGURO CIA SEGUROS" />
-								<core:Item key="14" text="14 - P S VIDA E PREVIDÊNCIA S" />
-								<core:Item key="31" text="31 - PORTOMED - SERV SAÚDE" />
-								<core:Item key="32" text="32 - PORTO SEGURO ODONTO" />
-								<core:Item key="35" text="35 - AZUL COMPANHIA SEG.GERAIS" />
-								<core:Item key="50" text="50 - P S - SEGURO SAÚDE S A" />
-								<core:Item key="84" text="84 - ITAÚ AUTO E RESIDÊNCIA" />
-								<core:Item key="86" text="86 - FUNDACAO SAUDE ITAU" />
-							</items>
+						<ComboBox selectedKey="{CodEmpresa}" id="empresa" required="true" placeholder="Selecione a empresa:"
+							items="{/OZPSTA_CFG_EMPRES}">
+							<core:Item key="CodEmpresa" text="{CodEmpresa} - {NomeEmpresa}"/>	
 						</ComboBox>
 					</smartForm:GroupElement>
 					<smartForm:GroupElement>
@@ -27,16 +19,17 @@
 						<smartField:SmartField value="{DescEveNegocio}" id="descricao_evento_negocio"/>
 					</smartForm:GroupElement>
 					<smartForm:GroupElement label="Script">
-						<ComboBox selectedKey="{Script}" id="script" required="true">
+						<ComboBox selectedKey="{Script}" id="script" required="true"  placeholder="Selecione a origem:"
+							items="{/OZPSTA_CFG_ORIGENS}">
+							<core:Item key="Script" text="{Script}"/>	
 						</ComboBox>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="Table">
-						<ComboBox selectedKey="{Table}" id="table" required="true">
+					<smartForm:GroupElement label="Table" >
+						<ComboBox selectedKey="{Table}" id="table" required="true" placeholder="Selecione a tabela:"
+							items="{/OZPSTA_CFG_TABSTG}">
+							<core:Item key="Table" text="{Table}"/>	
 						</ComboBox>
 					</smartForm:GroupElement>
-					<!-- <smartForm:GroupElement>
-						<smartField:SmartField value="{Table}" id="table"/>
-					</smartForm:GroupElement> -->
 					<smartForm:GroupElement label="Pivot">
 						<ComboBox selectedKey="0" id="pivot" required="true">
 							<items>

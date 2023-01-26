@@ -16,8 +16,13 @@
 					<smartForm:GroupElement>
 						<smartField:SmartField value="{DtInclusaoReg}" id="dt_inclusao_reg"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
-						<smartField:SmartField value="{Status}" id="status"/>
+					<smartForm:GroupElement label="Status">
+						<ComboBox selectedKey="1" id="status" required="true">
+							<items>
+								<core:Item key="1" text="ativo" />
+								<core:Item key="0" text="inativo" />
+							</items>
+						</ComboBox>
 					</smartForm:GroupElement>
 				</smartForm:Group>
 			</smartForm:SmartForm>

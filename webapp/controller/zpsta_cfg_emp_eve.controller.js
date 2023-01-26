@@ -12,6 +12,8 @@ sap.ui.define([
 			this.getView().addStyleClass("sapUiSizeCompact");
 			//this._getBusyDialog().close();
 
+			this.byId('smartFilterBarEmpEve-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
+			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
 		},
 
 		onSave: function () {
@@ -82,9 +84,6 @@ sap.ui.define([
 
 			var dialog = this._getDialog("frmDialogEmpEve", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_EMP_EVEDialog");
 			sap.ui.core.Fragment.byId("frmDialogEmpEve", "formEmpEve").bindElement(oContext.getPath());
-			// ComboBox
-			this.setCbData('script');
-			this.setCbData('table');
 			dialog.open();
 		},
 
@@ -144,32 +143,37 @@ sap.ui.define([
 
 		},
 
-		setCbData: function(cbId){
-			let cBoxGroup = sap.ui.core.Fragment.byId("frmDialogEmpEve", cbId);
+		setCbData: async function(cbId){
+			// let cBoxGroup = sap.ui.core.Fragment.byId("frmDialogEmpEve", cbId);
 
-			let arrScript = ['ORIGEM_02', 'ORIGEM_03', 'ORIGEM_16', 'ORIGEM_22', 'ORIGEM_26_P', 'ORIGEM_26_PP', 'ORIGEM_26_PS',
-			'ORIGEM_26_S', 'ORIGEM_29', 'ORIGEM_34', 'ORIGEM_50', 'ORIGEM_60', 'ORIGEM_619', 'ORIGEM_PRV'];
+			// var arrScript, arrTable;
 
-			let arrTable = ['PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_SIN"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_PRV"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_SOC"',
-			'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_CPG"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_PRE"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_SGS"',
-			'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_SIS"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_R_PRE"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_R_SIN"',
-			'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_R_PSI"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_R_PPR"'];
+			// arrScript = this.onGetServData("/OZPSTA_CFG_ORIGENS");
+			// arrTable = await this.onGetServData("/OZPSTA_CFG_TABSTG");
 
-			if(cbId === 'script'){
-				for(let i = 0; i < arrScript.length; i++){
-					let el = new sap.ui.core.Item({"key": arrScript[i], text: arrScript[i]});
-					cBoxGroup.addItem(el);
-					i === 0? cBoxGroup.setSelectedKey(arrScript[i]) : 'ignore';
-				}
-			}
+			// console.log(arrScript);
+			// console.log(arrTable);
 
-			if(cbId === 'table'){
-				for(let i = 0; i < arrTable.length; i++){
-					let el = new sap.ui.core.Item({"key": arrTable[i], text: arrTable[i]});
-					cBoxGroup.addItem(el);
-					i === 0? cBoxGroup.setSelectedKey(arrTable[i]) : 'ignore';
-				}
-			}
+			// arrTable = ['PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_SIN"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_PRV"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_SOC"',
+			// 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_CPG"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_PRE"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_SGS"',
+			// 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_SIS"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_R_PRE"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_R_SIN"',
+			// 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_R_PSI"', 'PSTA_FPSL_1."zpstaStage.ZPSTA_STG_BT_R_PPR"'];
+
+			// if(cbId === 'script' && arrScript == true){
+			// 	for(let i = 0; i < arrScript.length; i++){
+			// 		let el = new sap.ui.core.Item({"key": arrScript[i], text: arrScript[i]});
+			// 		cBoxGroup.addItem(el);
+			// 		i === 0? cBoxGroup.setSelectedKey(arrScript[i]) : 'ignore';
+			// 	}
+			// }
+
+			// if(cbId === 'table' && arrTable == true){
+			// 	for(let i = 0; i < arrTable.length; i++){
+			// 		let el = new sap.ui.core.Item({"key": arrTable[i], text: arrTable[i]});
+			// 		cBoxGroup.addItem(el);
+			// 		i === 0? cBoxGroup.setSelectedKey(arrTable[i]) : 'ignore';
+			// 	}
+			// }
 		}
 
 	});
