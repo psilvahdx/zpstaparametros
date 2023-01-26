@@ -12,12 +12,12 @@ displayBlock="true">
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>
 				<f:DynamicPageHeader pinnable="true">
-					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="OZPSTA_CFG_DEPARA_EMP" persistencyKey="SmartFilter_Explored">
+					<smartFilterBar:SmartFilterBar id="smartFilterBarDeParEmp" entitySet="OZPSTA_CFG_DEPARA_EMP" persistencyKey="SmartFilter_Explored">
 					</smartFilterBar:SmartFilterBar>
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<smartTable:SmartTable entitySet="OZPSTA_CFG_DEPARA_EMP" app:useSmartField="true" smartFilterId="smartFilterBar" editTogglable="true"
+				<smartTable:SmartTable entitySet="OZPSTA_CFG_DEPARA_EMP" app:useSmartField="true" smartFilterId="smartFilterBarDeParEmp" editTogglable="true"
 					editable="false" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false"
 					useTablePersonalisation="true" header="Qtd. Registros" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored"
 					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDados" showFullScreenButton="true" dataReceived=".onDataReceived">

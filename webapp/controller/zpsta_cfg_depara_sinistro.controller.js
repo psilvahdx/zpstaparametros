@@ -11,12 +11,10 @@ sap.ui.define([
 
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact");
-
 		},
-
 		onSave: function () {
 			var oModel = this.getOwnerComponent().getModel();
-			    oModel.setUseBatch(true);
+			oModel.setUseBatch(true);
 
 			var mParameters = {
 				sucess: function (oData, response) {
@@ -74,7 +72,7 @@ sap.ui.define([
 				"TpSin": "",
 				"CodEmpresa": ""
 			};
-            
+
 			var oModel = this.getOwnerComponent().getModel();
 			var oContext = oModel.createEntry("/OZPSTA_CFG_DEPARA_SIN", {
 				properties: newItem
@@ -87,40 +85,47 @@ sap.ui.define([
 		},
 
 		onAdd: function () {
-
-			var path = sap.ui.core.Fragment.byId("frmDialogDepSin", "form").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialogDepSin", "form").getModel();
-			var boundItem = model.getProperty(path);
-			
-			var uEntities = model.mChangedEntities;
-			var keys = Object.keys(uEntities);
-			var valores = uEntities[keys];
-
-			if(valores.codigo_evento_negocio == ""){valores.codigo_evento_negocio = "0";}
-            if(valores.codigo_mov_sinistro == ""){valores.codigo_mov_sinistro = "0";}
-            if(valores.codigo_empresa == ""){valores.codigo_empresa = "0";}
-            if(valores.tp_sin == ""){valores.tp_sin = "0";}
-			
 			var that = this;
-			var mParameters = {
-				success: function (oData, response) {
-					MessageToast.show("Salvo com sucesso!");
-					that.closeDialog();
-				},
-				error: function (oError) {
-					if (oError) {
-						if (oError.responseText) {
-							var oErrorMessage = JSON.parse(oError.responseText);
-							sap.m.MessageBox.alert(oErrorMessage.error.message.value);
-							that.closeDialog();
-						}
+			var path = sap.ui.core.Fragment.byId("frmDialogDepSin", "formDepSin").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogDepSin", "formDepSin").getModel();
+			var boundItem = model.getProperty(path);
+			if (boundItem) {
+				var bDuplicateKeys = false;
+				var aKeys = Object.keys(model.oData);
+				var odata = model.oData;
+				model.mChangedEntities = {};
+				for (var record in odata) {
+					if (boundItem.CodEveNegocio == odata[record].CodEveNegocio
+						&& boundItem.CodMovSinistro == odata[record].CodMovSinistro
+						&& boundItem.JuridicoFlag == odata[record].JuridicoFlag
+						&& boundItem.Ro == odata[record].Ro
+						&& boundItem.Tpmoid == odata[record].Tpmoid
+						&& boundItem.TipoMovimento == odata[record].TipoMovimento
+						&& boundItem.Cmpid == odata[record].Cmpid
+						&& boundItem.TpSin == odata[record].TpSin
+						&& boundItem.CodEmpresa == odata[record].CodEmpresa) {
+						bDuplicateKeys = true;
 					}
 				}
-			};
-
-			model.submitChanges(mParameters);
-			model.refresh();
+				if (!bDuplicateKeys) {
+					var mParameters = {
+						success: function (oData, response) {
+							MessageToast.show("Salvo com sucesso!");
+							that.closeDialog();
+						},
+						error: function (oError) {
+							that.getView().byId('tblDadosDepSin').rebindTable();
+						}
+					};
+					model.submitChanges(mParameters);
+					model.refresh();
+				} else {
+					that.closeDialog();
+					MessageToast.show("Item já existente!", {
+						duration: 3000
+					});
+				}
+			}
 		}
-
 	});
 });
