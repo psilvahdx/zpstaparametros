@@ -115,7 +115,17 @@
 								</content>
 							</TileContent>
 						</tileContent>
-					</GenericTile>
+					</GenericTile>		
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_FECHAMENTODESEMPENHOTitle}"
+						subheader="{i18n>OZPSTA_FECHAMENTODESEMPENHODesc}" press=".onNavToOFECHAMENTO_DESEMPENHO">
+						<tileContent>
+							<TileContent>
+								<content>
+									<ImageContent src="sap-icon://action-settings"/>
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>		
 					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_FECHAMENTOTitle}"
 						subheader="{i18n>OZPSTA_FECHAMENTOTitle}" press=".onNavToOZPSTA_FECHAMENTO">
 						<tileContent>
