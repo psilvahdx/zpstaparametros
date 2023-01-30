@@ -1,16 +1,13 @@
 sap.ui.define([
 	"portoseguro/zpstaparametros/controller/BaseController",
-	"sap/m/MessageToast",
-	"sap/ui/model/analytics/BatchResponseCollector"
+	"sap/m/MessageToast"
 ], function (
 	BaseController,
 	MessageToast,
-	BatchResponseCollector
 ) {
 	"use strict";
 
 	return BaseController.extend("portoseguro.zpstaparametros.controller.zpsta_cfg_depara_empresa", {
-
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact");
 
@@ -18,29 +15,25 @@ sap.ui.define([
 
 		onSave: function () {
 			var oModel = this.getOwnerComponent().getModel();
-			    oModel.setUseBatch(true);
-
 			var mParameters = {
 				sucess: function (oData, response) {
 					MessageToast.show("Salvo com sucesso!");
 				},
 				error: function (oError) {
 					if (oError) {
-						if (oError.responseText) {
-							var oErrorMessage = JSON.parse(oError.responseText);
-							sap.m.MessageBox.alert(oErrorMessage.error.message.value);
-						}
+						MessageToast.show("Erro ao inserir registro!");
+						that.closeDialog();
+						model.refresh();
 					}
 				}
 			};
-
 			oModel.submitChanges(mParameters);
 		},
 
 		onDelete: function () {
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosDeParEmp").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -72,52 +65,51 @@ sap.ui.define([
 			};
 
 			var oModel = this.getOwnerComponent().getModel();
+			oModel.setUseBatch(true);
 			var oContext = oModel.createEntry("/OZPSTA_CFG_DEPARA_EMP", {
 				properties: newItem
 			});
 
-			var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_EMPRESADialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			var dialog = this._getDialog("frmDialogDeParEmp", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_EMPRESADialog");
+			sap.ui.core.Fragment.byId("frmDialogDeParEmp", "formDeParEmp").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 		onAdd: function () {
-		var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
-		var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
-		model.setUseBatch(true);
-		var boundItem = model.getProperty(path);
-		var uEntities = model.mChangedEntities;
-		var keys = Object.keys(uEntities);
-		var valores = uEntities[keys];
-		var that = this;
-		var mParameters = {
-			success: function (oData, response) {
-				MessageToast.show("Salvo com sucesso!");
-				that.closeDialog();
-			},
-			error: function (oError) {
-				if (oError) {
-					if (oError.responseText) {
-/* 						var oErrorMessage = JSON.parse(oError.responseText);
-						sap.m.MessageBox.alert(oErrorMessage.error.message.value); */
-						MessageToast.show("Erro ao inserir registro!");
-						that.closeDialog();
-						model.refresh();
+			var that = this;
+			var path = sap.ui.core.Fragment.byId("frmDialogDeParEmp", "formDeParEmp").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogDeParEmp", "formDeParEmp").getModel();
+			var boundItem = model.getProperty(path);
+			if (boundItem.CodEmpresa) {
+				var bDuplicateKeys = false;
+				var aKeys = Object.keys(model.oData);
+				var odata = model.oData;
+				model.mChangedEntities = {};
+				for (var record in odata) {
+					if (boundItem.CodEmpresa == odata[record].CodEmpresa) {
+						bDuplicateKeys = true;
 					}
 				}
+				if (!bDuplicateKeys) {
+					var mParameters = {
+						success: function (oData, response) {
+							MessageToast.show("Salvo com sucesso!");
+							that.closeDialog();
+						},
+						error: function (oError) {
+							that.getView().byId('tblDadosDeParEmp').rebindTable();
+						}
+					};
+					model.submitChanges(mParameters);
+					model.refresh();
+				} else {
+					that.closeDialog();
+					MessageToast.show("Item já existente!", {
+						duration: 3000
+					});
+				}
 			}
-		};
-
-		model.submitChanges(mParameters);
-		model.refresh();
-	},
-		
-		onDataReceived: function () {
-			var oTable = this.byId("tblDados");
-			oTable.getTable().getColumns().forEach(function (oLine) {
-				oLine.setProperty("width", "200px");
-			}); 
-
 		}
+
 	});
 });

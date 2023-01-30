@@ -5,7 +5,8 @@ xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 xmlns:smartTable="sap.ui.comp.smarttable" 
 xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" 
 xmlns:l="sap.ui.layout"
-xmlns:f="sap.f">
+xmlns:f="sap.f"
+displayBlock="true">
     <Page id="depara_premio" title="{i18n>zpsta_cfg_depara_premioTitle}" showNavButton="true" navButtonPress=".onNavBack">
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>

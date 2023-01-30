@@ -1,11 +1,9 @@
 sap.ui.define([
 	"portoseguro/zpstaparametros/controller/BaseController",
 	"sap/m/MessageToast",
-	"sap/ui/core/routing/History"
 ], function (
 	BaseController,
 	MessageToast,
-	History
 ) {
 	"use strict";
 
@@ -19,22 +17,19 @@ sap.ui.define([
 
 		onSave: function () {
 			var oModel = this.getOwnerComponent().getModel();
-			    oModel.setUseBatch(true);
-				
+			    oModel.setUseBatch(true);	
 			var mParameters = {
 				sucess: function (oData, response) {
 					MessageToast.show("Salvo com sucesso!");
 				},
 				error: function (oError) {
 					if (oError) {
-						if (oError.responseText) {
-							var oErrorMessage = JSON.parse(oError.responseText);
-							sap.m.MessageBox.alert(oErrorMessage.error.message.value);
-						}
+						MessageToast.show("Erro ao inserir registro!");
+						that.closeDialog();
+						model.refresh();
 					}
 				}
 			};
-
 			oModel.submitChanges(mParameters);
 		},
 
@@ -54,17 +49,13 @@ sap.ui.define([
 						oModel.remove(context.getPath());
 
 					});
-
 				} else {
 					var oBundle = this.getResourceBundle();
 					var sMsg = oBundle.getText("msgNenhumSelecionado");
 					MessageToast.show(sMsg);
 				}
-
 			});
-
 		},
-
 		onNew: function () {
 			var newItem = {
 				"CodEveNegocio": "",
@@ -74,65 +65,54 @@ sap.ui.define([
 				"Cmpid": "",
 				"CodigoEmpresa": ""
 			};
-
 			var oModel = this.getOwnerComponent().getModel();
 			oModel.setUseBatch(true);
 			var oContext = oModel.createEntry("/OZPSTA_CFG_DEPARA_PREM", {
 				properties: newItem
 			});
-
 			var dialog = this._getDialog("frmDialogDepPrm", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_PREMIODialog");
 			sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").bindElement(oContext.getPath());
 			dialog.open();
-
 		},
-
 		onAdd: function () {
-
-			var path = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getElementBinding().getPath();
-			var model = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getModel();
+			var that = this;
 			var path = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getElementBinding().getPath();
 			var model = sap.ui.core.Fragment.byId("frmDialogDepPrm", "formDepPrm").getModel();
 			var boundItem = model.getProperty(path);
-			
-			var uEntities = model.mChangedEntities;
-			var keys = Object.keys(uEntities);
-			var valores = uEntities[keys];
-
-			if(valores.codigo_evento_negocio == ""){valores.codigo_evento_negocio = "0";}
-			if(valores.codigo_empresa == ""){valores.codigo_empresa = 0;}
-			
-			var that = this;
-			var mParameters = {
-				success: function (oData, response) {
-					MessageToast.show("Salvo com sucesso!");
-					that.closeDialog();
-				},
-				error: function (oError) {
-					if (oError) {
-						if (oError.responseText) {
-							var oErrorMessage = JSON.parse(oError.responseText);
-							sap.m.MessageBox.alert(oErrorMessage.error.message.value);
-							that.closeDialog();
-						}
-					}
+			if(boundItem){
+		    var bDuplicateKeys = false;
+			var aKeys = Object.keys(model.oData);
+			var odata = model.oData;
+			model.mChangedEntities = {};
+			for (var record in odata) {
+				if (boundItem.Cmpid == odata[record].Cmpid 
+				&&  boundItem.CodEveNegocio == odata[record].CodEveNegocio
+				&&  boundItem.CodigoEmpresa == odata[record].CodigoEmpresa
+			    &&  boundItem.NumeroEndosso == odata[record].NumeroEndosso
+				&&  boundItem.Ro == odata[record].Ro
+				&&  boundItem.Tpmoid == odata[record].Tpmoid) {
+				bDuplicateKeys = true;
 				}
-			};
-
-			model.submitChanges(mParameters);
-			model.refresh();
-		},
-		onNavBack: function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				var oRouter = this.getOwnerComponent().getRouter();
-				oRouter.navTo("overview", {}, true);
 			}
+			if (!bDuplicateKeys) {
+				var mParameters = {
+					success: function (oData, response) {
+						MessageToast.show("Salvo com sucesso!");
+						that.closeDialog();
+					},
+					error: function (oError) {
+					that.getView().byId('tblDadosDepPrm').rebindTable();
+			}
+		};
+		model.submitChanges(mParameters);
+		model.refresh();
+	}else {
+		that.closeDialog();
+		MessageToast.show("Item já existente!", {
+			duration: 3000
+		});
+	}
+}
 		}
-
 	});
 });

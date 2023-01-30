@@ -177,6 +177,11 @@
                     "target": "depara_empresa"	
                 },
                 {
+                    "pattern": "reg_sem_movimento",
+                    "name": "reg_sem_movimento",
+                    "target": "reg_sem_movimento"	
+                },
+                {
                     "pattern": "desemp_libera_ctrl",
                     "name":"desemp_libera_ctrl",
                     "target": "desemp_libera_ctrl"
@@ -243,6 +248,11 @@
                 "depara_empresa": {
 					"viewId": "depara_empresa",
 					"viewName": "ZPSTA_CFG_DEPARA_EMPRESA",
+					"viewLevel": 2
+				},
+                "reg_sem_movimento": {
+					"viewId": "reg_sem_movimento",
+					"viewName": "ZPSTA_ATCFG_REG_SEM_MOVIMENTO",
 					"viewLevel": 2
 				},
 				"desemp_libera_ctrl":{
