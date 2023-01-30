@@ -1,0 +1,64 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform" xmlns:form="sap.ui.layout.form"
+	xmlns:smartField="sap.ui.comp.smartfield">
+	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
+		<content>
+			<smartForm:SmartForm id="formRegSMov" editable="true" entityType="OZPSTA_ATCFG_REG_SEM_MOV">
+				<smartForm:Group id="detailGroup">
+					<smartForm:GroupElement label="{i18n>COD_EMPRESA}">
+						<smartField:SmartField value="{CodigoEmpresa}" id="empresa"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>COD_EVT_NEG}">
+						<smartField:SmartField value="{CodigoEventonegocio}" id="evento_negocio"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement tooltip="{i18n>origem_LABEL}" label="{i18n>origem_LABEL}">
+						<ComboBox id="cmbOrigens" selectedKey="{origem}" items="{ path: '/OCfgOrigens', sorter: { path: 'script' } }" width="100%">
+							<core:Item key="{script}" text="{script}"/>
+						</ComboBox>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field01_lbl}">
+						<smartField:SmartField value="{Field01}" id="field01"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field02_lbl}">
+						<smartField:SmartField value="{Field02}" id="field02"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field03_lbl}">
+						<smartField:SmartField value="{Field03}" id="field03"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field04_lbl}">
+						<smartField:SmartField value="{Field04}" id="field04"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field05_lbl}">
+						<smartField:SmartField value="{Field05}" id="field05"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field06_lbl}">
+						<smartField:SmartField value="{Field06}" id="field06"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field07_lbl}">
+						<smartField:SmartField value="{Field07}" id="field07"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field08_lbl}">
+						<smartField:SmartField value="{Field08}" id="field08"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field09_lbl}">
+						<smartField:SmartField value="{Field09}" id="field09"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>field10_lbl}">
+						<smartField:SmartField value="{Field10}" id="field10"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement tooltip="{i18n>naoprocessar_TOOLTIP}" label="{i18n>naoprocessar_LABEL}">
+						<ComboBox selectedKey="{Naoprocessar}" id="cmbNaoProcessar">
+							<core:Item key="0" text="{i18n>lbl_mover_historico}"/>
+							<core:Item key="1" text="{i18n>lbl_mover_reg_nao_processados}"/>
+						</ComboBox>
+					</smartForm:GroupElement>
+				</smartForm:Group>
+			</smartForm:SmartForm>
+		</content>
+		<beginButton>
+			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
+		</beginButton>
+		<endButton>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancelRegSMov" press=".onCancel('RegSMov')"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
