@@ -695,6 +695,33 @@
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EVT_NEG}"/>
 			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_MARGEM_ERRO_PREMIO/Client">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+				<Annotation Term="Common.Label" String="{@i18n&gt;CLIENT}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_MARGEM_ERRO_PREMIO/CodigoEmpresa">
+				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EMPRESA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_MARGEM_ERRO_PREMIO/ValorMargemLimite">
+				<Annotation Term="Common.Label" String="{@i18n&gt;VAL_MARG_LIM}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_CFG_MARGEM_ERRO_PREMIO">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodigoEmpresa</PropertyPath>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodigoEmpresa"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ValorMargemLimite"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>

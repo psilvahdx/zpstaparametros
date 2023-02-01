@@ -59,7 +59,7 @@ sap.ui.define([
 		},
 		onNew: function () {
 			var newItem = {
-				"CodigoEmpresa": "",
+				"CodigoEmpresa": null,
 				"CodigoEventoNegocio": null,
 				"Origem": null,
 				"Field01": null,
@@ -138,7 +138,7 @@ sap.ui.define([
 				}
 
 			},
-/* 			onDataReceived: function () {
+			onDataReceived: function () {
 
 				var oTable = this.byId("tblDadosRegSMov");
 				var i = 0;
@@ -163,7 +163,7 @@ sap.ui.define([
 					i++;
 				});
 
-			}, */
+			},
 
 			onDownloadTemplatePressed: function () {
 				sap.m.URLHelper.redirect("templates/template_reg_sem_mov.xlsx", true);

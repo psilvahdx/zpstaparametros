@@ -182,6 +182,11 @@
                     "target": "reg_sem_movimento"	
                 },
                 {
+                    "pattern": "margem_limite_premio",
+                    "name":"margem_limite_premio",
+                    "target": "margem_limite_premio"
+                },
+                {
                     "pattern": "desemp_libera_ctrl",
                     "name":"desemp_libera_ctrl",
                     "target": "desemp_libera_ctrl"
@@ -253,6 +258,11 @@
                 "reg_sem_movimento": {
 					"viewId": "reg_sem_movimento",
 					"viewName": "ZPSTA_ATCFG_REG_SEM_MOVIMENTO",
+					"viewLevel": 2
+				},
+                "margem_limite_premio":{
+					"viewId": "margem_limite_premio",
+					"viewName": "ZPSTA_CFG_MARGEM_ERRO_PREMIO",
 					"viewLevel": 2
 				},
 				"desemp_libera_ctrl":{

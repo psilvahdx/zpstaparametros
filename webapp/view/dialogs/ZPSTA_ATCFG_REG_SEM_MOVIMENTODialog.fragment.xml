@@ -3,7 +3,7 @@
 	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
 		<content>
 			<smartForm:SmartForm id="formRegSMov" entityType="OZPSTA_ATCFG_REG_SEM_MOV" editable="true">
-				<smartForm:Group id="detailGroup" editable="true">
+				<smartForm:Group id="detailGroup" >
 					<smartForm:GroupElement label="{i18n>COD_EMPRESA}">
 						<smartField:SmartField  value="{CodigoEmpresa}" id="codigo_empresa"/>
 					</smartForm:GroupElement>

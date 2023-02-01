@@ -168,6 +168,15 @@
                 <Property Name="Field10" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Naoprocessar" Type="Edm.Int64" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 </EntityType>
+                <EntityType Name="ZPSTA_CFG_MARGEM_ERRO_PREMIO" sap:content-version="1">
+                    <Key>
+                    <PropertyRef Name="Client"/>
+                    <PropertyRef Name="CodigoEmpresa"/>
+                    </Key>
+                    <Property Name="Client" Type="Edm.Int64" Nullable="false" sap:unicode="false"/>
+                    <Property Name="CodigoEmpresa" Type="Edm.Int64" Nullable="false" sap:unicode="false"/>
+                    <Property Name="ValorMargemLimite" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="5" sap:unicode="false"/>
+                    </EntityType>
 
             <EntityContainer Name="ZPSGW_CONFIG_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="OZPSTA_CFG_DEPARA_PREM" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_DEPARA_PREM" sap:searchable="true" sap:content-version="1"/>
@@ -183,6 +192,7 @@
                 <EntitySet Name="OZPSTA_CFG_TABSTG" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_TABSTG" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="OZPSTA_CFG_EMPRES" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_EMPRES" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="OZPSTA_ATCFG_REG_SEM_MOV" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_ATCFG_REG_SEM_MOV" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="OZPSTA_CFG_MARGEM_ERRO_PREMIO" EntityType="ZPSGW_CONFIG_SRV.ZPSTA_CFG_MARGEM_ERRO_PREMIO" sap:searchable="true" sap:content-version="1"/>
             </EntityContainer>
             <atom:link rel="self" href="http://li5762.portoseguro.brasil:8200/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="http://li5762.portoseguro.brasil:8200/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
