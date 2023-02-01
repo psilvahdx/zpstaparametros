@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/m/MessageToast"
 ], function (
 	BaseController,
-	MessageToast,
+	MessageToast
 ) {
 	"use strict";
 
