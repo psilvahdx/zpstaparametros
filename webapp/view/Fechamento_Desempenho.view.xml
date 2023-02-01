@@ -1,0 +1,32 @@
+<mvc:View controllerName="portoseguro.zpstaparametros.controller.Home" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout">
+	<Page title="{i18n>title}" id="HomePage">
+		<content>
+			<layout:VerticalLayout class="sapUiResponsiveMargin">
+				<Title titleStyle="H2" text="{i18n>homeView}" class="sapUiTinyMarginBegin"/>
+				<layout:HorizontalLayout allowWrapping="true">
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_FECHAMENTODESEMPENHO_CTRLTitle}"
+						subheader="{i18n>OZPSTA_FECHAMENTODESEMPENHO_CTRLDesc}" press=".onNavToOZPSTA_DESEMP_LIBERA_CTRL">
+						<tileContent>
+							<TileContent>
+								<content>
+									<ImageContent src="sap-icon://action-settings"/>
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>		
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_EMAILSTitle}"
+						subheader="{i18n>OZPSTA_EMAILSDesc}" press=".onNavToOZPSTA_DESEMP_EMAILS">
+						<tileContent>
+							<TileContent>
+								<content>
+									<ImageContent src="sap-icon://action-settings"/>
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>		
+				</layout:HorizontalLayout>
+			</layout:VerticalLayout>
+		</content>
+	</Page>
+</mvc:View>

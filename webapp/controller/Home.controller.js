@@ -53,6 +53,15 @@ sap.ui.define([
                 onNavToOZPSTA_CFG_MARGEM_ERRO_PREMIO : function () {
                     this.getRouter().navTo("margem_limite_premio");
                 },
+                onNavToOZPSTA_DESEMP_LIBERA_CTRL : function () {
+                    this.getRouter().navTo("desemp_libera_ctrl");
+                },		
+                onNavToOFECHAMENTO_DESEMPENHO : function () {
+                    this.getRouter().navTo("fechamento_desempenho");
+                },
+                onNavToOZPSTA_DESEMP_EMAILS : function () {
+                    this.getRouter().navTo("desemp_emails");
+                },
                 onNavToOZPSTA_FECHAMENTO : function () {
                     this.getRouter().navTo("fechamento_contabil");
                 }

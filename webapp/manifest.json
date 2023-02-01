@@ -180,6 +180,21 @@
                     "pattern": "reg_sem_movimento",
                     "name": "reg_sem_movimento",
                     "target": "reg_sem_movimento"	
+                },
+                {
+                    "pattern": "desemp_libera_ctrl",
+                    "name":"desemp_libera_ctrl",
+                    "target": "desemp_libera_ctrl"
+                },
+                {
+                    "pattern": "desemp_emails",
+                    "name":"desemp_emails",
+                    "target": "desemp_emails"
+                },
+                {
+                    "pattern": "fechamento_desempenho",
+                    "name":"fechamento_desempenho",
+                    "target": "fechamento_desempenho"
                 }
             ],
             "targets": {
@@ -239,6 +254,21 @@
 					"viewId": "reg_sem_movimento",
 					"viewName": "ZPSTA_ATCFG_REG_SEM_MOVIMENTO",
 					"viewLevel": 2
+				},
+				"desemp_libera_ctrl":{
+					"viewId": "desemp_libera_ctrl",
+					"viewName": "ZPSTA_DESEMP_LIBERA_CTRL",
+					"viewLevel": 2	
+				},
+				"desemp_emails":{
+					"viewId": "desemp_emails",
+					"viewName": "ZPSTA_DESEMP_EMAILS",
+					"viewLevel": 2	
+				},
+				"fechamento_desempenho":{
+					"viewId": "fechamento_desempenho",
+					"viewName": "Fechamento_Desempenho",
+					"viewLevel": 2	
 				}
             }
         },
