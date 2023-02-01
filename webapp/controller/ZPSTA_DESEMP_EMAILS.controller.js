@@ -13,11 +13,14 @@ sap.ui.define([
 			this.bEdit = false;
 			this.getRouter().getRoute("desemp_emails").attachPatternMatched(this._onObjectMatched, this);
 
+			this.byId('smartFilterBarDesEml-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
+			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
+
 		},
 
 		_onObjectMatched: function (oEvent) {
 
-			var smartFilterBar = this.getView().byId("smartFilterBar");
+			var smartFilterBar = this.getView().byId("smartFilterBarDesEml");
 			smartFilterBar.clear();
 			//smartFilterBar.fireSearch();
 			//this.onDataReceived();
@@ -31,7 +34,7 @@ sap.ui.define([
 			this.bEdit = false;
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosDesEml").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -40,6 +43,7 @@ sap.ui.define([
 
 						var context = tblDados.getContextByIndex(selectedIndex);
 						var oModel = that.getOwnerComponent().getModel();
+						oModel.setUseBatch(false);
 						oModel.remove(context.getPath());
 
 					});
@@ -58,7 +62,7 @@ sap.ui.define([
 
 		onNew: function () {
 			var newItem = {
-				"EMAIL": null
+				"Email": ''
 			};
 
 			var oModel = this.getOwnerComponent().getModel();
@@ -69,23 +73,23 @@ sap.ui.define([
 			this._oContext = oContext;
 
 			this.bEdit = false;
-
-			var dialog = this._getDialog("portoseguro.psta_parametros.view.dialogs.ZPSTA_DESEMP_EMAILSDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			oModel.setUseBatch(true);
+			var dialog = this._getDialog("frmDialogDesEml", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_DESEMP_EMAILSDialog");
+			sap.ui.core.Fragment.byId("frmDialogDesEml", "formDesEml").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onEdit: function (oEvent) {
-			var tblDados = this.byId("tblDados").getTable(),
+			var tblDados = this.byId("tblDadosDesEml").getTable(),
 				selectedIndices = tblDados.getSelectedIndices();
 
 			if (selectedIndices.length === 1) {
 				this.bEdit = true;
 				var oSelIndex = tblDados.getSelectedIndex();
 				var oContext = tblDados.getContextByIndex(oSelIndex);
-				var dialog = this._getDialog("portoseguro.psta_parametros.view.dialogs.ZPSTA_DESEMP_EMAILSDialog");
-				sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+				var dialog = this._getDialog("portoseguro.zpstaparametros.view.dialogs.ZPSTA_DESEMP_EMAILSDialog");
+				sap.ui.core.Fragment.byId("frmDialogDesEml", "formDesEml").bindElement(oContext.getPath());
 				dialog.open();
 			} else {
 				var oBundle = this.getResourceBundle();
@@ -97,12 +101,12 @@ sap.ui.define([
 
 		onAdd: function () {
 
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
-			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogDesEml", "formDesEml").getModel();
+			var path = sap.ui.core.Fragment.byId("frmDialogDesEml", "formDesEml").getElementBinding().getPath();
 			var oContextItem = model.getProperty(path);
 			var boundItem = {
 				
-				EMAIL: sap.ui.core.Fragment.byId("frmDialog", "EMAIL").getValue()
+				Email: sap.ui.core.Fragment.byId("frmDialogDesEml", "Email").getValue()
 
 			};
 			
@@ -114,13 +118,13 @@ sap.ui.define([
 					that.closeDialog();
 				},
 				error: function (oError) {
-					if (oError) {
-						if (oError.responseText) {
-							var oErrorMessage = JSON.parse(oError.responseText);
-							sap.m.MessageBox.alert(oErrorMessage.error.message.value);
-							that.closeDialog();
-						}
-					}
+					// if (oError) {
+					// 	if (oError.responseText) {
+					// 		var oErrorMessage = JSON.parse(oError.responseText);
+					// 		sap.m.MessageBox.alert(oErrorMessage.error.message.value);
+					// 		that.closeDialog();
+					// 	}
+					// }
 				}
 			};
 
@@ -140,7 +144,7 @@ sap.ui.define([
 			var bValid = true;
 
 			if (oObj.EMAIL === null || oObj.EMAIL === "") {
-				var oEMAIL = sap.ui.core.Fragment.byId("frmDialog", "EMAIL");
+				var oEMAIL = sap.ui.core.Fragment.byId("frmDialogDesEml", "EMAIL");
 				oEMAIL.setValueState("Error");
 				bValid = false;
 			}
@@ -170,26 +174,26 @@ sap.ui.define([
 
 		onDataReceived: function () {
 
-			var oTable = this.byId("tblDados");
-			var i = 0;
-			//var aTemplate = this.getTableErrorColumTemplate();
-			oTable.getTable().getColumns().forEach(function (oLine) {
+			// var oTable = this.byId("tblDados");
+			// var i = 0;
+			// //var aTemplate = this.getTableErrorColumTemplate();
+			// oTable.getTable().getColumns().forEach(function (oLine) {
 
-				var oFieldName = oLine.getId();
-				oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
+			// 	var oFieldName = oLine.getId();
+			// 	oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
 
-				switch (oFieldName) {
-				case "codigo_empresa":
-				case "valor_margem_limite":
-					oLine.setProperty("width", "150px");
-					break;
-				default:
-					oLine.setProperty("width", "200px");
-					break;
-				}
+			// 	switch (oFieldName) {
+			// 	case "codigo_empresa":
+			// 	case "valor_margem_limite":
+			// 		oLine.setProperty("width", "150px");
+			// 		break;
+			// 	default:
+			// 		oLine.setProperty("width", "200px");
+			// 		break;
+			// 	}
 
-				i++;
-			});
+			// 	i++;
+			// });
 
 		},
 

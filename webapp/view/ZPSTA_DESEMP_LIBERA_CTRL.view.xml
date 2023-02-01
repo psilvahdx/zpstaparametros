@@ -1,4 +1,4 @@
-<mvc:View controllerName="portoseguro.psta_parametros.controller.ZPSTA_DESEMP_LIBERA_CTRL" displayBlock="true" xmlns="sap.m"
+<mvc:View controllerName="portoseguro.zpstaparametros.controller.ZPSTA_DESEMP_LIBERA_CTRL" displayBlock="true" xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
 	xmlns:f="sap.f" xmlns:u="sap.ui.unified">
@@ -6,17 +6,17 @@
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>
 				<f:DynamicPageHeader pinnable="true">
-					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="OZPSTA_DESEMP_LIBERA_CTRL" persistencyKey="SmartFilter_Explored">
+					<smartFilterBar:SmartFilterBar id="smartFilterBarDesLib" entitySet="OZPSTA_DESEMP_LIBERA_CTRL" persistencyKey="SmartFilter_Explored">
 						<smartFilterBar:controlConfiguration>
 						</smartFilterBar:controlConfiguration>
 					</smartFilterBar:SmartFilterBar>
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<smartTable:SmartTable entitySet="OZPSTA_DESEMP_LIBERA_CTRL" app:useSmartField="true" smartFilterId="smartFilterBar"
+				<smartTable:SmartTable entitySet="OZPSTA_DESEMP_LIBERA_CTRL" app:useSmartField="true" smartFilterId="smartFilterBarDesLib"
 					editTogglable="false" editable="false" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false"
 					useTablePersonalisation="true" header="Qtd. Registros" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored"
-					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDados" showFullScreenButton="true" dataReceived=".onDataReceived"
+					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDadosDesLib" showFullScreenButton="true" dataReceived=".onDataReceived"
 					direction="Column">
 					<l:VerticalLayout class="sapUiContentPadding" id="oVerticalContent" width="100%"></l:VerticalLayout>
 					<smartTable:layoutData>

@@ -13,11 +13,13 @@ sap.ui.define([
 			this.bEdit = false;
 			this.getRouter().getRoute("desemp_libera_ctrl").attachPatternMatched(this._onObjectMatched, this);
 
+			this.byId('smartFilterBarDesLib-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
+			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
 		},
 
 		_onObjectMatched: function (oEvent) {
 
-			var smartFilterBar = this.getView().byId("smartFilterBar");
+			var smartFilterBar = this.getView().byId("smartFilterBarDesLib");
 			smartFilterBar.clear();
 			//smartFilterBar.fireSearch();
 			//this.onDataReceived();
@@ -31,7 +33,7 @@ sap.ui.define([
 			this.bEdit = false;
 			var that = this;
 			this.approveDialog(function () {
-				var tblDados = that.byId("tblDados").getTable(),
+				var tblDados = that.byId("tblDadosDesLib").getTable(),
 					selectedIndices = tblDados.getSelectedIndices();
 
 				if (selectedIndices.length > 0) {
@@ -180,26 +182,26 @@ sap.ui.define([
 
 		onDataReceived: function () {
 
-			var oTable = this.byId("tblDados");
-			var i = 0;
-			//var aTemplate = this.getTableErrorColumTemplate();
-			oTable.getTable().getColumns().forEach(function (oLine) {
+			// var oTable = this.byId("tblDados");
+			// var i = 0;
+			// //var aTemplate = this.getTableErrorColumTemplate();
+			// oTable.getTable().getColumns().forEach(function (oLine) {
 
-				var oFieldName = oLine.getId();
-				oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
+			// 	var oFieldName = oLine.getId();
+			// 	oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
 
-				switch (oFieldName) {
-				case "codigo_empresa":
-				case "valor_margem_limite":
-					oLine.setProperty("width", "150px");
-					break;
-				default:
-					oLine.setProperty("width", "200px");
-					break;
-				}
+			// 	switch (oFieldName) {
+			// 	case "codigo_empresa":
+			// 	case "valor_margem_limite":
+			// 		oLine.setProperty("width", "150px");
+			// 		break;
+			// 	default:
+			// 		oLine.setProperty("width", "200px");
+			// 		break;
+			// 	}
 
-				i++;
-			});
+			// 	i++;
+			// });
 
 		},
 
