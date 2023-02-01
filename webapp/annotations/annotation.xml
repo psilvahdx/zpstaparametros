@@ -633,6 +633,7 @@
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP/CodCia">
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_CIA}"/>
 			</Annotations>
+
 			<Annotations Target="Metadata.ZPSTA_ATCFG_REG_SEM_MOV">
 				<Annotation Term="UI.SelectionFields">
 					<Collection>
@@ -694,6 +695,102 @@
 			<Annotations Target="Metadata.ZPSTA_ATCFG_REG_SEM_MOV/CodigoEventoNegocio">
 				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
 				<Annotation Term="Common.Label" String="{@i18n&gt;COD_EVT_NEG}"/>
+			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_DESEMP_LIBERA_CTRL">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>Ctrl</PropertyPath>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ctrl"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CtrlValue"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="5rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TipoCalculo"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="EmpHana"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TipoCalculoAnt"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="EmpHanaAnt"/>
+							<Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults">
+								<Record>
+									<PropertyValue Property="width" String="10rem"/>
+								</Record>
+							</Annotation>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_DESEMP_LIBERA_CTRL/Ctrl">
+				<Annotation Term="Common.Label" String="{@i18n&gt;CTRL}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_DESEMP_LIBERA_CTRL/CtrlValue">
+				<Annotation Term="Common.Label" String="{@i18n&gt;CTRL_VALUE}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_DESEMP_LIBERA_CTRL/TipoCalculo">
+				<Annotation Term="Common.Label" String="{@i18n&gt;TIPO_CALCULO}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_DESEMP_LIBERA_CTRL/EmpHana">
+				<Annotation Term="Common.Label" String="{@i18n&gt;EMP_HANA}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_DESEMP_LIBERA_CTRL/TipoCalculoAnt">
+				<Annotation Term="Common.Label" String="{@i18n&gt;TIPO_CALCULO_ANT}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_DESEMP_LIBERA_CTRL/EmpHanaAnt">
+				<Annotation Term="Common.Label" String="{@i18n&gt;EMP_HANA_ANT}"/>
+			</Annotations>
+
+			<Annotations Target="Metadata.ZPSTA_DESEMP_EMAILS">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>Email</PropertyPath>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Email"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZPSTA_DESEMP_EMAILS/Email">
+				<Annotation Term="Common.Label" String="{@i18n&gt;EMAIL}"/>
 			</Annotations>
 		</Schema>
 	</edmx:DataServices>

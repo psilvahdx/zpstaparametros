@@ -6,17 +6,17 @@
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>
 				<f:DynamicPageHeader pinnable="true">
-					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="OZPSTA_DESEMP_EMAILS" persistencyKey="SmartFilter_Explored">
+					<smartFilterBar:SmartFilterBar id="smartFilterBarDesEml" entitySet="OZPSTA_DESEMP_EMAILS" persistencyKey="SmartFilter_Explored">
 						<smartFilterBar:controlConfiguration>
 						</smartFilterBar:controlConfiguration>
 					</smartFilterBar:SmartFilterBar>
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<smartTable:SmartTable entitySet="OZPSTA_DESEMP_EMAILS" app:useSmartField="true" smartFilterId="smartFilterBar"
+				<smartTable:SmartTable entitySet="OZPSTA_DESEMP_EMAILS" app:useSmartField="true" smartFilterId="smartFilterBarDesEml"
 					editTogglable="false" editable="false" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false"
 					useTablePersonalisation="true" header="Qtd. Registros" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored"
-					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDados" showFullScreenButton="true" dataReceived=".onDataReceived"
+					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDadosDesEml" showFullScreenButton="true" dataReceived=".onDataReceived"
 					direction="Column">
 					<l:VerticalLayout class="sapUiContentPadding" id="oVerticalContent" width="100%"></l:VerticalLayout>
 					<smartTable:layoutData>

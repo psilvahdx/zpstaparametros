@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform" xmlns:form="sap.ui.layout.form"
+	xmlns:smartField="sap.ui.comp.smartfield">
+	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
+		<content>
+			<smartForm:SmartForm id="form" editable="true" entityType="OZPSTA_DESEMP_LIBERA_CTRLType">
+				<smartForm:Group id="detailGroup">
+					<smartForm:GroupElement label="{i18n>CTRL}">
+						<smartField:SmartField value="{CTRL}" id="CTRL" enabled="false"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement tooltip="{i18n>CTRL_VALUE_TOOLTIP}" label="{i18n>CTRL_VALUE_LABEL}">
+						<ComboBox id="CTRL_VALUE" selectedKey="{CTRL_VALUE}">
+							<core:Item key="NAO" text="NÃO"/>
+							<core:Item key="SIM" text="SIM"/>
+						</ComboBox>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>TIPO_CALCULO}">
+						<ComboBox id="TIPO_CALCULO" selectedKey="{TIPO_CALCULO}" enabled="{= ${CTRL}==='RESERVA' || ${CTRL}=== 'RESSEGURO' ? true : false}">
+							<core:Item key="ANTARES" text="ANTARES"/>
+							<core:Item key="MISTA" text="MISTA"/>
+							<core:Item key="HANA" text="HANA"/>
+							<core:Item key="TEMPLATE" text="TEMPLATE"/>
+							<core:Item key="ATENA" text="ATENA"/>
+						</ComboBox>					
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>EMP_HANA}">
+						<ComboBox id="EMP_HANA" selectedKey="{EMP_HANA}" enabled="{= ${CTRL}==='RESERVA' ? true : false}">
+							<core:Item key="1" text="1"/>
+							<core:Item key="50" text="50"/>
+						</ComboBox>						
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>TIPO_CALCULO_ANT}">
+						<smartField:SmartField value="{TIPO_CALCULO_ANT}" id="TIPO_CALCULO_ANT" enabled="false"/>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="{i18n>EMP_HANA_ANT}" enabled="false">
+						<smartField:SmartField value="{EMP_HANA_ANT}" id="EMP_HANA_ANT" enabled="false"/>
+					</smartForm:GroupElement>
+				</smartForm:Group>
+			</smartForm:SmartForm>
+		</content>
+		<beginButton>
+			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
+		</beginButton>
+		<endButton>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancel" press=".onCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
