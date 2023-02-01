@@ -2,17 +2,18 @@
 	xmlns:smartField="sap.ui.comp.smartfield">
 	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
 		<content>
-			<smartForm:SmartForm id="formRegSMov" editable="true" entityType="OZPSTA_ATCFG_REG_SEM_MOV">
-				<smartForm:Group id="detailGroup">
+			<smartForm:SmartForm id="formRegSMov" entityType="OZPSTA_ATCFG_REG_SEM_MOV" editable="true">
+				<smartForm:Group id="detailGroup" editable="true">
 					<smartForm:GroupElement label="{i18n>COD_EMPRESA}">
-						<smartField:SmartField value="{CodigoEmpresa}" id="empresa"/>
+						<smartField:SmartField  value="{CodigoEmpresa}" id="codigo_empresa"/>
 					</smartForm:GroupElement>
 					<smartForm:GroupElement label="{i18n>COD_EVT_NEG}">
-						<smartField:SmartField value="{CodigoEventonegocio}" id="evento_negocio"/>
+						<smartField:SmartField value="{CodigoEventoNegocio}" id="evento_negocio"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement tooltip="{i18n>origem_LABEL}" label="{i18n>origem_LABEL}">
-						<ComboBox id="cmbOrigens" selectedKey="{origem}" items="{ path: '/OCfgOrigens', sorter: { path: 'script' } }" width="100%">
-							<core:Item key="{script}" text="{script}"/>
+					<smartForm:GroupElement label="{i18n>origem_lbl}">
+						<ComboBox selectedKey="{Script}" id="script" required="true"  placeholder="Selecione a origem:"
+							items="{/OZPSTA_CFG_ORIGENS}">
+							<core:Item key="Script" text="{Script}"/>	
 						</ComboBox>
 					</smartForm:GroupElement>
 					<smartForm:GroupElement label="{i18n>field01_lbl}">
