@@ -43,8 +43,8 @@ sap.ui.define([
 						oModel.remove(context.getPath());
 
 					});
-					
-						tblDados.clearSelection();
+
+					tblDados.clearSelection();
 
 				} else {
 					var oBundle = that.getResourceBundle();
@@ -57,11 +57,11 @@ sap.ui.define([
 		},
 
 		onNew: function () {
-			
+
 			var newItem = {
-				"client": 400,
-				"codigo_empresa": null,
-				"valor_margem_limite": 0
+				"Client": '400',
+				"CodigoEmpresa": null,
+				"ValorMargemLimite": ""
 			};
 
 			var oModel = this.getOwnerComponent().getModel();
@@ -73,7 +73,7 @@ sap.ui.define([
 
 			this.bEdit = false;
 
-			var dialog = this._getDialog("frmDialogMargErrPrem","portoseguro.psta_parametros.view.dialogs.ZPSTA_CFG_MARGEM_ERRO_PREMIODialog");
+			var dialog = this._getDialog("frmDialogMargErrPrem", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_MARGEM_ERRO_PREMIODialog");
 			sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "formMargErrPrem").bindElement(oContext.getPath());
 			dialog.open();
 
@@ -87,7 +87,7 @@ sap.ui.define([
 				this.bEdit = true;
 				var oSelIndex = tblDados.getSelectedIndex();
 				var oContext = tblDados.getContextByIndex(oSelIndex);
-				var dialog = this._getDialog("frmDialogMargErrPrem", "portoseguro.psta_parametros.view.dialogs.ZPSTA_CFG_MARGEM_ERRO_PREMIODialog");
+				var dialog = this._getDialog("frmDialogMargErrPrem", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_MARGEM_ERRO_PREMIODialog");
 				sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "formMargErrPrem").bindElement(oContext.getPath());
 				dialog.open();
 			} else {
@@ -99,76 +99,41 @@ sap.ui.define([
 		},
 
 		onAdd: function () {
-
-			var model = sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "formMargErrPrem").getModel();
-			var path = sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "formMargErrPrem").getElementBinding().getPath();
-			var oContextItem = model.getProperty(path);
-			var boundItem = {
-				
-				codigo_empresa: sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "empresa").getValue(),
-				valor_margem_limite: sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "valor_margem_limite").getValue()
-			};
-			
 			var that = this;
-
-			var mParameters = {
-				success: function (oData, response) {
-					MessageToast.show("Salvo com sucesso!");
-					that.closeDialog();
-				},
-				error: function (oError) {
-					if (oError) {
-						if (oError.responseText) {
-							var oErrorMessage = JSON.parse(oError.responseText);
-							sap.m.MessageBox.alert(oErrorMessage.error.message.value);
-							that.closeDialog();
-						}
+			var path = sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "formMargErrPrem").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "formMargErrPrem").getModel();
+			var oContextItem = model.getProperty(path);
+			var boundItem = model.getProperty(path);
+			if (boundItem) {
+				var bDuplicateKeys = false;
+				var aKeys = Object.keys(model.oData);
+				var odata = model.oData;
+				model.mChangedEntities = {};
+				for (var record in odata) {
+					if (boundItem.Client == odata[record].Client &&
+						boundItem.CodigoEmpresa == odata[record].CodigoEmpresa) {
+						bDuplicateKeys = true;
 					}
 				}
-			};
-
-			if (this.validateFields(boundItem)) {
+				if (!bDuplicateKeys) {
+					var mParameters = {
+						success: function (oData, response) {
+							MessageToast.show("Salvo com sucesso!");
+							that.closeDialog();
+						},
+						error: function (oError) {
+							that.getView().byId('tblDadosMargErrPrem').rebindTable();
+						}
+					};
 					model.submitChanges(mParameters);
 					model.refresh();
-
-			} else {
-				var oBundle = this.getResourceBundle();
-				var sMsg = oBundle.getText("msgCamposObrigatorios");
-				MessageToast.show(sMsg);
-			}
-
-		},
-
-		validateFields: function (oObj) {
-			var bValid = true;
-
-			if (oObj.codigo_empresa === null || oObj.codigo_empresa === "") {
-				var oEmpresa = sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "empresa");
-				oEmpresa.setValueState("Error");
-				bValid = false;
-			}
-			return bValid;
-		},
-
-		validateDuplicates: function (oObj, oChangesModel, mParameters) {
-		/*	var that = this;
-			var oModel = this.getView().getModel();
-			var sPath = oModel.createKey("/OZPSTA_CFG_MARGEM_ERRO_PREMIO", {
-				codigo_empresa: oObj.codigo_empresa
-			});
-
-			oModel.read(sPath, {
-				success: function (oData) {
-					//Registro em Duplicidade
-					var oBundle = that.getResourceBundle();
-					var sMsg = oBundle.getText("msgDuplicidade", [oData.codigo_empresa, oData.codigo_evento_negocio]);
-					sap.m.MessageBox.alert(sMsg);
-				},
-				error: function (oError) {
-					oChangesModel.submitChanges(mParameters);
-					oChangesModel.refresh();
+				} else {
+					that.closeDialog();
+					MessageToast.show("Item já existente!", {
+						duration: 3000
+					});
 				}
-			});*/
+			};
 		},
 
 		onDataReceived: function () {
@@ -182,13 +147,13 @@ sap.ui.define([
 				oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
 
 				switch (oFieldName) {
-				case "codigo_empresa":
-				case "valor_margem_limite":
-					oLine.setProperty("width", "150px");
-					break;
-				default:
-					oLine.setProperty("width", "200px");
-					break;
+					case "codigo_empresa":
+					case "valor_margem_limite":
+						oLine.setProperty("width", "150px");
+						break;
+					default:
+						oLine.setProperty("width", "200px");
+						break;
 				}
 
 				i++;
@@ -216,8 +181,8 @@ sap.ui.define([
 
 				var oModel = this.getView().getModel();
 				oModel.refresh();
-			}else{
-					MessageToast.show("Erro ao fazer upload do arquivo");
+			} else {
+				MessageToast.show("Erro ao fazer upload do arquivo");
 			}
 		},
 
