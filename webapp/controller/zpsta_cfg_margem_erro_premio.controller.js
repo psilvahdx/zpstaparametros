@@ -104,36 +104,53 @@ sap.ui.define([
 			var model = sap.ui.core.Fragment.byId("frmDialogMargErrPrem", "formMargErrPrem").getModel();
 			var oContextItem = model.getProperty(path);
 			var boundItem = model.getProperty(path);
-			if (boundItem) {
-				var bDuplicateKeys = false;
-				var aKeys = Object.keys(model.oData);
-				var odata = model.oData;
-				model.mChangedEntities = {};
-				for (var record in odata) {
-					if (boundItem.Client == odata[record].Client &&
-						boundItem.CodigoEmpresa == odata[record].CodigoEmpresa) {
-						bDuplicateKeys = true;
+			var tblDados = this.byId("tblDadosMargErrPrem").getTable();
+			var selectedIndices = tblDados.getSelectedIndices();
+			if (selectedIndices.length === 1) {
+				this.bEdit = true;
+			}
+			if (this.bEdit === true) {
+				var mParameters = {
+					success: function (oData, response) {
+						MessageToast.show("Salvo com sucesso!");
 					}
 				}
-				if (!bDuplicateKeys) {
-					var mParameters = {
-						success: function (oData, response) {
-							MessageToast.show("Salvo com sucesso!");
-							that.closeDialog();
-						},
-						error: function (oError) {
-							that.getView().byId('tblDadosMargErrPrem').rebindTable();
+				that.closeDialog();
+				model.submitChanges(mParameters);
+				model.refresh();
+			}
+			else {
+				if (boundItem) {
+					var bDuplicateKeys = false;
+					var aKeys = Object.keys(model.oData);
+					var odata = model.oData;
+					model.mChangedEntities = {};
+					for (var record in odata) {
+						if (boundItem.Client == odata[record].Client &&
+							boundItem.CodigoEmpresa == odata[record].CodigoEmpresa) {
+							bDuplicateKeys = true;
 						}
-					};
-					model.submitChanges(mParameters);
-					model.refresh();
-				} else {
-					that.closeDialog();
-					MessageToast.show("Item já existente!", {
-						duration: 3000
-					});
-				}
-			};
+					}
+					if (!bDuplicateKeys) {
+						var mParameters = {
+							success: function (oData, response) {
+								MessageToast.show("Salvo com sucesso!");
+								that.closeDialog();
+							},
+							error: function (oError) {
+								that.getView().byId('tblDadosMargErrPrem').rebindTable();
+							}
+						};
+						model.submitChanges(mParameters);
+						model.refresh();
+					} else {
+						that.closeDialog();
+						MessageToast.show("Item já existente!", {
+							duration: 3000
+						});
+					}
+				};
+			}
 		},
 
 		onDataReceived: function () {
