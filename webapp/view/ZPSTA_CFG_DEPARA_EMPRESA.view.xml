@@ -17,10 +17,10 @@ displayBlock="true">
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<smartTable:SmartTable entitySet="OZPSTA_CFG_DEPARA_EMP" app:useSmartField="true" smartFilterId="smartFilterBarDeParEmp" editTogglable="true"
+				<smartTable:SmartTable entitySet="OZPSTA_CFG_DEPARA_EMP" app:useSmartField="true" smartFilterId="smartFilterBarDeParEmp" editTogglable="false"
 					editable="false" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false"
 					useTablePersonalisation="true" header="Qtd. Registros" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored"
-					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDados" showFullScreenButton="true" dataReceived=".onDataReceived">
+					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDadosDeParEmp" showFullScreenButton="true" dataReceived=".onDataReceived">
 					<l:VerticalLayout class="sapUiContentPadding" id="oVerticalContent" width="100%"></l:VerticalLayout>
 					<smartTable:layoutData>
 						<FlexItemData growFactor="1" baseSize="0%"/>
@@ -32,6 +32,7 @@ displayBlock="true">
 								<Button xmlns="sap.m" id="btnNew" icon="sap-icon://add" press=".onNew"/>
 								<Button xmlns="sap.m" id="btnDel" icon="sap-icon://delete" press=".onDelete"/>
 								<Button xmlns="sap.m" id="btnSave" icon="sap-icon://save" press=".onSave"/>
+								<Button xmlns="sap.m" id="btnEdit" tooltip="Editar" icon="sap-icon://edit" press=".onEdit"/>
 							</content>
 						</OverflowToolbar>
 					</smartTable:customToolbar>

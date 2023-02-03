@@ -75,41 +75,76 @@ sap.ui.define([
 			dialog.open();
 
 		},
+		onEdit: function (oEvent) {
+			var tblDados = this.byId("tblDadosDeParEmp").getTable(),
+				selectedIndices = tblDados.getSelectedIndices();
+
+			if (selectedIndices.length === 1) {
+				this.bEdit = true;
+				var oSelIndex = tblDados.getSelectedIndex();
+				var oContext = tblDados.getContextByIndex(oSelIndex);
+				var dialog = this._getDialog("frmDialogDeParEmp", "portoseguro.zpstaparametros.view.dialogs.ZPSTA_CFG_DEPARA_EMPRESADialog");
+				sap.ui.core.Fragment.byId("frmDialogDeParEmp", "formDeParEmp").bindElement(oContext.getPath());
+				dialog.open();
+			} else {
+				var oBundle = this.getResourceBundle();
+				var sMsg = oBundle.getText("msgMultiplosItensEdicao");
+				MessageToast.show(sMsg);
+			}
+
+		},
 		onAdd: function () {
 			var that = this;
 			var path = sap.ui.core.Fragment.byId("frmDialogDeParEmp", "formDeParEmp").getElementBinding().getPath();
 			var model = sap.ui.core.Fragment.byId("frmDialogDeParEmp", "formDeParEmp").getModel();
 			var boundItem = model.getProperty(path);
-			if (boundItem.CodEmpresa) {
-				var bDuplicateKeys = false;
-				var aKeys = Object.keys(model.oData);
-				var odata = model.oData;
-				model.mChangedEntities = {};
-				for (var record in odata) {
-					if (boundItem.CodEmpresa == odata[record].CodEmpresa) {
-						bDuplicateKeys = true;
+			var tblDados = this.byId("tblDadosDeParEmp").getTable();
+			var selectedIndices = tblDados.getSelectedIndices();
+			if (selectedIndices.length === 1) {
+				this.bEdit = true;
+			}
+			if (this.bEdit === true) {
+				var mParameters = {
+					success: function (oData, response) {
+						MessageToast.show("Salvo com sucesso!");
 					}
 				}
-				if (!bDuplicateKeys) {
-					var mParameters = {
-						success: function (oData, response) {
-							MessageToast.show("Salvo com sucesso!");
-							that.closeDialog();
-						},
-						error: function (oError) {
-							that.getView().byId('tblDadosDeParEmp').rebindTable();
+				that.closeDialog();
+				model.submitChanges(mParameters);
+				model.refresh();
+			}
+			else {
+				if (boundItem.CodEmpresa) {
+					var bDuplicateKeys = false;
+					var aKeys = Object.keys(model.oData);
+					var odata = model.oData;
+					model.mChangedEntities = {};
+					for (var record in odata) {
+						if (boundItem.CodEmpresa == odata[record].CodEmpresa) {
+							bDuplicateKeys = true;
 						}
-					};
-					model.submitChanges(mParameters);
-					model.refresh();
-				} else {
-					that.closeDialog();
-					MessageToast.show("Item já existente!", {
-						duration: 3000
-					});
+					}
+					if (!bDuplicateKeys) {
+						var mParameters = {
+							success: function (oData, response) {
+								MessageToast.show("Salvo com sucesso!");
+								that.closeDialog();
+							},
+							error: function (oError) {
+								that.getView().byId('tblDadosDeParEmp').rebindTable();
+							}
+						};
+						model.submitChanges(mParameters);
+						model.refresh();
+					} else {
+						that.closeDialog();
+						MessageToast.show("Item já existente!", {
+							duration: 3000
+						});
+					}
 				}
 			}
 		}
-
-	});
-});
+	}
+	)
+})

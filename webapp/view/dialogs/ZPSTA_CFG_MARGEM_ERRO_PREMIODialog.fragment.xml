@@ -17,7 +17,7 @@
 			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
 		</beginButton>
 		<endButton>
-			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancel" press=".onCancel"/>
+			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancelMargErrPrem" press=".onCancel('MargErrPrem')"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

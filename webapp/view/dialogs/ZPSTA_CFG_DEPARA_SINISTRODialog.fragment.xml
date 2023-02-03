@@ -28,11 +28,8 @@
 					<smartForm:GroupElement>
 						<smartField:SmartField id="RO" value="{Ro}" />
 					</smartForm:GroupElement>	
-					<smartForm:GroupElement label="CodigoEmpresa">
-						<ComboBox selectedKey="{CodEmpresa}" id="codigo_empresa" required="true" placeholder="Selecione a empresa:"
-							items="{/OZPSTA_CFG_EMPRES}">
-							<core:Item key="CodEmpresa" text="{CodEmpresa} - {NomeEmpresa}"/>	
-						</ComboBox>
+					<smartForm:GroupElement >
+						<smartField:SmartField id="codigo_empresa" value="{CodEmpresa}" />
 					</smartForm:GroupElement>
 				</smartForm:Group>
 			</smartForm:SmartForm>
