@@ -26,7 +26,15 @@
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
                 }
-            },"annotation": {
+            },
+            "FechamentoService": {
+				"uri": "/sap/opu/odata/sap/ZPSTA_CDS_FECHAMENTO_CDS/",
+				"type": "OData",
+				"settings": {
+                    "type": "ODataAnnotation",
+					"localUri": "localService/metadata.xml"
+				}
+			},"annotation": {
 				"type": "ODataAnnotation",
 				"uri": "annotations/annotation.xml",
 				"settings": {
@@ -103,6 +111,17 @@
                     "useBatch": true
                 }
             },
+			"FechamentoServ": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request",
+					"useBatch": false
+				},
+				"dataSource": "FechamentoService",
+				"preload": true
+			},
             "@i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"uri": "i18n/i18n.properties"
@@ -200,6 +219,11 @@
                     "pattern": "fechamento_desempenho",
                     "name":"fechamento_desempenho",
                     "target": "fechamento_desempenho"
+                },
+                {
+                    "pattern": "fechamento_contabil",
+                    "name":"fechamento_contabil",
+                    "target": "fechamento_contabil"
                 }
             ],
             "targets": {
@@ -279,6 +303,11 @@
 					"viewId": "fechamento_desempenho",
 					"viewName": "Fechamento_Desempenho",
 					"viewLevel": 2	
+				},				
+				"fechamento_contabil":{
+					"viewId": "fechamento_contabil",
+					"viewName": "Fechamento",
+					"viewLevel": 2
 				}
             }
         },

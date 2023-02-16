@@ -8,8 +8,8 @@
 				<smartForm:Group id="detailGroup">
 					<smartForm:GroupElement label="CodigoEmpresa">
 						<ComboBox selectedKey="{CodEmpresa}" id="empresa" required="true" placeholder="Selecione a empresa:"
-							items="{/OZPSTA_CFG_EMPRES}">
-							<core:Item key="CodEmpresa" text="{CodEmpresa} - {NomeEmpresa}"/>	
+							items="{path:'/OZPSTA_CFG_EMPRES', sorter:{path:'CodEmpresa', descending:false}}">
+							<core:Item key="{CodEmpresa}" text="{CodEmpresa} - {NomeEmpresa}"/>	
 						</ComboBox>
 					</smartForm:GroupElement>
 					<smartForm:GroupElement>
@@ -21,13 +21,13 @@
 					<smartForm:GroupElement label="Script">
 						<ComboBox selectedKey="{Script}" id="script" required="true"  placeholder="Selecione a origem:"
 							items="{/OZPSTA_CFG_ORIGENS}">
-							<core:Item key="Script" text="{Script}"/>	
+							<core:Item key="{Script}" text="{Script}"/>	
 						</ComboBox>
 					</smartForm:GroupElement>
 					<smartForm:GroupElement label="Table" >
 						<ComboBox selectedKey="{Table}" id="table" required="true" placeholder="Selecione a tabela:"
 							items="{/OZPSTA_CFG_TABSTG}">
-							<core:Item key="Table" text="{Table}"/>	
+							<core:Item key="{Table}" text="{Table}"/>	
 						</ComboBox>
 					</smartForm:GroupElement>
 					<smartForm:GroupElement label="Pivot">

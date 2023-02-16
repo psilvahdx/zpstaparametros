@@ -166,7 +166,7 @@ sap.ui.define([
 			},
 
 			onDownloadTemplatePressed: function () {
-				sap.m.URLHelper.redirect("templates/template_reg_sem_mov.xlsx", true);
+				sap.m.URLHelper.redirect("/templates/template_reg_sem_mov.xlsx", true);
 			},
 
 			onfileSizeExceed: function () {

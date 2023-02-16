@@ -24,22 +24,36 @@ sap.ui.define([
 		formatDateShow: function (oDate) {
 			if (oDate == null){ return "";}
 			
-				var year = oDate.substr(0,4),
-				 month = oDate.substr(4,2),
-				 day = oDate.substr(6,2),
-				 dateString = `${day}/${month}/${year}`;
+			var currDay, currMonth, currYear, fullDateStr;
+            currDay = ''+oDate.toLocaleString('pt-BR', {day: 'numeric' });
+            currMonth = ''+oDate.toLocaleString('pt-BR', {month: 'numeric'});
+            currMonth.length < 2? currMonth = '0' + currMonth : 'Hello World'; 
+            currYear = ''+oDate.toLocaleString('pt-BR', {year: 'numeric'});
+            fullDateStr = `${currDay}/${currMonth}/${currYear}`;
 			
-			return dateString;
+			return fullDateStr;
 		},
 		
 		formatTimeShow: function (oTime) {
-			if (oTime === null){ return "";}
-			
-				var hour = oTime.substr(0,2),
-				 minute = oTime.substr(2,2),
-				 second = oTime.substr(4,2),
-				 timeString = `${hour}:${minute}:${second}`;
-			
+			if (oTime === null || oTime === undefined || oTime == false){ return "";}
+
+				var oHours = ''+Math.floor(oTime.ms/1000/60/60);
+				oHours = oHours.length < 2? '0'+oHours : oHours;
+				var oMinutes = ''+Math.floor((oTime.ms/1000/60/60 - oHours)*60);
+				oMinutes = oMinutes.length < 2? '0'+oMinutes : oMinutes;
+				var oSecounds = ''+Math.floor(((oTime.ms/1000/60/60 - oHours)*60 - oMinutes)*60);
+				oSecounds = oSecounds.length < 2? '0'+oSecounds : oSecounds;
+				var timeString = `${oHours}:${oMinutes}:${oSecounds}`;
+
+				// var oDate = new Date(oTime.ms);
+				// var oHours = oDate.getHours()+'';
+				// oHours = oHours.length < 2? '0'+oHours : oHours;
+				// var oMinutes = oDate.getMinutes()+'';
+				// oMinutes = oMinutes.length < 2? '0'+oMinutes : oMinutes;
+				// var oSecounds = oDate.getSeconds()+'';
+				// oSecounds = oSecounds.length < 2? '0'+oSecounds : oSecounds;
+				// var timeString = `${oHours}:${oMinutes}:${oSecounds}`;
+
 			return timeString;
 		}
 

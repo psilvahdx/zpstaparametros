@@ -1,0 +1,107 @@
+<core:FragmentDefinition
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:f="sap.ui.layout.form">
+     <Dialog
+        title ="Adicionar novo registro"
+		id="idAddFechamento"
+		contentWidth="200px"><!--title ="Adicionar novo registro"-->
+     		<VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+			<f:SimpleForm id="SimpleForm"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanXL="4"
+				labelSpanL="4"
+				labelSpanM="12"
+				labelSpanS="12"
+				adjustLabelSpan="false"
+				emptySpanXL="0"
+				emptySpanL="0"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="2"
+				columnsL="2"
+				columnsM="1"
+				singleContainerFullSize="false" >
+				<f:content>
+					<Label id="_IDGenLabel1" text="Empresa" />
+						<!--<Input id="iptEmp" liveChange = "onLiveChange" type="Text" value="{oModelAdd>/EMPRESA}" placeholder="ex.: P001" required="true"/>--> 
+						<ComboBox
+							id="iptEmp"
+							required="true"
+							selectedKey="P001">
+						<items>
+							<core:Item id="_IDGenItemA1" key="P001" text="P001 - PORTO SEGURO CIA SEGUROS" />
+							<core:Item id="_IDGenItemA2" key="P014" text="P014 - P S VIDA E PREVIDÊNCIA S" />
+							<core:Item id="_IDGenItemA3" key="P031" text="P031 - PORTOMED - SERV SAÚDE" />
+							<core:Item id="_IDGenItemA4" key="P032" text="P032 - PORTO SEGURO ODONTO" />
+							<core:Item id="_IDGenItemA5" key="P035" text="P035 - AZUL COMPANHIA SEG.GERAIS" />	
+							<core:Item id="_IDGenItemA6" key="P050" text="P050 - P S - SEGURO SAÚDE S A" />	
+							<core:Item id="_IDGenItemA7" key="P084" text="P084 - ITAÚ AUTO E RESIDÊNCIA" />	
+							<core:Item id="_IDGenItemA8" key="P086" text="P086 - FUNDACAO SAUDE ITAU" />	
+						</items>
+						</ComboBox>
+						
+					<Label id="_IDGenLabel2" text="Evento Negócio" />
+						<Input id="iptEve"  value="{oModelAdd>/cod_eve_negocio}" placeholder="ex.: 001" required="true"/>
+					<Label id="_IDGenLabel3" text="Ano" />
+						<Input id="iptAno"  type="Number" value="{oModelAdd>/ano}" placeholder="ex.: 2022" required="true"/>
+					<Label id="_IDGenLabel4" text="Mês" />
+							<!--<Input id="iptMes"  type="Number" value="{oModelAdd>/MES}" placeholder="ex.: 01" required="true"/>-->
+						<Select
+							id="iptMes"
+							forceSelection="true"
+							selectedKey="{oModelAdd>/mes}">
+							<items>
+								<core:Item id="_IDGenItemA9" key="01" text="01 - Janeiro" />
+								<core:Item id="_IDGenItemA10" key="02" text="02 - Fevereiro" />
+								<core:Item id="_IDGenItemA11" key="03" text="03 - Março" />
+								<core:Item id="_IDGenItemA12" key="04" text="04 - Abril" />
+								<core:Item id="_IDGenItemA13" key="05" text="05 - Maio" />	
+								<core:Item id="_IDGenItemA14" key="06" text="06 - Junho" />	
+								<core:Item id="_IDGenItemA15" key="07" text="07 - Julho" />	
+								<core:Item id="_IDGenItemA16" key="08" text="08 - Agosto" />
+								<core:Item id="_IDGenItemA17" key="09" text="09 - Setembro" />	
+								<core:Item id="_IDGenItemA18" key="10" text="10 - Outubro" />	
+								<core:Item id="_IDGenItemA19" key="11" text="11 - Novembro" />	
+								<core:Item id="_IDGenItemA20" key="12" text="12 - Dezembro" />	
+							</items>
+						</Select>
+						
+					<Label id="_IDGenLabel5" text="Data de Inclusão" />
+						<!--<Input id="iptDtI"  type="Number" value="{oModelAdd>/DATA_INCLUSAO}" placeholder="ex.: 20220101"/>-->
+						<DatePicker id="idDate" dateValue="{oModelAdd>/data_inclusao}" displayFormat="dd/MM/yyyy" required="true"/>
+					<Label id="_IDGenLabel6" text="Hora (Horas/Minutos/Segundos)" />
+					<!--<Input id="iptHrs"  type="Number" value="{oModelAdd>/HORA_INCLUSAO}" placeholder="ex.: 123000"/>-->
+					<TimePicker	id="iptHrs"	
+								valueFormat="HHmmss"
+								displayFormat="HH:mm:ss"
+								placeholder="Horario limite"
+								support2400="true"
+								value="{oModelAdd>/hora_inclusao}"
+								required="true"/>
+					
+						<CheckBox text="Jan" id='cb01' selected="{oModelAdd>/mes_01}"/>
+						<CheckBox text="Fev" id='cb02' selected="{oModelAdd>/mes_02}"/>
+						<CheckBox text="Mar" id='cb03' selected="{oModelAdd>/mes_03}"/>
+						<CheckBox text="Abr" id='cb04' selected="{oModelAdd>/mes_04}"/>
+						<CheckBox text="Mai" id='cb05' selected="{oModelAdd>/mes_05}"/>
+						<CheckBox text="Jun" id='cb06' selected="{oModelAdd>/mes_06}"/>
+						<CheckBox text="Jul" id='cb07' selected="{oModelAdd>/mes_07}"/>
+						<CheckBox text="Ago" id='cb08' selected="{oModelAdd>/mes_08}"/>
+						<CheckBox text="Set" id='cb09' selected="{oModelAdd>/mes_09}"/>
+						<CheckBox text="Out" id='cb10' selected="{oModelAdd>/mes_10}"/>
+						<CheckBox text="Nov" id='cb11' selected="{oModelAdd>/mes_11}"/>
+						<CheckBox text="Dez" id='cb12' selected="{oModelAdd>/mes_12}"/>
+				</f:content>
+			</f:SimpleForm>
+		</VBox>
+        <buttons>
+            <Button 
+            type="Emphasized" text="Salvar" id="savebtn"
+            press="onSave" ariaLabelledBy="editButtonLabel" visible="true"/>
+            <Button 
+            type="Default" text="Cancelar" id="addCancel"
+            press="onCancel" ariaLabelledBy="editButtonLabel"/>
+        </buttons>
+       </Dialog>
+</core:FragmentDefinition>

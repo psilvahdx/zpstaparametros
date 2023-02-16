@@ -1,0 +1,38 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+     <Dialog
+        title ="Filtros"
+			resizable="true"
+			draggable="true"
+			id="idFiltrosFechamento"
+			contentWidth="100px">
+        <!--<l:VerticalLayout
+            class="sapUiContentPadding"
+            width="100%">
+            <MultiComboBox
+            placeholder="{i18n>status}"
+			width="100%"
+			items="{
+				path: 'oModelFechamento>/',
+				sorter: {path: 'EMPRESA',  descending: false}
+			}"
+            id="DialogInputStsInb">
+			<core:Item key="{EMPRESA}" text="{EMPRESA}"/>
+		</MultiComboBox>
+        </l:VerticalLayout>-->
+			<Input id="iptEmp_fil" type="Text" placeholder="Empresa" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTopBottom" width="95%"/>
+			<Input id="iptEve_fil" type="Number" placeholder="Evento Negócio" class="sapUiTinyMarginBeginEnd" width="95%"/>
+			<Input id="iptAno_fil" type="Number" placeholder="Ano" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTopBottom" width="95%"/>
+        <buttons>
+            <Button id="_IDGenButtonf1" 
+            type="Emphasized" text="Filtrar"
+            press="onFilter" ariaLabelledBy="editButtonLabel"/>
+            <Button id="_IDGenButtonf2" 
+            type="Default" text="Cancelar" 
+            press="onFilterCancel" ariaLabelledBy="editButtonLabel"/>
+        </buttons>
+       </Dialog>
+</core:FragmentDefinition>

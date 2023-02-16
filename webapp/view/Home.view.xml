@@ -3,135 +3,135 @@
     xmlns="sap.m" xmlns:layout="sap.ui.layout">
     <Page id="page" title="{i18n>title}">
         <content>
-			<layout:VerticalLayout class="sapUiResponsiveMargin">
-				<Title titleStyle="H2" text="{i18n>homeView}" class="sapUiTinyMarginBegin"/>
-				<layout:HorizontalLayout allowWrapping="true">
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>zpsta_cfg_emp_eveDesc}"
+			<layout:VerticalLayout id="_IDGenVerticalLayout1" class="sapUiResponsiveMargin">
+				<Title id="_IDGenTitle1" titleStyle="H2" text="{i18n>homeView}" class="sapUiTinyMarginBegin"/>
+				<layout:HorizontalLayout id="_IDGenHorizontalLayout1" allowWrapping="true">
+					<GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>zpsta_cfg_emp_eveDesc}"
 						subheader="{i18n>zpsta_cfg_emp_eve}" press=".onNavToZPSTA_CFG_EMP_EVE">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent1">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent1" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_GP_RAMO_PASSDesc}"
+					<GenericTile id="_IDGenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_GP_RAMO_PASSDesc}"
 						subheader="{i18n>ZPSTA_CFG_GP_RAMO_PASS}" press=".onNavToZPSTA_CFG_GP_RAMO_PASS">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent2">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent2" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_ITCDesc}"
+					<GenericTile id="_IDGenGenericTile3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_ITCDesc}"
 						subheader="{i18n>ZPSTA_CFG_ITC}" press=".onNavToZPSTA_CFG_ITC">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent3">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent3" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>	
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_SCRIPTSDesc}"
+					<GenericTile id="_IDGenGenericTile4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_SCRIPTSDesc}"
 						subheader="{i18n>ZPSTA_CFG_SCRIPTS}" press=".onNavToZPSTA_CFG_SCRIPTS">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent4">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent4" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_ATCFG_ENTDesc}"
+					<GenericTile id="_IDGenGenericTile5" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_ATCFG_ENTDesc}"
 						subheader="{i18n>ZPSTA_ATCFG_ENT}" press=".onNavToZPSTA_ATCFG_ENT">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent5">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent5" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_ATCFG_ORIGEMDesc}"
+					<GenericTile id="_IDGenGenericTile6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_ATCFG_ORIGEMDesc}"
 						subheader="{i18n>ZPSTA_ATCFG_ORIGEM}" press=".onNavToZPSTA_ATCFG_ORIGEM">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent6">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent6" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_DEPARA_PREMIODesc}"
+					<GenericTile id="_IDGenGenericTile7" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_DEPARA_PREMIODesc}"
 						subheader="{i18n>ZPSTA_CFG_DEPARA_PREMIO}" press=".onNavToZPSTA_CFG_DEPARA_PREMIO">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent7">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent7" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_DEPARA_SINISTRODesc}"
+					<GenericTile id="_IDGenGenericTile8" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_DEPARA_SINISTRODesc}"
 						subheader="{i18n>ZPSTA_CFG_DEPARA_SINISTRO}" press=".onNavToZPSTA_CFG_DEPARA_SINISTRO">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent8">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent8" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_DEPARA_EMPRESADesc}"
+					<GenericTile id="_IDGenGenericTile9" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_CFG_DEPARA_EMPRESADesc}"
 						subheader="{i18n>ZPSTA_CFG_DEPARA_EMPRESA}" press=".onNavToZPSTA_CFG_DEPARA_EMPRESA">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent9">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent9" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_ATCFG_REG_SEM_MOVIMENTODesc}"
+					<GenericTile id="_IDGenGenericTile10" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>ZPSTA_ATCFG_REG_SEM_MOVIMENTODesc}"
 						subheader="{i18n>ZPSTA_ATCFG_REG_SEM_MOVIMENTO}" press=".onNavToZPSTA_ATCFG_REG_SEM_MOVIMENTO">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent10">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent10" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>		
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_CFG_MARGEM_ERRO_PREMIODesc}"
+					<GenericTile id="_IDGenGenericTile11" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_CFG_MARGEM_ERRO_PREMIODesc}"
 						subheader="{i18n>OZPSTA_CFG_MARGEM_ERRO_PREMIO}" press=".onNavToOZPSTA_CFG_MARGEM_ERRO_PREMIO">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent11">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent11" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>		
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_FECHAMENTODESEMPENHOTitle}"
+					<GenericTile id="_IDGenGenericTile12" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_FECHAMENTODESEMPENHOTitle}"
 						subheader="{i18n>OZPSTA_FECHAMENTODESEMPENHODesc}" press=".onNavToOFECHAMENTO_DESEMPENHO">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent12">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent12" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
 					</GenericTile>		
-					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_FECHAMENTOTitle}"
+					<GenericTile id="_IDGenGenericTile13" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OZPSTA_FECHAMENTOTitle}"
 						subheader="{i18n>OZPSTA_FECHAMENTOTitle}" press=".onNavToOZPSTA_FECHAMENTO">
 						<tileContent>
-							<TileContent>
+							<TileContent id="_IDGenTileContent13">
 								<content>
-									<ImageContent src="sap-icon://action-settings"/>
+									<ImageContent id="_IDGenImageContent13" src="sap-icon://action-settings"/>
 								</content>
 							</TileContent>
 						</tileContent>
