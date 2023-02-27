@@ -2,54 +2,54 @@
 	xmlns:smartField="sap.ui.comp.smartfield">
 	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
 		<content>
-			<smartForm:SmartForm id="formRegSMov" entityType="OZPSTA_ATCFG_REG_SEM_MOV" editable="true">
+			<smartForm:SmartForm id="formRegSMov" entityType="ZPSTA_ATCFG_REG_SEM_MOV" editable="true">
 				<smartForm:Group id="detailGroup" >
-					<smartForm:GroupElement label="{i18n>COD_EMPRESA}">
+					<smartForm:GroupElement id="_IDGenGroupElement1" label="{i18n>COD_EMPRESA}">
 						<smartField:SmartField  value="{CodigoEmpresa}" id="codigo_empresa"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>COD_EVT_NEG}">
+					<smartForm:GroupElement id="_IDGenGroupElement2" label="{i18n>COD_EVT_NEG}">
 						<smartField:SmartField value="{CodigoEventoNegocio}" id="evento_negocio"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>origem_lbl}">
-						<ComboBox selectedKey="{Script}" id="script" required="true"  placeholder="Selecione a origem:"
+					<smartForm:GroupElement id="_IDGenGroupElement3" label="{i18n>origem_lbl}">
+						<ComboBox selectedKey="{Origem}" id="script" required="true"  placeholder="Selecione a origem:"
 							items="{/OZPSTA_CFG_ORIGENS}">
-							<core:Item key="Script" text="{Script}"/>	
+							<core:Item id="_IDGenItem1" key="{Script}" text="{Script}"/>	
 						</ComboBox>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field01_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement4" label="{i18n>field01_lbl}">
 						<smartField:SmartField value="{Field01}" id="field01"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field02_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement5" label="{i18n>field02_lbl}">
 						<smartField:SmartField value="{Field02}" id="field02"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field03_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement6" label="{i18n>field03_lbl}">
 						<smartField:SmartField value="{Field03}" id="field03"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field04_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement7" label="{i18n>field04_lbl}">
 						<smartField:SmartField value="{Field04}" id="field04"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field05_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement8" label="{i18n>field05_lbl}">
 						<smartField:SmartField value="{Field05}" id="field05"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field06_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement9" label="{i18n>field06_lbl}">
 						<smartField:SmartField value="{Field06}" id="field06"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field07_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement10" label="{i18n>field07_lbl}">
 						<smartField:SmartField value="{Field07}" id="field07"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field08_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement11" label="{i18n>field08_lbl}">
 						<smartField:SmartField value="{Field08}" id="field08"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field09_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement12" label="{i18n>field09_lbl}">
 						<smartField:SmartField value="{Field09}" id="field09"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement label="{i18n>field10_lbl}">
+					<smartForm:GroupElement id="_IDGenGroupElement13" label="{i18n>field10_lbl}">
 						<smartField:SmartField value="{Field10}" id="field10"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement tooltip="{i18n>naoprocessar_TOOLTIP}" label="{i18n>naoprocessar_LABEL}">
+					<smartForm:GroupElement id="_IDGenGroupElement14" tooltip="{i18n>naoprocessar_TOOLTIP}" label="{i18n>naoprocessar_LABEL}">
 						<ComboBox selectedKey="{Naoprocessar}" id="cmbNaoProcessar">
-							<core:Item key="0" text="{i18n>lbl_mover_historico}"/>
-							<core:Item key="1" text="{i18n>lbl_mover_reg_nao_processados}"/>
+							<core:Item id="_IDGenItem2" key="0" text="{i18n>lbl_mover_historico}"/>
+							<core:Item id="_IDGenItem3" key="1" text="{i18n>lbl_mover_reg_nao_processados}"/>
 						</ComboBox>
 					</smartForm:GroupElement>
 				</smartForm:Group>

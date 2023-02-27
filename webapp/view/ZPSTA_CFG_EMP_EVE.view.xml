@@ -2,10 +2,10 @@
 	xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
 	xmlns:f="sap.f">
-	<Page title="{i18n>zpsta_cfg_emp_eveTitle}" showNavButton="true" navButtonPress=".onNavBack">
+	<Page id="_IDGenPage1" title="{i18n>zpsta_cfg_emp_eveTitle}" showNavButton="true" navButtonPress=".onNavBack">
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>
-				<f:DynamicPageHeader pinnable="true">
+				<f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true">
 					<smartFilterBar:SmartFilterBar id="smartFilterBarEmpEve" entitySet="OZPSTA_CFG_EMP_EVE" persistencyKey="SmartFilter_Explored">
 						<smartFilterBar:controlConfiguration>
 							<!--	<smartFilterBar:ControlConfiguration key="codigo_atena"></smartFilterBar:ControlConfiguration>
@@ -21,12 +21,12 @@
 					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDadosEmpEve" showFullScreenButton="true" dataReceived=".onDataReceived">
 					<l:VerticalLayout class="sapUiContentPadding" id="oVerticalContent" width="100%"></l:VerticalLayout>
 					<smartTable:layoutData>
-						<FlexItemData growFactor="1" baseSize="0%"/>
+						<FlexItemData id="_IDGenFlexItemData1" growFactor="1" baseSize="0%"/>
 					</smartTable:layoutData>
 					<smartTable:customToolbar>
 						<OverflowToolbar width="100%" id="toolbar2">
 							<content>
-								<ToolbarSpacer/>
+								<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
 								<Button xmlns="sap.m" id="btnNew" icon="sap-icon://add" press=".onNew"/>
 								<Button xmlns="sap.m" id="btnDel" icon="sap-icon://delete" press=".onDelete"/>
 								<Button xmlns="sap.m" id="btnSave" icon="sap-icon://save" press=".onSave"/>

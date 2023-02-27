@@ -1,21 +1,26 @@
 sap.ui.define([
 	"portoseguro/zpstaparametros/controller/BaseController",
-	"sap/m/MessageToast"
+	"sap/m/MessageToast",
+	"sap/m/MessageBox"
 ], function (
 	BaseController,
-	MessageToast
+	MessageToast,
+	MessageBox
 ) {
 	"use strict";
 
 	return BaseController.extend("portoseguro.zpstaparametros.controller.zpsta_atcfg_reg_sem_movimento", {
 		onInit: function () {
-			this.getView().addStyleClass("sapUiSizeCompact")
+			this.getView().addStyleClass("sapUiSizeCompact");
 
+			this.byId('smartFilterBarRegSMov-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
+			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
 		},
 		onSave: function () {
 			var oModel = this.getOwnerComponent().getModel();
 			var mParameters = {
 				sucess: function (oData, response) {
+					console.log(oData);
 					MessageToast.show("Salvo com sucesso!");
 				},
 				error: function (oError) {
@@ -59,8 +64,8 @@ sap.ui.define([
 		},
 		onNew: function () {
 			var newItem = {
-				"CodigoEmpresa": null,
-				"CodigoEventoNegocio": null,
+				"CodigoEmpresa": 0,
+				"CodigoEventoNegocio": '',
 				"Origem": null,
 				"Field01": null,
 				"Field02": null,
@@ -72,10 +77,11 @@ sap.ui.define([
 				"Field08": null,
 				"Field09": null,
 				"Field10": null,
-				"Naoprocessar": 0
+				"Naoprocessar": null
 			};
 
 			var oModel = this.getOwnerComponent().getModel();
+			oModel.setUseBatch(true);
 			var oContext = oModel.createEntry("/OZPSTA_ATCFG_REG_SEM_MOV", {
 				properties: newItem
 			});
@@ -100,23 +106,47 @@ sap.ui.define([
 						bDuplicateKeys = true;
 					}
 				}
-				if (!bDuplicateKeys) {
-					var mParameters = {
-						success: function (oData, response) {
-							MessageToast.show("Salvo com sucesso!");
-							that.closeDialog();
-						},
-						error: function (oError) {
-							that.getView().byId('tblDadosRegSMov').rebindTable();
+
+				var mParameters = {
+					success: function (oData, response) {
+						console.log(oData);
+						MessageToast.show("Salvo com sucesso!");
+						that.closeDialog();
+					},
+					error: function (oError) {
+						console.log(oError);
+						that.getView().byId('tblDadosRegSMov').rebindTable();
+					}
+				};
+
+				if (bDuplicateKeys) {
+					// var mParameters = {
+					// 	success: function (oData, response) {
+					// 		MessageToast.show("Salvo com sucesso!");
+					// 		that.closeDialog();
+					// 	},
+					// 	error: function (oError) {
+					// 		console.log();
+					// 		that.getView().byId('tblDadosRegSMov').rebindTable();
+					// 	}
+					// };
+					// model.submitChanges(mParameters);
+					// model.refresh();
+
+					MessageBox.warning("Item já existente! Deseja atualizá-lo?", {
+						actions: ["confirmar", "cancelar"],
+						emphasizedAction: "Confirmar",
+						onClose: function (sAction) {
+							if(sAction === 'confirmar'){
+								model.submitChanges(mParameters);
+								model.refresh();
+							}
 						}
-					};
+					});
+				} 
+				else {
 					model.submitChanges(mParameters);
 					model.refresh();
-				} else {
-					that.closeDialog();
-					MessageToast.show("Item já existente!", {
-						duration: 3000
-					});
 				}
 			}
 		},
@@ -138,32 +168,33 @@ sap.ui.define([
 				}
 
 			},
-			onDataReceived: function () {
 
-				var oTable = this.byId("tblDadosRegSMov");
-				var i = 0;
-				//var aTemplate = this.getTableErrorColumTemplate();
-				oTable.getTable().getColumns().forEach(function (oLine) {
+			// onDataReceived: function () {
 
-					var oFieldName = oLine.getId();
-					oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
+			// 	var oTable = this.byId("tblDadosRegSMov");
+			// 	var i = 0;
+			// 	//var aTemplate = this.getTableErrorColumTemplate();
+			// 	oTable.getTable().getColumns().forEach(function (oLine) {
 
-					switch (oFieldName) {
-						case "CodigoEmpresa":
-						case "CodigoEventoNegocio":
-						case "Naoprocessar":
-						case "Origem":
-							oLine.setProperty("width", "150px");
-							break;
-						default:
-							oLine.setProperty("width", "200px");
-							break;
-					}
+			// 		var oFieldName = oLine.getId();
+			// 		oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
 
-					i++;
-				});
+			// 		switch (oFieldName) {
+			// 			case "CodigoEmpresa":
+			// 			case "CodigoEventoNegocio":
+			// 			case "Naoprocessar":
+			// 			case "Origem":
+			// 				oLine.setProperty("width", "150px");
+			// 				break;
+			// 			default:
+			// 				oLine.setProperty("width", "200px");
+			// 				break;
+			// 		}
 
-			},
+			// 		i++;
+			// 	});
+
+			// }
 
 			onDownloadTemplatePressed: function () {
 				sap.m.URLHelper.redirect("/templates/template_reg_sem_mov.xlsx", true);

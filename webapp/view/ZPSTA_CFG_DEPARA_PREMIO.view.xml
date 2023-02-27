@@ -10,7 +10,7 @@ displayBlock="true">
     <Page id="depara_premio" title="{i18n>zpsta_cfg_depara_premioTitle}" showNavButton="true" navButtonPress=".onNavBack">
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>
-				<f:DynamicPageHeader pinnable="true">
+				<f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true">
 					<smartFilterBar:SmartFilterBar id="smartFilterBarDepPrm" entitySet="OZPSTA_CFG_DEPARA_PREM" persistencyKey="SmartFilter_Explored">
 					</smartFilterBar:SmartFilterBar>
 				</f:DynamicPageHeader>

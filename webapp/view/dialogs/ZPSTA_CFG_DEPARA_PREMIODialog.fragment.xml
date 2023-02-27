@@ -4,22 +4,22 @@
 		<content>
 			<smartForm:SmartForm id="formDepPrm" entityType="ZPSTA_CFG_DEPARA_PREM" editable="true">
 				<smartForm:Group id="detailGroup">
-					<smartForm:GroupElement>
+					<smartForm:GroupElement id="_IDGenGroupElement1">
 						<smartField:SmartField value="{CodEveNegocio}" id="codigo_evento_negocio"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
+					<smartForm:GroupElement id="_IDGenGroupElement2">
 						<smartField:SmartField value="{CodigoEmpresa}" id="codigo_empresa"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
+					<smartForm:GroupElement id="_IDGenGroupElement3">
 						<smartField:SmartField value="{NumeroEndosso}" id="numero_endosso"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
+					<smartForm:GroupElement id="_IDGenGroupElement4">
 						<smartField:SmartField value="{Tpmoid}" id="tpmoid"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
+					<smartForm:GroupElement id="_IDGenGroupElement5">
 						<smartField:SmartField value="{Cmpid}" id="cmpid"/>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
+					<smartForm:GroupElement id="_IDGenGroupElement6">
 						<smartField:SmartField value="{Ro}" id="RO"/>
 					</smartForm:GroupElement>
 				</smartForm:Group>

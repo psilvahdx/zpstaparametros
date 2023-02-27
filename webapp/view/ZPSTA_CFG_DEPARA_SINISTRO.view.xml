@@ -8,10 +8,10 @@ xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 xmlns:l="sap.ui.layout" 
 xmlns:f="sap.f" 
 displayBlock="true">
-	<Page title="{i18n>ZPSTA_CFG_DEPARA_SINISTROTitle}" showNavButton="true" navButtonPress=".onNavBack">
+	<Page id="_IDGenPage1" title="{i18n>ZPSTA_CFG_DEPARA_SINISTROTitle}" showNavButton="true" navButtonPress=".onNavBack">
 		<f:DynamicPage id="dynamicPageId">
 			<f:header>
-				<f:DynamicPageHeader pinnable="true">
+				<f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true">
 					<smartFilterBar:SmartFilterBar id="smartFilterBarDepSin" entitySet="OZPSTA_CFG_DEPARA_SIN" persistencyKey="SmartFilter_Explored">
 					</smartFilterBar:SmartFilterBar>
 				</f:DynamicPageHeader>
@@ -23,12 +23,12 @@ displayBlock="true">
 					enableAutoBinding="true" class="sapUiResponsiveContentPadding" id="tblDadosDepSin" showFullScreenButton="true" beforeRebindTable="onDataReceived">
 					<l:VerticalLayout class="sapUiContentPadding" id="oVerticalContent" width="100%"></l:VerticalLayout>
 					<smartTable:layoutData>
-						<FlexItemData growFactor="1" baseSize="0%"/>
+						<FlexItemData id="_IDGenFlexItemData1" growFactor="1" baseSize="0%"/>
 					</smartTable:layoutData>
 					<smartTable:customToolbar>
 						<OverflowToolbar width="100%" id="toolbar2">
 							<content>
-								<ToolbarSpacer/>
+								<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
 								<Button xmlns="sap.m" id="btnNew" icon="sap-icon://add" press=".onNew"/>
 								<Button xmlns="sap.m" id="btnDel" icon="sap-icon://delete" press=".onDelete"/>
 								<Button xmlns="sap.m" id="btnSave" icon="sap-icon://save" press=".onSave"/>

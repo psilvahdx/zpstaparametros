@@ -13,6 +13,8 @@ sap.ui.define([
 			this.bEdit = false;
 			this.getRouter().getRoute("margem_limite_premio").attachPatternMatched(this._onObjectMatched, this);
 
+			this.byId('smartFilterBarMargErrPrem-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
+			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
 		},
 
 		_onObjectMatched: function (oEvent) {

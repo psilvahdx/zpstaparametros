@@ -10,7 +10,9 @@ sap.ui.define([
 	return BaseController.extend("portoseguro.zpstaparametros.controller.zpsta_cfg_depara_empresa", {
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact");
-
+			
+			this.byId('smartFilterBarDeParEmp-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
+			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
 		},
 
 		onSave: function () {
