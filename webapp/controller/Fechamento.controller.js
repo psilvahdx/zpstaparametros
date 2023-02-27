@@ -267,10 +267,22 @@ sap.ui.define([
 			var date = new Date(year, month, day);
 			oRow.data_inclusao = date;
 
+			var dateTime = oRow.hora_inclusao;
+			var nHour, nMinutes, nSeconds;
+
+			var nHour = ''+Math.floor(dateTime.ms/1000/60/60);
+			nHour = nHour.length < 2? '0'+nHour : nHour;
+			var nMinutes = ''+Math.floor((dateTime.ms/1000/60/60 - nHour)*60);
+			nMinutes = nMinutes.length < 2? '0'+nMinutes : nMinutes;
+			var nSeconds = ''+Math.floor(((dateTime.ms/1000/60/60 - nHour)*60 - nMinutes)*60);
+			nSeconds = nSeconds.length < 2? '0'+nSeconds : nSeconds;
+			var timeString = `${nHour}:${nMinutes}:${nSeconds}`;
+
 			var currModel = this.getView().getModel("oModelUpd");
 			
 			this.getView().setModel( new JSONModel(oRow) , "oModelUpd");
 			
+			oRow.hora_inclusao = timeString;
 			
 			this.onEditDialog();
 		},
@@ -300,8 +312,14 @@ sap.ui.define([
             var oTable = this.getView().byId('idFechamentoTable');
             
             var sPath = `/ZPSTA_CDS_FECHAMENTO(empresa='${arrfechamento.empresa}',cod_eve_negocio='${arrfechamento.cod_eve_negocio}',ano='${arrfechamento.ano}')`;
+			
+			var currDay, currMonth, currYear, fullDateStr;
+            currDay = date.getDate() + 1;
+            currMonth = date.getMonth();
+            currYear = date.getFullYear();
+            fullDateStr = new Date(currYear, currMonth, currDay);
 
-			arrfechamento.data_inclusao = date;
+			arrfechamento.data_inclusao = fullDateStr;
 			arrfechamento.data_modif = new Date();
 			arrfechamento.usuario_modif = sap.ushell.Container ? sap.ushell.Container.getUser().getId() : "NAODEFINIDO";
             
