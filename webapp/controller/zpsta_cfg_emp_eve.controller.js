@@ -13,7 +13,7 @@ sap.ui.define([
 			//this._getBusyDialog().close();
 
 			this.byId('smartFilterBarEmpEve-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
-			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
+			//sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
 		},
 
 		onSave: function () {

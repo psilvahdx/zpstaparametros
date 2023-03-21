@@ -142,6 +142,12 @@
 			</Annotations>
 
 			<Annotations Target="Metadata.ZPSTA_CFG_ITC">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>ItcCnpjRaiz</PropertyPath>
+						<PropertyPath>ItcLegalEntity</PropertyPath>									                        
+					</Collection>
+				</Annotation>
 				<Annotation Term="UI.LineItem">
 					<Collection>
 						<Record Type="UI.DataField">
@@ -609,6 +615,13 @@
 			</Annotations>
 			
 			<Annotations Target="Metadata.ZPSTA_CFG_DEPARA_EMP">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodEmpresa</PropertyPath>
+						<PropertyPath>Descricao</PropertyPath>									
+                        <PropertyPath>CodCia</PropertyPath>									                        									                        
+					</Collection>
+				</Annotation>
 				<Annotation Term="UI.LineItem">
 					<Collection>
 						<Record Type="UI.DataField">
