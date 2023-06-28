@@ -51,7 +51,7 @@
 							</items>
 						</Select>
 					<Label id="_IDGenULabel5" text="Data de Inclusão" />
-						<DatePicker id="idDateUpd" dateValue="{oModelUpd>/data_inclusao}" displayFormat="dd/MM/yyyy"/>
+						<DatePicker id="idDateUpd" dateValue="{path: 'oModelUpd>/data_inclusao', formatter: '.formatter.formatDateEdit'}" displayFormat="dd/MM/yyyy"/>
 					<Label id="_IDGenULabel6" text="Hora" />
 						<!--<Input id="iptHrs_upd" type="Number" value="{oModelUpd>/HORA_INCLUSAO}" placeholder="ex.: 123000"/>-->
 						<TimePicker	id="iptHrs_upd"	

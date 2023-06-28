@@ -26,10 +26,18 @@ sap.ui.define([
 			
 			var currDay, currMonth, currYear, fullDateStr;
             currDay = ''+oDate.toLocaleString('pt-BR', {day: 'numeric' });
+			currDay = parseInt(currDay) + 1 + '';
+			currDay.length < 2? currDay = '0' + currDay : 'Hello World'; 
             currMonth = ''+oDate.toLocaleString('pt-BR', {month: 'numeric'});
             currMonth.length < 2? currMonth = '0' + currMonth : 'Hello World'; 
             currYear = ''+oDate.toLocaleString('pt-BR', {year: 'numeric'});
             fullDateStr = `${currDay}/${currMonth}/${currYear}`;
+
+			if(fullDateStr.includes(`32/12/`)){
+				currYear = parseInt(currYear);
+				currYear = currYear + 1;
+				fullDateStr = `01/01/${currYear}`;
+			}
 			
 			return fullDateStr;
 		},
@@ -55,6 +63,20 @@ sap.ui.define([
 				// var timeString = `${oHours}:${oMinutes}:${oSecounds}`;
 
 			return timeString;
+		},
+
+		formatDateEdit: function (oDate){
+			let currDay = oDate.getDate() + 1;
+            let currMonth = oDate.getMonth() + 1;
+            let currYear = oDate.getUTCFullYear();
+
+			let mDate = `${currMonth} ${currDay} ${currYear} 00:00:00`;
+			if(mDate.includes('12 32')){
+				currYear = parseInt(currYear);
+				currYear = currYear + 1;
+				mDate = `01 01 ${currYear} 00:00:00`;
+			}
+			return new Date(mDate);
 		}
 
 		

@@ -108,6 +108,7 @@ sap.ui.define([
             
             // Manipulando dados para inserir no objeto
             var date = sap.ui.getCore().byId('idDate').getDateValue();
+			date != null ? date = date : date = new Date();
             bodyContent.empresa = sap.ui.getCore().byId('iptEmp').getSelectedKey();
             bodyContent.cod_eve_negocio = sap.ui.getCore().byId('iptEve').getValue();
             bodyContent.ano = sap.ui.getCore().byId('iptAno').getValue();
@@ -127,6 +128,7 @@ sap.ui.define([
             bodyContent.mes_12 = sap.ui.getCore().byId('cb12').getSelected() === true ? 'X' : '';
 
             var fTimeValue = sap.ui.getCore().byId('iptHrs').getDateValue();
+			fTimeValue != null ? fTimeValue = fTimeValue : fTimeValue = new Date();
             var oHours = fTimeValue.getHours();
             var oMinutes = fTimeValue.getMinutes();
             var oSeconds = fTimeValue.getSeconds();
@@ -277,13 +279,13 @@ sap.ui.define([
 			var nSeconds = ''+Math.floor(((dateTime.ms/1000/60/60 - nHour)*60 - nMinutes)*60);
 			nSeconds = nSeconds.length < 2? '0'+nSeconds : nSeconds;
 			var timeString = `${nHour}:${nMinutes}:${nSeconds}`;
+			
+			oRow.hora_inclusao = timeString;
 
 			var currModel = this.getView().getModel("oModelUpd");
 			
 			this.getView().setModel( new JSONModel(oRow) , "oModelUpd");
-			
-			oRow.hora_inclusao = timeString;
-			
+						
 			this.onEditDialog();
 		},
 		
@@ -314,10 +316,11 @@ sap.ui.define([
             var sPath = `/ZPSTA_CDS_FECHAMENTO(empresa='${arrfechamento.empresa}',cod_eve_negocio='${arrfechamento.cod_eve_negocio}',ano='${arrfechamento.ano}')`;
 			
 			var currDay, currMonth, currYear, fullDateStr;
-            currDay = date.getDate() + 1;
-            currMonth = date.getMonth();
+            // currDay = date.getDate() + 1;	
+            currDay = date.getDate();
+            currMonth = date.getMonth() + 1;
             currYear = date.getFullYear();
-            fullDateStr = new Date(currYear, currMonth, currDay);
+            fullDateStr = new Date(`${currMonth} ${currDay} ${currYear}`);
 
 			arrfechamento.data_inclusao = fullDateStr;
 			arrfechamento.data_modif = new Date();
@@ -776,6 +779,15 @@ sap.ui.define([
                     
                     if (key.includes("mes_")) {
                         incObj[key] = incObj[key] === true? 'X' : '';
+                    }
+
+					if (key.includes("data_")) {
+						let nDay = parseInt(incObj[key].substr(0,2))+1;
+						let nMonth = incObj[key].substr(3,2);
+						let nYear = incObj[key].substr(6);
+						let mDate = `${nDay}/${nMonth}/${nYear}`;
+						// return new Date(mDate);
+						incObj[key] = mDate;
                     }
                 }
 
