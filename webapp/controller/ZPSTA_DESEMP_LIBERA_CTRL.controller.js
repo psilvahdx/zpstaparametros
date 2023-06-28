@@ -14,7 +14,7 @@ sap.ui.define([
 			this.getRouter().getRoute("desemp_libera_ctrl").attachPatternMatched(this._onObjectMatched, this);
 
 			this.byId('smartFilterBarDesLib-btnGo').setText(this.geti18NText("FILTER_BAR_GO")); 
-			sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
+			//sap.ui.getCore().byId('__text4').setText(this.geti18NText("FILTER_BAR_NO_FILTER"));
 		},
 
 		_onObjectMatched: function (oEvent) {
@@ -60,12 +60,12 @@ sap.ui.define([
 
 		onNew: function () {
 			var newItem = {
-				"CTRL": null,
-				"CTRL_VALUE": null,
-				"TIPO_CALCULO": null,
-				"EMP_HANA": null,
-				"TIPO_CALCULO_ANT": null,
-				"EMP_HANA_ANT": null
+				"Ctrl": null,
+				"CtrlValue": null,
+				"TipoCalculo": null,
+				"EmpHana": null,
+				"TipoCalculoAnt": null,
+				"EmpHanaAnt": null
 			};
 
 			var oModel = this.getOwnerComponent().getModel();
@@ -77,22 +77,22 @@ sap.ui.define([
 
 			this.bEdit = false;
 
-			var dialog = this._getDialog("portoseguro.psta_parametros.view.dialogs.ZPSTA_DESEMP_LIBERA_CTRLDialog");
-			sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+			var dialog = this._getDialog("DialogDesempLibCtrl","portoseguro.zpstaparametros.view.dialogs.ZPSTA_DESEMP_LIBERA_CTRLDialog");
+			sap.ui.core.Fragment.byId("DialogDesempLibCtrl", "frmDialog").bindElement(oContext.getPath());
 			dialog.open();
 
 		},
 
 		onEdit: function (oEvent) {
-			var tblDados = this.byId("tblDados").getTable(),
+			var tblDados = this.byId("tblDadosDesLib").getTable(),
 				selectedIndices = tblDados.getSelectedIndices();
 
 			if (selectedIndices.length === 1) {
 				this.bEdit = true;
 				var oSelIndex = tblDados.getSelectedIndex();
 				var oContext = tblDados.getContextByIndex(oSelIndex);
-				var dialog = this._getDialog("portoseguro.psta_parametros.view.dialogs.ZPSTA_DESEMP_LIBERA_CTRLDialog");
-				sap.ui.core.Fragment.byId("frmDialog", "form").bindElement(oContext.getPath());
+				var dialog = this._getDialog("DialogDesempLibCtrl","portoseguro.zpstaparametros.view.dialogs.ZPSTA_DESEMP_LIBERA_CTRLDialog");
+				sap.ui.core.Fragment.byId("DialogDesempLibCtrl","frmDialog").bindElement(oContext.getPath());
 				dialog.open();
 			} else {
 				var oBundle = this.getResourceBundle();
@@ -104,10 +104,10 @@ sap.ui.define([
 
 		onAdd: function () {
 
-			var model = sap.ui.core.Fragment.byId("frmDialog", "form").getModel();
-			var path = sap.ui.core.Fragment.byId("frmDialog", "form").getElementBinding().getPath();
+			var model = sap.ui.core.Fragment.byId("DialogDesempLibCtrl","frmDialog").getModel();
+			var path = sap.ui.core.Fragment.byId("DialogDesempLibCtrl","frmDialog").getElementBinding().getPath();
 			var oContextItem = model.getProperty(path);
-			var boundItem = {
+			/*var boundItem = {
 				
 				CTRL: sap.ui.core.Fragment.byId("frmDialog", "CTRL").getValue(),
 				CTRL_VALUE: sap.ui.core.Fragment.byId("frmDialog", "CTRL_VALUE").getSelectedKey(),
@@ -116,7 +116,7 @@ sap.ui.define([
             	TIPO_CALCULO_ANT: sap.ui.core.Fragment.byId("frmDialog", "TIPO_CALCULO_ANT").getValue(),
             	EMP_HANA_ANT: sap.ui.core.Fragment.byId("frmDialog", "EMP_HANA_ANT").getValue()
 
-			};
+			};*/
 			
 			var that = this;
 
@@ -136,7 +136,7 @@ sap.ui.define([
 				}
 			};
 
-			if (this.validateFields(boundItem)) {
+			if (this.validateFields(oContextItem)) {
 					model.submitChanges(mParameters);
 					model.refresh();
 
@@ -151,7 +151,7 @@ sap.ui.define([
 		validateFields: function (oObj) {
 			var bValid = true;
 
-			if (oObj.CTRL === null || oObj.CTRL === "") {
+			if (oObj.Ctrl === null || oObj.Ctrl === "") {
 				var oCTRL = sap.ui.core.Fragment.byId("frmDialog", "CTRL");
 				oCTRL.setValueState("Error");
 				bValid = false;
@@ -159,27 +159,12 @@ sap.ui.define([
 			return bValid;
 		},
 
-		validateDuplicates: function (oObj, oChangesModel, mParameters) {
-		/*	var that = this;
-			var oModel = this.getView().getModel();
-			var sPath = oModel.createKey("/OZPSTA_CFG_MARGEM_ERRO_PREMIO", {
-				codigo_empresa: oObj.codigo_empresa
-			});
-
-			oModel.read(sPath, {
-				success: function (oData) {
-					//Registro em Duplicidade
-					var oBundle = that.getResourceBundle();
-					var sMsg = oBundle.getText("msgDuplicidade", [oData.codigo_empresa, oData.codigo_evento_negocio]);
-					sap.m.MessageBox.alert(sMsg);
-				},
-				error: function (oError) {
-					oChangesModel.submitChanges(mParameters);
-					oChangesModel.refresh();
-				}
-			});*/
+		onCancel: function (evt) {
+			var model = sap.ui.core.Fragment.byId("DialogDesempLibCtrl", "frmDialog").getModel();
+			model.deleteCreatedEntry(this._oContext);
+			this.closeDialog();
 		},
-
+		
 		onDataReceived: function () {
 
 			// var oTable = this.byId("tblDados");
@@ -202,67 +187,6 @@ sap.ui.define([
 
 			// 	i++;
 			// });
-
-		},
-
-		onDownloadTemplatePressed: function () {
-			sap.m.URLHelper.redirect("templates/template_ctrl_desemp.xlsx", true);
-		},
-
-		onfileSizeExceed: function () {
-			sap.m.MessageBox.error(this.getResourceBundle().getText("MSG_FILE_SIZE"));
-		},
-
-		handleUploadComplete: function (oEvent) {
-			var sResponseStatus = oEvent.getParameter("status");
-			if (sResponseStatus === 202) {
-				var sResponse = oEvent.getParameter("responseRaw");
-				MessageToast.show(sResponse);
-				var oFileUploader = this.byId("fileUploader");
-				oFileUploader.setValue("");
-				var obtnImportFile = this.byId("btnImportFile");
-				obtnImportFile.setVisible(false);
-
-				var oModel = this.getView().getModel();
-				oModel.refresh();
-			}else{
-					MessageToast.show("Erro ao fazer upload do arquivo");
-			}
-		},
-
-		handleUploadPress: function (oEvent) {
-			var oFileUploader = this.byId("fileUploader");
-			if (!oFileUploader.getValue()) {
-				MessageToast.show("Nenhum arquivo selecionado");
-				return;
-			}
-
-			oFileUploader.addHeaderParameter(
-				new sap.ui.unified.FileUploaderParameter({
-					name: "X-CSRF-Token",
-					value: this.getView().getModel().getSecurityToken()
-				})
-			);
-
-			oFileUploader.setSendXHR(true);
-
-			oFileUploader.upload();
-		},
-
-		handleTypeMissmatch: function (oEvent) {
-			var aFileTypes = oEvent.getSource().getFileType();
-			jQuery.each(aFileTypes, function (key, value) {
-				aFileTypes[key] = "*." + value;
-			});
-			var sSupportedFileTypes = aFileTypes.join(", ");
-			MessageToast.show("O Tipo do arquivo *." + oEvent.getParameter("fileType") +
-				" não permitido. Selecione arquivos dos seguintes tipos: " +
-				sSupportedFileTypes);
-		},
-
-		handleValueChange: function (oEvent) {
-			var obtnImportFile = this.byId("btnImportFile");
-			obtnImportFile.setVisible(true);
 
 		}
 

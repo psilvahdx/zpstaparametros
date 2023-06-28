@@ -1,7 +1,7 @@
 <mvc:View controllerName="portoseguro.zpstaparametros.controller.Home"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m" xmlns:layout="sap.ui.layout">
-    <Page id="page" title="{i18n>title}">
+    <Page id="page" title="{i18n>title}" showNavButton="true" navButtonPress=".onNavBack">
         <content>
 			<layout:VerticalLayout id="_IDGenVerticalLayout1" class="sapUiResponsiveMargin">
 				<Title id="_IDGenTitle1" titleStyle="H2" text="{i18n>homeView}" class="sapUiTinyMarginBegin"/>

@@ -18,6 +18,7 @@ sap.ui.define([
 		},
 		onSave: function () {
 			var oModel = this.getOwnerComponent().getModel();
+			oModel.setUseBatch(true);
 			var mParameters = {
 				sucess: function (oData, response) {
 					console.log(oData);
@@ -167,37 +168,14 @@ sap.ui.define([
 					MessageToast.show(sMsg);
 				}
 
-			},
+			},			
 
-			// onDataReceived: function () {
-
-			// 	var oTable = this.byId("tblDadosRegSMov");
-			// 	var i = 0;
-			// 	//var aTemplate = this.getTableErrorColumTemplate();
-			// 	oTable.getTable().getColumns().forEach(function (oLine) {
-
-			// 		var oFieldName = oLine.getId();
-			// 		oFieldName = oFieldName.substring(oFieldName.lastIndexOf("-") + 1, oFieldName.length);
-
-			// 		switch (oFieldName) {
-			// 			case "CodigoEmpresa":
-			// 			case "CodigoEventoNegocio":
-			// 			case "Naoprocessar":
-			// 			case "Origem":
-			// 				oLine.setProperty("width", "150px");
-			// 				break;
-			// 			default:
-			// 				oLine.setProperty("width", "200px");
-			// 				break;
-			// 		}
-
-			// 		i++;
-			// 	});
-
-			// }
-
-			onDownloadTemplatePressed: function () {
-				sap.m.URLHelper.redirect("/templates/template_reg_sem_mov.xlsx", true);
+			onDownloadTemplatePressed: function () {			
+					var sServiceUrl = "/sap/opu/odata/sap/ZPSGW_CONFIG_SRV/FileSet('template_reg_sem_mov.xlsx')/$value";
+					var oUplColItem = new sap.m.UploadCollectionItem();
+					oUplColItem.setUrl(sServiceUrl);
+					oUplColItem.setMimeType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+					oUplColItem.download(false);					
 			},
 
 			onfileSizeExceed: function () {
@@ -206,18 +184,21 @@ sap.ui.define([
 
 			handleUploadComplete: function (oEvent) {
 				var sResponseStatus = oEvent.getParameter("status");
-				if (sResponseStatus === 202) {
-					var sResponse = oEvent.getParameter("responseRaw");
-					MessageToast.show(sResponse);
-					var oFileUploader = this.byId("fileUploader");
-					oFileUploader.setValue("");
-					var obtnImportFile = this.byId("btnImportFile");
-					obtnImportFile.setVisible(false);
+				var obtnImportFile = this.byId("btnImportFile");					
+				var oFileUploader = this.byId("fileUploader");
 
+				if (sResponseStatus === 200 || sResponseStatus === 201) {
+					var sResponse = oEvent.getParameter("responseRaw");
+					MessageToast.show("Registros Importados com Sucesso!");
+					
+					oFileUploader.setValue("");					
+					obtnImportFile.setVisible(false);
 					var oModel = this.getView().getModel();
 					oModel.refresh();
 				} else {
 					MessageToast.show("Erro ao fazer upload do arquivo");
+					oFileUploader.setValue("");
+					obtnImportFile.setVisible(false);
 				}
 			},
 
@@ -234,6 +215,13 @@ sap.ui.define([
 						value: this.getView().getModel().getSecurityToken()
 					})
 				);
+
+				oFileUploader.addHeaderParameter(
+                    new sap.ui.unified.FileUploaderParameter({
+                        name: "x-custom-app-id",
+                        value: 'REG_SEM_MOV'
+                    })
+                );
 
 				oFileUploader.setSendXHR(true);
 
