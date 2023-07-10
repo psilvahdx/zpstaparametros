@@ -752,21 +752,23 @@ sap.ui.define([
 		onExport: function() {
 			var aCols, oSettings, oSheet;
 			var oTable = oTable = this.byId('idFechamentoTable');
-			var oFechamentoModel = this.getView().getModel('oModelFechamento');
-			var indices = oTable.getBinding('rows').aIndices;
+			var oFechamentoModel = this.getView().getModel('oModelFechamento'); //oModelExport
+			// var indices = oTable.getBinding('rows').oList;
+			var indices = oFechamentoModel.oData;
 			var aRows = [];
 			aCols = this.createColumnConfig();
-			
+
 			for(var i = 0; i < indices.length; i++){
-                var incObj = oFechamentoModel.getProperty('/')[indices[i]];
+                var incObj = indices[i];
                 for (var key in incObj) {
-                    if (key.includes("data_")) {
-                        incObj[key] = incObj[key] ? incObj[key].toLocaleString().substr(0,10) : false;
-                    }
+                    // if (key.includes("data_")) {
+                    //     incObj[key] = incObj[key] ? incObj[key].toLocaleString().substr(0,10) : false;
+                    // }
 
                     if (key.includes("hora_")) {
 
-                        var oHours = ''+Math.floor(incObj[key].ms/1000/60/60);
+                        if(typeof(incObj[key]) != 'string'){
+						var oHours = ''+Math.floor(incObj[key].ms/1000/60/60);
                         oHours = oHours.length < 2? '0'+oHours : oHours;
                         var oMinutes = ''+Math.floor((incObj[key].ms/1000/60/60 - oHours)*60);
                         oMinutes = oMinutes.length < 2? '0'+oMinutes : oMinutes;
@@ -775,19 +777,32 @@ sap.ui.define([
                         var timeString = `${oHours}:${oMinutes}:${oSecounds}`;
 
                         incObj[key] = timeString;
+						}
                     }
                     
                     if (key.includes("mes_")) {
-                        incObj[key] = incObj[key] === true? 'X' : '';
+						// incObj[key] = incObj[key] === true? 'X' : '';
+						if(typeof(incObj[key]) !== 'string'){
+							incObj[key] = incObj[key] === true? 'X' : '';
+						}
                     }
 
 					if (key.includes("data_")) {
-						let nDay = parseInt(incObj[key].substr(0,2))+1;
-						let nMonth = incObj[key].substr(3,2);
-						let nYear = incObj[key].substr(6);
-						let mDate = `${nDay}/${nMonth}/${nYear}`;
-						// return new Date(mDate);
-						incObj[key] = mDate;
+						if(typeof(incObj[key]) != 'string'){
+							incObj[key] = incObj[key] ? incObj[key].toLocaleString().substr(0,10) : false;
+
+							let nDay = parseInt(incObj[key].substr(0,2))+1;
+							let nMonth = incObj[key].substr(3,2);
+							let nYear = incObj[key].substr(6);
+							let mDate; 
+							nDay < 10 ? mDate = `0${nDay}/${nMonth}/${nYear}` : mDate = `${nDay}/${nMonth}/${nYear}`;
+							if(mDate.includes('32/12/')){
+								nYear = parseInt(nYear)+1;
+								mDate = `01/01/${nYear}`;
+							}; 
+							// return new Date(mDate);
+							incObj[key] = mDate;
+						}
                     }
                 }
 

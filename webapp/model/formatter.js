@@ -49,7 +49,7 @@ sap.ui.define([
 				oHours = oHours.length < 2? '0'+oHours : oHours;
 				var oMinutes = ''+Math.floor((oTime.ms/1000/60/60 - oHours)*60);
 				oMinutes = oMinutes.length < 2? '0'+oMinutes : oMinutes;
-				var oSecounds = ''+Math.floor(((oTime.ms/1000/60/60 - oHours)*60 - oMinutes)*60);
+				var oSecounds = ''+Math.round(((oTime.ms/1000/60/60 - oHours)*60 - oMinutes)*60);
 				oSecounds = oSecounds.length < 2? '0'+oSecounds : oSecounds;
 				var timeString = `${oHours}:${oMinutes}:${oSecounds}`;
 
