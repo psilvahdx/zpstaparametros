@@ -1,26 +1,59 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartForm="sap.ui.comp.smartform" xmlns:form="sap.ui.layout.form"
 	xmlns:smartField="sap.ui.comp.smartfield">
-	<Dialog id="InsertDialog" title="{i18n>insertTitle}">
+	<Dialog id="InsertDialog" title="{i18n>insertTitle}" contentWidth="100px">
 		<content>
 			<smartForm:SmartForm id="formCfgSct" editable="true" entityType="ZPSTA_CFG_SCRIPTS" >
 				<smartForm:Group id="detailGroup">
-					<smartForm:GroupElement>
+					<!-- <smartForm:GroupElement>
 						<smartField:SmartField value="{Script}" id="empresa"/>
+					</smartForm:GroupElement> -->
+					<smartForm:GroupElement label="Origem Contábil">
+						<ComboBox selectedKey="{Script}" id="script" required="true" placeholder="Selecione a Origem Contábil:"
+							items="{path:'/OZPSTA_CFG_ORIGENS', sorter:{path:'Script', descending:false}}"
+							selectionChange="handleChange('script')">
+							<core:Item key="{Script}" text="{Script}"/>	
+						</ComboBox>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
+					<!-- <smartForm:GroupElement>
+						<ComboBox selectedKey="{Table}" id="tabela" 
+						required="true" placeholder="Selecione a Tabela:" visible="false"
+							items="{path:'/OZPSTA_CFG_TABSTG', sorter:{path:'Table', descending:false}}"
+							selectionChange="handleChange('table')">
+							<core:Item key="{Table}" text="{Table}"/>	
+						</ComboBox>
+					</smartForm:GroupElement> -->
+					<!-- <smartForm:GroupElement>
 						<smartField:SmartField value="{Field}" id="evento_negocio"/>
+					</smartForm:GroupElement> -->
+					<smartForm:GroupElement label="Campo">
+						<ComboBox selectedKey="{Field}" id="field" required="true" 
+							visible="false" 
+							placeholder="Selecione o campo:"
+							items="{path:'/OZPSTA_SCRIPT_FIELDS', sorter:{path:'ColumnName', descending:false}}" selectionChange="handleChange('field')">
+							<core:Item key="{ColumnName}" text="{ColumnName}"/>	<!--text="{TableName} - {ColumnName}"-->
+						</ComboBox>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
-						<smartField:SmartField value="{TtField}" id="descricao_evento_negocio"/>
+					<smartForm:GroupElement label="Campo Tipo Transação" id="ttField" visible="false">
+						<ComboBox id="ttField0" required="true" placeholder="Selecione o campo tipo transação:"
+						selectionChange="handleChange('add')" selectedKey="{TtField}">
+							<core:Item key="field01" text="field01"/> <core:Item key="field02" text="field02"/>
+							<core:Item key="field03" text="field03"/> <core:Item key="field04" text="field04"/>
+							<core:Item key="field05" text="field05"/> <core:Item key="field06" text="field06"/>
+							<core:Item key="field07" text="field07"/> <core:Item key="field08" text="field08"/>
+							<core:Item key="field09" text="field09"/> <core:Item key="field10" text="field10"/>
+							<core:Item key="field11" text="field11"/> <core:Item key="field12" text="field12"/>
+							<core:Item key="field13" text="field13"/> <core:Item key="field14" text="field14"/>
+							<core:Item key="field15" text="field15"/> <core:Item key="field16" text="field16"/>
+						</ComboBox>
 					</smartForm:GroupElement>
-					<smartForm:GroupElement>
+					<!-- <smartForm:GroupElement>
 						<smartField:SmartField value="{ScriptTechnicalName}" id="script"/>
-					</smartForm:GroupElement>
+					</smartForm:GroupElement> -->
 				</smartForm:Group>
 			</smartForm:SmartForm>
 		</content>
 		<beginButton>
-			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd"/>
+			<Button xmlns="sap.m" text="{i18n>btnAdd}" id="btnAdd" press=".onAdd" enabled="false"/>
 		</beginButton>
 		<endButton>
 			<Button xmlns="sap.m" text="{i18n>btnCancel}" id="btnCancelCfgSct" press=".onCancel('CfgSct')"/>
