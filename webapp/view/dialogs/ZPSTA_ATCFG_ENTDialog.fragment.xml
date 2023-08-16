@@ -19,8 +19,8 @@
 					<smartForm:GroupElement label="Status">
 						<ComboBox id="status" required="true" selectedKey="{Status}">
 							<items>
-								<core:Item key="1" text="ativo" />
-								<core:Item key="0" text="inativo" />
+								<core:Item key="ativo" text="ativo" />
+								<core:Item key="inativo" text="inativo" />
 							</items>
 						</ComboBox>
 					</smartForm:GroupElement>
