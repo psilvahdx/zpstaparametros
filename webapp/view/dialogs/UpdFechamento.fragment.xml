@@ -24,56 +24,54 @@
 				singleContainerFullSize="false" >
 				<f:content>
 					<Label id="_IDGenULabel1" text="Empresa" />
-						<Text id="txtEmp" text="{oModelUpd>/empresa}" />
+						<Text id="txtEmp" text="{oModelUpd>/Empresa}" />
 					<Label id="_IDGenULabel2" text="Evento Negócio" />
-						<Text id="txtEve" text="{oModelUpd>/cod_eve_negocio}" />
+						<Text id="txtEve" text="{oModelUpd>/CodEveNegocio}" />
 					<Label id="_IDGenULabel3" text="Ano" />
-						<Text id="txtAno" text="{oModelUpd>/ano}" />
+						<Text id="txtAno" text="{oModelUpd>/Ano}" />
 					<Label id="_IDGenULabel4" text="Mês" />
 						<!--<Input id="iptMes_upd" type="Number" value="{oModelUpd>/MES}" placeholder="ex.: 01"/>-->
-						<Select
-							id="iptMes_upd"
-							forceSelection="true"
-							selectedKey="{oModelUpd>/mes}">
+						<ComboBox
+							id="iptMes_upd"							
+							selectedKey="{oModelUpd>/Mes}">
 							<items>
-								<core:Item id="_IDGenUItem1" key="01" text="01" />
-								<core:Item id="_IDGenUItem2" key="02" text="02" />
-								<core:Item id="_IDGenUItem3" key="03" text="03" />
-								<core:Item id="_IDGenUItem4" key="04" text="04" />
-								<core:Item id="_IDGenUItem5" key="05" text="05" />	
-								<core:Item id="_IDGenUItem6" key="06" text="06" />	
-								<core:Item id="_IDGenUItem7" key="07" text="07" />	
-								<core:Item id="_IDGenUItem8" key="08" text="08" />
-								<core:Item id="_IDGenUItem9" key="09" text="09" />	
-								<core:Item id="_IDGenUItem10" key="10" text="10" />	
-								<core:Item id="_IDGenUItem11" key="11" text="11" />	
-								<core:Item id="_IDGenUItem12" key="12" text="12" />	
+								<core:Item id="_IDGenUItem1" key="01"  text="01 - Janeiro" />
+								<core:Item id="_IDGenUItem2" key="02"  text="02 - Fevereiro" />
+								<core:Item id="_IDGenUItem3" key="03"  text="03 - Março" />
+								<core:Item id="_IDGenUItem4" key="04"  text="04 - Abril" />
+								<core:Item id="_IDGenUItem5" key="05"  text="05 - Maio" />	
+								<core:Item id="_IDGenUItem6" key="06"  text="06 - Junho" />	
+								<core:Item id="_IDGenUItem7" key="07"  text="07 - Julho" />	
+								<core:Item id="_IDGenUItem8" key="08"  text="08 - Agosto" />
+								<core:Item id="_IDGenUItem9" key="09"  text="09 - Setembro" />	
+								<core:Item id="_IDGenUItem10" key="10" text="10 - Outubro" />	
+								<core:Item id="_IDGenUItem11" key="11" text="11 - Novembro" />	
+								<core:Item id="_IDGenUItem12" key="12" text="12 - Dezembro" />	
 							</items>
-						</Select>
+						</ComboBox>
 					<Label id="_IDGenULabel5" text="Data de Inclusão" />
-						<DatePicker id="idDateUpd" dateValue="{path: 'oModelUpd>/data_inclusao', formatter: '.formatter.formatDateEdit'}" displayFormat="dd/MM/yyyy"/>
+						<DatePicker id="idDateUpd" dateValue="{path: 'oModelUpd>/DataInclusao', type: 'sap.ui.model.odata.type.Date', formatOptions: { UTC: true }}" valueFormat="yyyyMMdd"  displayFormat="dd/MM/yyyy"/>
 					<Label id="_IDGenULabel6" text="Hora" />
 						<!--<Input id="iptHrs_upd" type="Number" value="{oModelUpd>/HORA_INCLUSAO}" placeholder="ex.: 123000"/>-->
 						<TimePicker	id="iptHrs_upd"	
-								valueFormat="HHmmss"
-								displayFormat="HH:mm:ss"
+								displayFormat="short"
 								placeholder="Horario limite"
 								support2400="true"
-								value="{oModelUpd>/hora_inclusao}"
+								value="{path:'oModelUpd>/HoraInclusao', type: 'sap.ui.model.odata.type.Time',  formatOptions: { format: 'Hms' }}"
 								required="true"/>
 								
-						<CheckBox text="Jan" id='updcb01' selected="{oModelUpd>/mes_01}"/>
-						<CheckBox text="Fev" id='updcb02' selected="{oModelUpd>/mes_02}"/>
-						<CheckBox text="Mar" id='updcb03' selected="{oModelUpd>/mes_03}"/>
-						<CheckBox text="Abr" id='updcb04' selected="{oModelUpd>/mes_04}"/>
-						<CheckBox text="Mai" id='updcb05' selected="{oModelUpd>/mes_05}"/>
-						<CheckBox text="Jun" id='updcb06' selected="{oModelUpd>/mes_06}"/>
-						<CheckBox text="Jul" id='updcb07' selected="{oModelUpd>/mes_07}"/>
-						<CheckBox text="Ago" id='updcb08' selected="{oModelUpd>/mes_08}"/>
-						<CheckBox text="Set" id='updcb09' selected="{oModelUpd>/mes_09}"/>
-						<CheckBox text="Out" id='updcb10' selected="{oModelUpd>/mes_10}"/>
-						<CheckBox text="Nov" id='updcb11' selected="{oModelUpd>/mes_11}"/>
-						<CheckBox text="Dez" id='updcb12' selected="{oModelUpd>/mes_12}"/>
+						<CheckBox text="Jan" id='updcb01' selected="{oModelUpd>/Mes01}"/>
+						<CheckBox text="Fev" id='updcb02' selected="{oModelUpd>/Mes02}"/>
+						<CheckBox text="Mar" id='updcb03' selected="{oModelUpd>/Mes03}"/>
+						<CheckBox text="Abr" id='updcb04' selected="{oModelUpd>/Mes04}"/>
+						<CheckBox text="Mai" id='updcb05' selected="{oModelUpd>/Mes05}"/>
+						<CheckBox text="Jun" id='updcb06' selected="{oModelUpd>/Mes06}"/>
+						<CheckBox text="Jul" id='updcb07' selected="{oModelUpd>/Mes07}"/>
+						<CheckBox text="Ago" id='updcb08' selected="{oModelUpd>/Mes08}"/>
+						<CheckBox text="Set" id='updcb09' selected="{oModelUpd>/Mes09}"/>
+						<CheckBox text="Out" id='updcb10' selected="{oModelUpd>/Mes10}"/>
+						<CheckBox text="Nov" id='updcb11' selected="{oModelUpd>/Mes11}"/>
+						<CheckBox text="Dez" id='updcb12' selected="{oModelUpd>/Mes12}"/>
 						
 				</f:content>
 			</f:SimpleForm>

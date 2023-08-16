@@ -14,8 +14,8 @@
 		showNavButton="true" navButtonPress="onNavBack"
 		>
 		<content>
-			<t:Table
-				rows="{oModelFechamento>/}" 
+			<t:Table				
+				rows="{/OZPSTA_FECH_CONTABSet}" 
 				selectionMode="MultiToggle"
 				visibleRowCount="13"
 				paste="onPaste"
@@ -41,109 +41,109 @@
 					<t:Column id="_IDGenColumn1" width="7%">
 						<Label id="_IDGenLabel1" text="Empresa"/>
 						<t:template>
-							<Text id="_IDGenText1" text="{oModelFechamento>empresa}" wrapping="false" />
+							<Text id="_IDGenText1" text="{Empresa}" wrapping="false" />
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn2" width="10%">
 						<Label id="_IDGenLabel2" text="Evento Negócio" />
 						<t:template>
-							<Text id="_IDGenText2" text="{oModelFechamento>cod_eve_negocio}" wrapping="false" />
+							<Text id="_IDGenText2" text="{CodEveNegocio}" wrapping="false" />
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn3">
 						<Label id="_IDGenLabel3" text="Ano"/>
 						<t:template>
-							<Text id="_IDGenText3" text="{oModelFechamento>ano}" wrapping="false" />
+							<Text id="_IDGenText3" text="{Ano}" wrapping="false" />
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn4">
 						<Label id="_IDGenLabel4" text="Mês"/>
 						<t:template>
-							<Text id="_IDGenText4" text="{oModelFechamento>mes}" wrapping="false" />
+							<Text id="_IDGenText4" text="{Mes}" wrapping="false" />
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn5" width="13%">
 						<Label id="_IDGenLabel5" text="Data de inclusão" />
 						<t:template>
-							<Text id="_IDGenText5" text="{ path: 'oModelFechamento>data_inclusao', formatter: '.formatter.formatDateShow' }" wrapping="false" />
+							<Text id="_IDGenText5" text="{ path: 'DataInclusao', formatter: '.formatter.date' }" wrapping="false" />
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn6" width="7%">
 						<Label id="_IDGenLabel6" text="Hora" />
 						<t:template>
-							<Text id="_IDGenText6" text="{ path: 'oModelFechamento>hora_inclusao', formatter: '.formatter.formatTimeShow' }" wrapping="false" />
+							<Text id="_IDGenText6" text="{ path: 'HoraInclusao', formatter: '.formatter.formatTimeShow' }" wrapping="false" />
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn7" hAlign="Center">
 						<Label id="_IDGenLabel7" text="Jan"/>
 						<t:template>
-							<CheckBox id="_IDGenCheckBox1"  selected="{oModelFechamento>mes_01}" enabled="false"/>
+							<CheckBox id="_IDGenCheckBox1"  selected="{Mes01}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn8" hAlign="Center">
 						<Label id="_IDGenLabel8" text="Fev"/>
 						<t:template>
-							<CheckBox id="_IDGenCheckBox2"  selected="{oModelFechamento>mes_02}" enabled="false"/>
+							<CheckBox id="_IDGenCheckBox2"  selected="{Mes02}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn9" hAlign="Center">
 						<Label id="_IDGenLabel9" text="Mar"/>
 						<t:template>
-						<CheckBox id="_IDGenCheckBox3"  selected="{oModelFechamento>mes_03}" enabled="false"/>
+						<CheckBox id="_IDGenCheckBox3"  selected="{Mes03}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn10" hAlign="Center">
 						<Label id="_IDGenLabel10" text="Abr" />
 						<t:template>
-							<CheckBox id="_IDGenCheckBox4"  selected="{oModelFechamento>mes_04}" enabled="false"/>
+							<CheckBox id="_IDGenCheckBox4"  selected="{Mes04}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn11" hAlign="Center">
 						<Label id="_IDGenLabel11" text="Mai" />
 						<t:template>
-						<CheckBox id="_IDGenCheckBox5"  selected="{oModelFechamento>mes_05}" enabled="false"/>
+						<CheckBox id="_IDGenCheckBox5"  selected="{Mes05}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn12" hAlign="Center">
 						<Label id="_IDGenLabel12" text="Jun" />
 						<t:template>
-						<CheckBox id="_IDGenCheckBox6"  selected="{oModelFechamento>mes_06}" enabled="false"/>
+						<CheckBox id="_IDGenCheckBox6"  selected="{Mes06}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn13" hAlign="Center">
 						<Label id="_IDGenLabel13" text="Jul"  />
 						<t:template>
-						<CheckBox id="_IDGenCheckBox7"  selected="{oModelFechamento>mes_07}" enabled="false"/>
+						<CheckBox id="_IDGenCheckBox7"  selected="{Mes07}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn14" hAlign="Center">
 						<Label id="_IDGenLabel14" text="Ago" />
 						<t:template>
-						<CheckBox id="_IDGenCheckBox8"  selected="{oModelFechamento>mes_08}" enabled="false"/>
+						<CheckBox id="_IDGenCheckBox8"  selected="{Mes08}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn15" hAlign="Center">
 						<Label id="_IDGenLabel15" text="Set" />
 						<t:template>
-							<CheckBox id="_IDGenCheckBox9"  selected="{oModelFechamento>mes_09}" enabled="false"/>
+							<CheckBox id="_IDGenCheckBox9"  selected="{Mes09}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn16" hAlign="Center">
 						<Label id="_IDGenLabel16" text="Out" />
 						<t:template>
-						<CheckBox id="_IDGenCheckBox10"  selected="{oModelFechamento>mes_10}" enabled="false"/>
+						<CheckBox id="_IDGenCheckBox10"  selected="{Mes10}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn17" hAlign="Center">
 						<Label id="_IDGenLabel17" text="Nov" />
 						<t:template>
-							<CheckBox id="_IDGenCheckBox11"  selected="{oModelFechamento>mes_11}" enabled="false"/>
+							<CheckBox id="_IDGenCheckBox11"  selected="{Mes11}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn18" hAlign="Center">
 						<Label id="_IDGenLabel18" text="Dez" />
 						<t:template>
-							<CheckBox id="_IDGenCheckBox12"  selected="{oModelFechamento>mes_12}" enabled="false"/>
+							<CheckBox id="_IDGenCheckBox12"  selected="{Mes12}" enabled="false"/>
 						</t:template>
 					</t:Column>
 					

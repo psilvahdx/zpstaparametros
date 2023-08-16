@@ -107,7 +107,7 @@
                     "defaultOperationMode": "Server",
                     "defaultBindingMode": "TwoWay",
                     "defaultCountMode": "Request",
-                    "defaultUpdateMethod": "sap.ui.model.odata.UpdateMethod.Put",
+                    "defaultUpdateMethod": "PUT",
                     "useBatch": true
                 }
             },

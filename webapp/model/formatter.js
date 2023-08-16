@@ -13,6 +13,13 @@ sap.ui.define([
 			return oDateFormat.format(new Date(oDate), true);
 		},
 
+		dateWithTimezoneOffset: function (oDate) {
+			if (oDate === null || oDate === undefined) return oDate;
+			var offset = new Date().getTimezoneOffset();
+			var hours = offset / 60;			
+			return new Date(oDate.getFullYear(), oDate.getMonth(), oDate.getDate() + 1, hours, 0, 0);
+		},
+
 		dateTime: function (oDate) {
 			if (oDate === null){ return "";}
 			var oDateFormat = DateFormat.getDateTimeInstance({

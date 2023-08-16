@@ -1,36 +1,30 @@
 sap.ui.define([
 	"portoseguro/zpstaparametros/controller/BaseController",
-	"sap/ui/model/json/JSONModel",
-	"sap/m/Dialog",
-	"sap/m/Button",
-	"sap/m/ButtonType",
-    "sap/m/Label",
+	"sap/ui/model/json/JSONModel",	
     "sap/m/MessageBox",
     "sap/m/MessageToast",
 	'sap/ui/export/Spreadsheet',
 	"sap/ui/core/Fragment"
-], function (BaseController, JSONModel, Dialog, Button, ButtonType, Label, MessageBox, MessageToast, Spreadsheet, Fragment) {
+], function (BaseController, JSONModel, MessageBox, MessageToast, Spreadsheet, Fragment) {
 	"use strict";
 
 	return BaseController.extend("portoseguro.zpstaparametros.controller.Fechamento", {
 		onInit: function () {
 			
 			//Recuperando registros para a tabela
-			var oModelFechamento = new sap.ui.model.json.JSONModel();
-			var oModelUpd = new sap.ui.model.json.JSONModel();
+			var oModelFechamento = new sap.ui.model.json.JSONModel();			
 			this.getView().setModel(oModelFechamento, "oModelFechamento");
 			this.getView().setModel(oModelFechamento, "oModelExport");
 			this.getView().setModel(this.createAddModel(), "oModelAdd");
 			this.getView().setModel(this.createUpdModel(), "oModelUpd");
-			this.getServData();
+			
 		}, 
 		
 		createAddModel: function(){
 			var oModelAdd = new sap.ui.model.json.JSONModel({
-				empresa: "", cod_eve_negocio: "", ano: "", mes: "", data_inclusao: new Date(), hora_inclusao: "", mes_01: false, mes_02: false, 
-				mes_03: false, mes_04: false, mes_05: false, mes_06: false, mes_07: false, mes_08: false, mes_09: false, mes_10: false, mes_11: false, mes_12: false,
-				usuario_criacao: sap.ushell.Container ? sap.ushell.Container.getUser().getId() : "NAODEFINIDO",
-				data_criacao: "", usuario_modif: "", data_modif: "", hora_modif: ""
+				Empresa: "", CodEveNegocio: "", Ano: "", Mes: "", DataInclusao: new Date(), HoraInclusao: "", Mes01: false, Mes02: false, 
+				Mes03: false, Mes04: false, Mes05: false, Mes06: false, Mes07: false, Mes08: false, Mes09: false, Mes10: false, Mes11: false, Mes12: false,				
+				UsuarioCriacao: "NAODEFINIDO"
 			});
 			
 			return oModelAdd;
@@ -38,10 +32,8 @@ sap.ui.define([
 		
 		createUpdModel: function(){
 			var oModelUpd = new sap.ui.model.json.JSONModel({
-				empresa: "", cod_eve_negocio: "", ano: "", mes: "", data_inclusao: new Date(), hora_inclusao: "",mes_01: false, mes_02: false, 
-				mes_03: false, mes_04: false, mes_05: false, mes_06: false, mes_07: false, mes_08: false, mes_09: false, mes_10: false, mes_11: false, mes_12: false,
-				usuario_criacao: sap.ushell.Container ? sap.ushell.Container.getUser().getId() : "NAODEFINIDO",
-				data_criacao: "", usuario_modif: "", data_modif: "", hora_modif: ""
+				Empresa: "", CodEveNegocio: "", Ano: "", Mes: "", DataInclusao: new Date(), HoraInclusao: "", Mes01: false, Mes02: false, 
+				Mes03: false, Mes04: false, Mes05: false, Mes06: false, Mes07: false, Mes08: false, Mes09: false, Mes10: false, Mes11: false, Mes12: false
 			});
 			
 			return oModelUpd;
@@ -82,7 +74,7 @@ sap.ui.define([
 		
 		onAdd: function(){
 			var that = this;
-			this.getView().setModel(this.createAddModel(), 'oModelAdd');
+			
 			
 			if (!this.oDialogAdd) {
 				this.oDialogAdd = Fragment.load({
@@ -92,86 +84,52 @@ sap.ui.define([
 				}
 				this.oDialogAdd.then(function (oDialogAdd){
 					that.getView().addDependent(oDialogAdd);  
+					oDialogAdd.setModel(that.getView().getModel('oModelAdd'));
 				    oDialogAdd.open();
 				    }.bind(this));
 		},
 		
 		onSave: function(oEvent){
-            var oModel = this.getOwnerComponent().getModel("FechamentoServ");
+            var oModel = this.getOwnerComponent().getModel();
             var myDialog = sap.ui.getCore().byId("idAddFechamento");
             var that = this;
-            var bodyContent = {
-                empresa: "", cod_eve_negocio: "", ano: "", mes: "", data_inclusao: "", hora_inclusao: "", mes_01: "", mes_02: "", 
-                mes_03: "", mes_04: "", mes_05: "", mes_06: "", mes_07: "", mes_08: "", mes_09: "", mes_10: "", mes_11: "", mes_12: "",
-                usuario_criacao: sap.ushell.Container ? sap.ushell.Container.getUser().getId() : "NAODEFINIDO",
-                data_criacao: "", usuario_modif: "", data_modif: "", hora_modif: ""};
-            
-            // Manipulando dados para inserir no objeto
-            var date = sap.ui.getCore().byId('idDate').getDateValue();
-			date != null ? date = date : date = new Date();
-            bodyContent.empresa = sap.ui.getCore().byId('iptEmp').getSelectedKey();
-            bodyContent.cod_eve_negocio = sap.ui.getCore().byId('iptEve').getValue();
-            bodyContent.ano = sap.ui.getCore().byId('iptAno').getValue();
-            bodyContent.mes = sap.ui.getCore().byId('iptMes').getSelectedKey();
-            
-            bodyContent.mes_01 = sap.ui.getCore().byId('cb01').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_02 = sap.ui.getCore().byId('cb02').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_03 = sap.ui.getCore().byId('cb03').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_04 = sap.ui.getCore().byId('cb04').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_05 = sap.ui.getCore().byId('cb05').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_06 = sap.ui.getCore().byId('cb06').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_07 = sap.ui.getCore().byId('cb07').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_08 = sap.ui.getCore().byId('cb08').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_09 = sap.ui.getCore().byId('cb09').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_10 = sap.ui.getCore().byId('cb10').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_11 = sap.ui.getCore().byId('cb11').getSelected() === true ? 'X' : ''; 
-            bodyContent.mes_12 = sap.ui.getCore().byId('cb12').getSelected() === true ? 'X' : '';
+			var oModelAdd = this.getView().getModel('oModelAdd');
+			var oParams = oModelAdd.getData();		
 
-            var fTimeValue = sap.ui.getCore().byId('iptHrs').getDateValue();
-			fTimeValue != null ? fTimeValue = fTimeValue : fTimeValue = new Date();
-            var oHours = fTimeValue.getHours();
-            var oMinutes = fTimeValue.getMinutes();
-            var oSeconds = fTimeValue.getSeconds();
-            var oFTime = new Date(`Thu, 01 Jan 1970 ${oHours}:${oMinutes}:${oSeconds} GMT`);
-            bodyContent.hora_inclusao = {ms: oFTime, __edmType: 'Edm.Time'};
-
-            bodyContent.data_inclusao = date;
-            bodyContent.data_criacao = date;
-            var mDate = new Date('Jan 01, 1970 00:00:00 GMT');
-            var mTime = Date.parse(mDate);
-            bodyContent.data_modif = mDate;
-            bodyContent.hora_modif = {ms: mTime, __edmType: 'Edm.Time'};
-
-			this.onValidate(oEvent);
-			
-			if(
-				sap.ui.getCore().byId('iptEve').getValueState() === 'Success' &&
-				sap.ui.getCore().byId('iptAno').getValueState() === 'Success' &&
-				sap.ui.getCore().byId("idDate").getValueState() === 'Success' &&
-				sap.ui.getCore().byId("iptHrs").getValueState() === 'Success'){
-				
-                oModel.create("/ZPSTA_CDS_FECHAMENTO", bodyContent, {
-                    success: async function (oData,) {
-                        if(oData != null){
-                            console.log(oData);
-                            that.getServData();
-                        }
-                    },
-                    error: function (oError) {
-                        console.log(oError);
-                    }
-                });
-				myDialog.close();
-			
-				this.busyDialog();
-				this.onResetValueState();
-			}else{
-				//console.error('Erro ao salvar');
-				//myDialog.close();
-				//this.onResetValueState();
-				MessageToast.show("Campo obrigatório vazio ou preenchido incorretamente", {duration: 800});
+			if(!oParams.HoraInclusao){
+				MessageBox.error("Hora de Inclusão Inválida ou em branco");
+				return;
 			}
+		
+			oModel.setUseBatch(false);
+
+			oModel.create("/OZPSTA_FECH_CONTABSet", oParams, {
+				success: function (oData) {
+					if(oData != null){
+						
+						MessageToast.show("Salvo com Sucesso!");
+						oModel.setUseBatch(true);
+						oModel.refresh();
+						oModelAdd.refresh();
+						myDialog.close();		
+						that.busyDialog();
+						that.onResetValueState();
+					}
+				},
+				error: function (oError) {
+					console.log(oError);
+					if(oError.responseText){
+						var oJsonResponseText =  JSON.parse(oError.responseText);
+
+						MessageBox.error(oJsonResponseText.error.message.value)
+					}
+					
+					oModel.setUseBatch(true);
+					
+				}
+			});
 			
+
 			
 		},	
 		
@@ -201,16 +159,14 @@ sap.ui.define([
 		onDelete: function(oEvent){
 			var oTable = this.getView().byId('idFechamentoTable');
 			var selRowsIdx = oTable.getSelectedIndices();
-			var oModel = this.getView().getModel('FechamentoServ');
+			var oModel = this.getView().getModel();
 			var that = this;
 			var arrRowsWrp = [];
-			
-			for(var i = 0; i < selRowsIdx.length; i++){
-                var empCode = oTable.getRows()[i].mAggregations.cells[0].mProperties.text;
-                var empEveCode = oTable.getRows()[i].mAggregations.cells[1].mProperties.text;
-                var nYear = oTable.getRows()[i].mAggregations.cells[2].mProperties.text;
 
-                var sPath = `/ZPSTA_CDS_FECHAMENTO(empresa='${empCode}',cod_eve_negocio='${empEveCode}',ano='${nYear}')`;
+			oModel.setUseBatch(false);
+			
+			for(var i = 0; i < selRowsIdx.length; i++){              
+				var sPath = oTable.getContextByIndex(selRowsIdx[i]).getPath();
                 arrRowsWrp.push(sPath);
 			}
 			
@@ -218,11 +174,13 @@ sap.ui.define([
                 oModel.remove(arrRowsWrp[i], {
                     success: async function () {
                         MessageToast.show("Registro deletado com sucesso");
-                        oTable.clearSelection();
-                        that.getServData();
+                        oTable.clearSelection();                       
+						oModel.setUseBatch(true);
+						oModel.refresh();
                     },
                     error: function (oError) {
                         console.log(oError);
+						oModel.setUseBatch(true);
                         MessageToast.show("Erro ao deletar registro", {duration: 800});
                     }
                 });
@@ -244,52 +202,16 @@ sap.ui.define([
 		},
 		
 		getRowValue: function(){
-			var oTable = this.getView().byId('idFechamentoTable');
-			var selRowsIdx = oTable.getSelectedIndices();
-			var oModel = this.getView().getModel('oModelFechamento');
+			var oTable = this.getView().byId('idFechamentoTable'),
+				selRowsIdx = oTable.getSelectedIndices(),			
+				oModel = this.getView().getModel(),						 	
+			 	oRow = oModel.getObject(oTable.getContextByIndex(selRowsIdx[0]).getPath());			 	
 			
-			var currView = this.getView();
-			
-			var oRow = oModel.getObject(oTable.getContextByIndex(selRowsIdx[0]).getPath());
-			
-			var dateString = oRow.data_inclusao;
-			var year, month, day;
-			
-			if(typeof(dateString) === 'object'){
-				year = dateString.getFullYear();
-				month = dateString.getMonth();
-				day = dateString.getDate();
-			}
-			else if(typeof(dateString) === 'string'){
-				year = dateString.substring(0, 4);
-				month = dateString.substring(4, 6);
-				day = dateString.substring(6, 8);
-			}
-
-			var date = new Date(year, month, day);
-			oRow.data_inclusao = date;
-
-			var dateTime = oRow.hora_inclusao;
-			var nHour, nMinutes, nSeconds;
-
-			var nHour = ''+Math.floor(dateTime.ms/1000/60/60);
-			nHour = nHour.length < 2? '0'+nHour : nHour;
-			var nMinutes = ''+Math.floor((dateTime.ms/1000/60/60 - nHour)*60);
-			nMinutes = nMinutes.length < 2? '0'+nMinutes : nMinutes;
-			var nSeconds = ''+Math.floor(((dateTime.ms/1000/60/60 - nHour)*60 - nMinutes)*60);
-			nSeconds = nSeconds.length < 2? '0'+nSeconds : nSeconds;
-			var timeString = `${nHour}:${nMinutes}:${nSeconds}`;
-			
-			oRow.hora_inclusao = timeString;
-
-			var currModel = this.getView().getModel("oModelUpd");
-			
-			this.getView().setModel( new JSONModel(oRow) , "oModelUpd");
-						
-			this.onEditDialog();
+			this.getView().setModel( new JSONModel(oRow) , "oModelUpd");						
+			this.onEditDialog(oRow);
 		},
 		
-		onEditDialog: function(){
+		onEditDialog: function(oRow){
 			var that = this;
 			if (!this.oDialog) {
 				this.oDialog = Fragment.load({
@@ -300,76 +222,51 @@ sap.ui.define([
 			}
 			this.oDialog.then(function (oDialog){
 				that.getView().addDependent(oDialog);  
+				oDialog.setModel( new JSONModel(oRow) , "oModelUpd");
 			    oDialog.open();
 		    }.bind(this));
 
 		},
 		
 		onEditSave: function(oEvent){
-            var oModel = this.getOwnerComponent().getModel("FechamentoServ");
-			var myDialog = sap.ui.getCore().byId("idUpdFechamento");
-			var arrfechamento = this.getView().getModel('oModelUpd').getData();
-			var that = this;
-			var date = sap.ui.getCore().byId('idDateUpd').getDateValue();
-            var oTable = this.getView().byId('idFechamentoTable');
-            
-            var sPath = `/ZPSTA_CDS_FECHAMENTO(empresa='${arrfechamento.empresa}',cod_eve_negocio='${arrfechamento.cod_eve_negocio}',ano='${arrfechamento.ano}')`;
-			
-			var currDay, currMonth, currYear, fullDateStr;
-            // currDay = date.getDate() + 1;	
+            var oModel = this.getOwnerComponent().getModel(),
+			 	myDialog = sap.ui.getCore().byId("idUpdFechamento"),
+			 	arrfechamento = this.getView().getModel('oModelUpd').getData(),
+			 	date = sap.ui.getCore().byId('idDateUpd').getDateValue(),
+             	oTable = this.getView().byId('idFechamentoTable'),
+			 	selRowsIdx = oTable.getSelectedIndices(),
+			 	sPath = oTable.getContextByIndex(selRowsIdx[0]).getPath(),
+			 	currDay, currMonth, currYear, fullDateStr;     
+
             currDay = date.getDate();
             currMonth = date.getMonth() + 1;
             currYear = date.getFullYear();
             fullDateStr = new Date(`${currMonth} ${currDay} ${currYear}`);
 
-			arrfechamento.data_inclusao = fullDateStr;
-			arrfechamento.data_modif = new Date();
-			arrfechamento.usuario_modif = sap.ushell.Container ? sap.ushell.Container.getUser().getId() : "NAODEFINIDO";
-            
-            var oHours, oMinutes, oSeconds;
-            oHours = new Date().getHours();
-            oMinutes = new Date().getMinutes();
-            oSeconds = new Date().getSeconds();
-            var oFTime = new Date(`Thu, 01 Jan 1970 ${oHours}:${oMinutes}:${oSeconds} GMT`);
-            arrfechamento.hora_modif = {ms: oFTime, __edmType: 'Edm.Time'};
+			arrfechamento.DataInclusao = fullDateStr;           
 
-            var fTimeValue = sap.ui.getCore().byId('iptHrs_upd').getDateValue();
-            var nHours = fTimeValue.getHours();
-            var nMinutes = fTimeValue.getMinutes();
-            var nSeconds = fTimeValue.getSeconds();
-            var nFTime = new Date(`Thu, 01 Jan 1970 ${nHours}:${nMinutes}:${nSeconds} GMT`);
-            arrfechamento.hora_inclusao = {ms: nFTime, __edmType: 'Edm.Time'};
-
-            arrfechamento.mes_01 = sap.ui.getCore().byId('updcb01').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_02 = sap.ui.getCore().byId('updcb02').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_03 = sap.ui.getCore().byId('updcb03').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_04 = sap.ui.getCore().byId('updcb04').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_05 = sap.ui.getCore().byId('updcb05').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_06 = sap.ui.getCore().byId('updcb06').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_07 = sap.ui.getCore().byId('updcb07').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_08 = sap.ui.getCore().byId('updcb08').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_09 = sap.ui.getCore().byId('updcb09').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_10 = sap.ui.getCore().byId('updcb10').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_11 = sap.ui.getCore().byId('updcb11').getSelected() === true ? 'X' : ''; 
-            arrfechamento.mes_12 = sap.ui.getCore().byId('updcb12').getSelected() === true ? 'X' : '';
+			delete arrfechamento.__metadata;
+			delete arrfechamento.HoraModif;
+			delete arrfechamento.DataModif;
+			delete arrfechamento.UsuarioModif;
 
 			var bodyContent = arrfechamento;
-			console.log(arrfechamento);
+			
 			this.onValidate(oEvent);
 			
-			if(//sap.ui.getCore().byId('iptMes_upd').getValueState() === 'Success' &&
+			if(
 				sap.ui.getCore().byId("idDateUpd").getValueState() === 'Success' &&
 				sap.ui.getCore().byId("iptHrs_upd").getValueState() === 'Success'){
 					
                     oModel.update(sPath, bodyContent, {
-                        success: async function (oData,) {
-                            console.log(oData);
-                            MessageToast.show("Registro atualizado com sucesso");
-                            that.getServData();
+                        success: function (oData) {
+							oTable.clearSelection();
+                            MessageToast.show("Registro atualizado com sucesso");                            
+							oModel.refresh();
                         },
                         error: function (oError) {
-                            console.log(oError);
-                            MessageToast.show('Erro ao atualizae registro', {duration: 800});
+                            console.log(oError);							
+                            MessageToast.show('Erro ao atualizar registro', {duration: 800});
                         }
                     });
 				    myDialog.close();
@@ -401,11 +298,9 @@ sap.ui.define([
 				var setSuccess = sap.ui.core.ValueState.Success;
 				var setError = sap.ui.core.ValueState.Error;
 				
-				//sap.ui.getCore().byId('iptEmp').getProperty("value").length === 4 ? sap.ui.getCore().byId('iptEmp').setValueState(setSuccess) : sap.ui.getCore().byId('iptEmp').setValueState(setError);
+				
 				sap.ui.getCore().byId('iptEve').getProperty("value").length === 3 ? sap.ui.getCore().byId('iptEve').setValueState(setSuccess) : sap.ui.getCore().byId('iptEve').setValueState(setError);
-				sap.ui.getCore().byId('iptAno').getProperty("value").length === 4 ? sap.ui.getCore().byId('iptAno').setValueState(setSuccess) : sap.ui.getCore().byId('iptAno').setValueState(setError);
-				//sap.ui.getCore().byId('iptMes').getProperty("value").length === 2 ? sap.ui.getCore().byId('iptMes').setValueState(setSuccess) : sap.ui.getCore().byId('iptMes').setValueState(setError);
-				//sap.ui.getCore()
+				sap.ui.getCore().byId('iptAno').getProperty("value").length === 4 ? sap.ui.getCore().byId('iptAno').setValueState(setSuccess) : sap.ui.getCore().byId('iptAno').setValueState(setError);				
 				var sDatePicker = sap.ui.getCore().byId("idDate");
 				sDatePicker.getValue().length <= 10? sDatePicker.setValueState(setSuccess) : sDatePicker.setValueState(setError);
 				
@@ -415,10 +310,8 @@ sap.ui.define([
 			
 			function onValUpdate(){
 				var setSuccess = sap.ui.core.ValueState.Success;
-				var setError = sap.ui.core.ValueState.Error;
-				
-				//sap.ui.getCore().byId('iptMes_upd').getProperty("value").length === 2 ? sap.ui.getCore().byId('iptMes_upd').setValueState(setSuccess) : sap.ui.getCore().byId('iptMes_upd').setValueState(setError);
-				
+				var setError = sap.ui.core.ValueState.Error;				
+							
 				var sDatePicker = sap.ui.getCore().byId("idDateUpd");
 				sDatePicker.getValue().length <= 10? sDatePicker.setValueState(setSuccess) : sDatePicker.setValueState(setError);
 				
@@ -462,8 +355,7 @@ sap.ui.define([
 				case 'addCancel':
 					arrIptId = ['iptEmp', 'iptEve', 'iptAno', 'iptMes', 'idDate', 'iptHrs'];
 					arrCbId = ['cb01','cb02','cb03','cb04','cb05','cb06','cb07','cb08','cb09','cb10','cb11','cb12'];
-					//sap.ui.getCore().byId('savebtn').setProperty('visible', false);
-					break;
+					
 				default:
 					console.log('Id não encontrado!');
 					break;
@@ -484,6 +376,7 @@ sap.ui.define([
 		onCancel: function(oEvent) {
 			var cancelBtnId = oEvent.mParameters.id;
 			var dialogId = '';
+			var oModel = this.getOwnerComponent().getModel();
 			
 			switch(cancelBtnId){
 				case 'updCancel':
@@ -503,8 +396,8 @@ sap.ui.define([
 				this.getView().setModel(this.createAddModel(), 'oModelAdd');
 				this.onResetValueState(oEvent);
 			}
-			this.getView().byId("idFechamentoTable").clearSelection();
-			this.getServData();
+			this.getView().byId("idFechamentoTable").clearSelection();			
+			oModel.refresh();
 		},
 		
 		onFilterDialog: function(){
@@ -532,26 +425,22 @@ sap.ui.define([
 				filDialog.close();
 			}else{
 				if(iptEmp != false){
-					var empFilter = new sap.ui.model.Filter( "empresa", sap.ui.model.FilterOperator.EQ, iptEmp);
+					var empFilter = new sap.ui.model.Filter( "Empresa", sap.ui.model.FilterOperator.EQ, iptEmp);
 					aFilter.push(empFilter);
 				}
 				
 				if(iptEve != false){
-					var eveFilter = new sap.ui.model.Filter( "cod_eve_negocio", sap.ui.model.FilterOperator.EQ, iptEve);
+					var eveFilter = new sap.ui.model.Filter( "CodEveNegocio", sap.ui.model.FilterOperator.EQ, iptEve);
 					aFilter.push(eveFilter);
 				}
 				
 				if(iptAno != false){
-					var anoFilter = new sap.ui.model.Filter( "ano", sap.ui.model.FilterOperator.EQ, iptAno);
+					var anoFilter = new sap.ui.model.Filter( "Ano", sap.ui.model.FilterOperator.EQ, iptAno);
 					aFilter.push(anoFilter);
 				}
 			}
 			
-			oTable.getBinding("rows").filter([aFilter]);
-			
-			var itemsCount = this.getView().byId('title');
-			var dataLength = oTable.getBinding().aIndices.length;
-				itemsCount.setText(`Items (${dataLength})`);
+			oTable.getBinding("rows").filter(aFilter);	
 				
 			filDialog.close();
 		},
@@ -561,9 +450,9 @@ sap.ui.define([
 			filDialog.getContent()[0].setValue('');
 			filDialog.getContent()[1].setValue('');
 			filDialog.getContent()[2].setValue('');
-			this.byId('idFechamentoTable').getBinding("rows").filter();
+			this.byId('idFechamentoTable').getBinding("rows").filter([]);
 			filDialog.close();
-			this.getServData();
+			
 		},
 		
 		onImport:function(){

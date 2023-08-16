@@ -27,8 +27,8 @@
 						<!--<Input id="iptEmp" liveChange = "onLiveChange" type="Text" value="{oModelAdd>/EMPRESA}" placeholder="ex.: P001" required="true"/>--> 
 						<ComboBox
 							id="iptEmp"
-							required="true"
-							selectedKey="P001">
+							required="true"							
+							selectedKey="{oModelAdd>/Empresa}">
 						<items>
 							<core:Item id="_IDGenItemA1" key="P001" text="P001 - PORTO SEGURO CIA SEGUROS" />
 							<core:Item id="_IDGenItemA2" key="P014" text="P014 - P S VIDA E PREVIDÊNCIA S" />
@@ -42,15 +42,14 @@
 						</ComboBox>
 						
 					<Label id="_IDGenLabel2" text="Evento Negócio" />
-						<Input id="iptEve"  value="{oModelAdd>/cod_eve_negocio}" placeholder="ex.: 001" required="true"/>
+						<Input id="iptEve"  value="{oModelAdd>/CodEveNegocio}" placeholder="ex.: 001" required="true"/>
 					<Label id="_IDGenLabel3" text="Ano" />
-						<Input id="iptAno"  type="Number" value="{oModelAdd>/ano}" placeholder="ex.: 2022" required="true"/>
+						<Input id="iptAno"  type="Number" value="{oModelAdd>/Ano}" placeholder="ex.: 2022" required="true"/>
 					<Label id="_IDGenLabel4" text="Mês" />
 							<!--<Input id="iptMes"  type="Number" value="{oModelAdd>/MES}" placeholder="ex.: 01" required="true"/>-->
-						<Select
-							id="iptMes"
-							forceSelection="true"
-							selectedKey="{oModelAdd>/mes}">
+						<ComboBox
+							id="iptMes"						
+							selectedKey="{oModelAdd>/Mes}">
 							<items>
 								<core:Item id="_IDGenItemA9" key="01" text="01 - Janeiro" />
 								<core:Item id="_IDGenItemA10" key="02" text="02 - Fevereiro" />
@@ -65,33 +64,33 @@
 								<core:Item id="_IDGenItemA19" key="11" text="11 - Novembro" />	
 								<core:Item id="_IDGenItemA20" key="12" text="12 - Dezembro" />	
 							</items>
-						</Select>
+						</ComboBox>
 						
 					<Label id="_IDGenLabel5" text="Data de Inclusão" />
 						<!--<Input id="iptDtI"  type="Number" value="{oModelAdd>/DATA_INCLUSAO}" placeholder="ex.: 20220101"/>-->
-						<DatePicker id="idDate" dateValue="{oModelAdd>/data_inclusao}" displayFormat="dd/MM/yyyy" required="true"/>
+						<DatePicker id="idDate" dateValue="{oModelAdd>/DataInclusao}" displayFormat="dd/MM/yyyy" valueFormat="yyyyMMdd" required="true"/>
 					<Label id="_IDGenLabel6" text="Hora (Horas/Minutos/Segundos)" />
 					<!--<Input id="iptHrs"  type="Number" value="{oModelAdd>/HORA_INCLUSAO}" placeholder="ex.: 123000"/>-->
 					<TimePicker	id="iptHrs"	
-								valueFormat="HHmmss"
-								displayFormat="HH:mm:ss"
+								
+								displayFormat="short"
 								placeholder="Horario limite"
 								support2400="true"
-								value="{oModelAdd>/hora_inclusao}"
+								value="{path:'oModelAdd>/HoraInclusao', type: 'sap.ui.model.odata.type.Time',  formatOptions: { format: 'Hms' }}"
 								required="true"/>
 					
-						<CheckBox text="Jan" id='cb01' selected="{oModelAdd>/mes_01}"/>
-						<CheckBox text="Fev" id='cb02' selected="{oModelAdd>/mes_02}"/>
-						<CheckBox text="Mar" id='cb03' selected="{oModelAdd>/mes_03}"/>
-						<CheckBox text="Abr" id='cb04' selected="{oModelAdd>/mes_04}"/>
-						<CheckBox text="Mai" id='cb05' selected="{oModelAdd>/mes_05}"/>
-						<CheckBox text="Jun" id='cb06' selected="{oModelAdd>/mes_06}"/>
-						<CheckBox text="Jul" id='cb07' selected="{oModelAdd>/mes_07}"/>
-						<CheckBox text="Ago" id='cb08' selected="{oModelAdd>/mes_08}"/>
-						<CheckBox text="Set" id='cb09' selected="{oModelAdd>/mes_09}"/>
-						<CheckBox text="Out" id='cb10' selected="{oModelAdd>/mes_10}"/>
-						<CheckBox text="Nov" id='cb11' selected="{oModelAdd>/mes_11}"/>
-						<CheckBox text="Dez" id='cb12' selected="{oModelAdd>/mes_12}"/>
+						<CheckBox text="Jan" id='cb01' selected="{oModelAdd>/Mes01}"/>
+						<CheckBox text="Fev" id='cb02' selected="{oModelAdd>/Mes02}"/>
+						<CheckBox text="Mar" id='cb03' selected="{oModelAdd>/Mes03}"/>
+						<CheckBox text="Abr" id='cb04' selected="{oModelAdd>/Mes04}"/>
+						<CheckBox text="Mai" id='cb05' selected="{oModelAdd>/Mes05}"/>
+						<CheckBox text="Jun" id='cb06' selected="{oModelAdd>/Mes06}"/>
+						<CheckBox text="Jul" id='cb07' selected="{oModelAdd>/Mes07}"/>
+						<CheckBox text="Ago" id='cb08' selected="{oModelAdd>/Mes08}"/>
+						<CheckBox text="Set" id='cb09' selected="{oModelAdd>/Mes09}"/>
+						<CheckBox text="Out" id='cb10' selected="{oModelAdd>/Mes10}"/>
+						<CheckBox text="Nov" id='cb11' selected="{oModelAdd>/Mes11}"/>
+						<CheckBox text="Dez" id='cb12' selected="{oModelAdd>/Mes12}"/>
 				</f:content>
 			</f:SimpleForm>
 		</VBox>
