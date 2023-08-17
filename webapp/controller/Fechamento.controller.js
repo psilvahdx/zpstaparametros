@@ -4,10 +4,11 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/MessageToast",
 	'sap/ui/export/Spreadsheet',
-	"sap/ui/core/Fragment"
-], function (BaseController, JSONModel, MessageBox, MessageToast, Spreadsheet, Fragment) {
+	"sap/ui/core/Fragment",
+	"sap/ui/export/library"
+], function (BaseController, JSONModel, MessageBox, MessageToast, Spreadsheet, Fragment, exportLibrary) {
 	"use strict";
-
+	var EdmType = exportLibrary.EdmType;
 	return BaseController.extend("portoseguro.zpstaparametros.controller.Fechamento", {
 		onInit: function () {
 			
@@ -624,29 +625,29 @@ sap.ui.define([
 			var aCols = [];
 			
 			// aCols.push({label: 'mandt', property: 'mandt'});
-			aCols.push({label: 'empresa', property: 'empresa'});
-			aCols.push({label: 'cod_eve_negocio', property: 'cod_eve_negocio'});
-			aCols.push({label: 'ano', property: 'ano'});
-			aCols.push({label: 'mes', property: 'mes'});
-			aCols.push({label: 'data_inclusao', property: 'data_inclusao'});
-			aCols.push({label: 'hora_inclusao', property: 'hora_inclusao'});
-			aCols.push({label: 'mes_01', property: 'mes_01'});
-			aCols.push({label: 'mes_02', property: 'mes_02'});
-			aCols.push({label: 'mes_03', property: 'mes_03'});
-			aCols.push({label: 'mes_04', property: 'mes_04'});
-			aCols.push({label: 'mes_05', property: 'mes_05'});
-			aCols.push({label: 'mes_06', property: 'mes_06'});
-			aCols.push({label: 'mes_07', property: 'mes_07'});
-			aCols.push({label: 'mes_08', property: 'mes_08'});
-			aCols.push({label: 'mes_09', property: 'mes_09'});
-			aCols.push({label: 'mes_10', property: 'mes_10'});
-			aCols.push({label: 'mes_11', property: 'mes_11'});
-			aCols.push({label: 'mes_12', property: 'mes_12'});
-			aCols.push({label: 'usuario_criacao', property: 'usuario_criacao'});
-			aCols.push({label: 'data_criacao', property: 'data_criacao'});
-			aCols.push({label: 'usuario_modif', property: 'usuario_modif'});
-			aCols.push({label: 'data_modif', property: 'data_modif'});
-			aCols.push({label: 'hora_modif', property: 'hora_modif'});
+			aCols.push({label: 'empresa', property: 'Empresa'});
+			aCols.push({label: 'cod_eve_negocio', property: 'CodEveNegocio'});
+			aCols.push({label: 'ano', property: 'Ano'});
+			aCols.push({label: 'mes', property: 'Mes'});
+			aCols.push({label: 'data_inclusao', property: 'DataInclusao',  type: EdmType.Date});
+			aCols.push({label: 'hora_inclusao', property: 'HoraInclusao',  type: EdmType.Time});
+			aCols.push({label: 'mes_01', property: 'Mes01'});
+			aCols.push({label: 'mes_02', property: 'Mes02'});
+			aCols.push({label: 'mes_03', property: 'Mes03'});
+			aCols.push({label: 'mes_04', property: 'Mes04'});
+			aCols.push({label: 'mes_05', property: 'Mes05'});
+			aCols.push({label: 'mes_06', property: 'Mes06'});
+			aCols.push({label: 'mes_07', property: 'Mes07'});
+			aCols.push({label: 'mes_08', property: 'Mes08'});
+			aCols.push({label: 'mes_09', property: 'Mes09'});
+			aCols.push({label: 'mes_10', property: 'Mes10'});
+			aCols.push({label: 'mes_11', property: 'Mes11'});
+			aCols.push({label: 'mes_12', property: 'Mes12'});
+			aCols.push({label: 'usuario_criacao', property: 'UsuarioCriacao'});
+			aCols.push({label: 'data_criacao', property: 'DataCriacao',  type: EdmType.DateTime});
+			aCols.push({label: 'usuario_modif', property: 'UsuarioModif'});
+			aCols.push({label: 'data_modif', property: 'DataModif',  type: EdmType.DateTime});
+			aCols.push({label: 'hora_modif', property: 'HoraModif',  type: EdmType.Time});
 
 			return aCols;
 		},
@@ -654,76 +655,38 @@ sap.ui.define([
 		
 		onExport: function() {
 			var aCols, oSettings, oSheet;
-			var oTable = oTable = this.byId('idFechamentoTable');
-			var oFechamentoModel = this.getView().getModel('oModelFechamento'); //oModelExport
-			// var indices = oTable.getBinding('rows').oList;
-			var indices = oFechamentoModel.oData;
-			var aRows = [];
+			var oTable = oTable = this.byId('idFechamentoTable');			
+			var oRowBinding = oTable.getBinding('rows');
 			aCols = this.createColumnConfig();
 
-			for(var i = 0; i < indices.length; i++){
-                var incObj = indices[i];
-                for (var key in incObj) {
-                    // if (key.includes("data_")) {
-                    //     incObj[key] = incObj[key] ? incObj[key].toLocaleString().substr(0,10) : false;
-                    // }
-
-                    if (key.includes("hora_")) {
-
-                        if(typeof(incObj[key]) != 'string'){
-						var oHours = ''+Math.floor(incObj[key].ms/1000/60/60);
-                        oHours = oHours.length < 2? '0'+oHours : oHours;
-                        var oMinutes = ''+Math.floor((incObj[key].ms/1000/60/60 - oHours)*60);
-                        oMinutes = oMinutes.length < 2? '0'+oMinutes : oMinutes;
-                        var oSecounds = ''+Math.floor(((incObj[key].ms/1000/60/60 - oHours)*60 - oMinutes)*60);
-                        oSecounds = oSecounds.length < 2? '0'+oSecounds : oSecounds;
-                        var timeString = `${oHours}:${oMinutes}:${oSecounds}`;
-
-                        incObj[key] = timeString;
-						}
-                    }
-                    
-                    if (key.includes("mes_")) {
-						// incObj[key] = incObj[key] === true? 'X' : '';
-						if(typeof(incObj[key]) !== 'string'){
-							incObj[key] = incObj[key] === true? 'X' : '';
-						}
-                    }
-
-					if (key.includes("data_")) {
-						if(typeof(incObj[key]) != 'string'){
-							incObj[key] = incObj[key] ? incObj[key].toLocaleString().substr(0,10) : false;
-
-							let nDay = parseInt(incObj[key].substr(0,2))+1;
-							let nMonth = incObj[key].substr(3,2);
-							let nYear = incObj[key].substr(6);
-							let mDate; 
-							nDay < 10 ? mDate = `0${nDay}/${nMonth}/${nYear}` : mDate = `${nDay}/${nMonth}/${nYear}`;
-							if(mDate.includes('32/12/')){
-								nYear = parseInt(nYear)+1;
-								mDate = `01/01/${nYear}`;
-							}; 
-							// return new Date(mDate);
-							incObj[key] = mDate;
-						}
-                    }
-                }
-
-				aRows.push(incObj);
-			}
+			var oModel = oRowBinding.getModel();
 
 			oSettings = {
-				workbook: { columns: aCols, context: {sheetName: 'ZPSTA_FECHAMENTO'}},
-				dataSource: aRows,
-				fileName: `ZPSTA_FECHAMENTO.xlsx`
-			};
+                workbook: {
+                    columns: aCols,
+                    context: {
+                        sheetName: 'ZPSTA_FECHAMENTO'
+                    }
+                },
+                dataSource: {
+                    type: 'odata',
+                    dataUrl: oRowBinding.getDownloadUrl ? oRowBinding.getDownloadUrl() : null,
+                    serviceUrl: this._sServiceUrl,
+                    headers: oModel.getHeaders ? oModel.getHeaders() : null,
+                    count: oRowBinding.getLength ? oRowBinding.getLength() : null,
+                    useBatch: true // Default for ODataModel V2
+                },
+                fileName: 'ZPSTA_FECHAMENTO.xlsx'
+                
+            };
 
-			oSheet = new Spreadsheet(oSettings);
-			oSheet.build()
-				.then( function() {
-					MessageToast.show('Sucesso ao exportar!');
-				})
-				.finally(oSheet.destroy);
+            oSheet = new Spreadsheet(oSettings);
+            oSheet.build().then( function() {
+				MessageToast.show('Registros Exportados com Sucesso!');
+			}).finally(function () {
+                oSheet.destroy();
+            });
+			
 		}
 		
 	});
