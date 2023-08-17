@@ -16,9 +16,19 @@ sap.ui.define([
 			this.getView().setModel(oModelFechamento, "oModelFechamento");
 			this.getView().setModel(oModelFechamento, "oModelExport");
 			this.getView().setModel(this.createAddModel(), "oModelAdd");
-			this.getView().setModel(this.createUpdModel(), "oModelUpd");
+			this.getView().setModel(this.createUpdModel(), "oModelUpd");		
 			
 		}, 
+		onAfterRendering: function(){
+			var oTable = this.getView().byId("idFechamentoTable");          
+			var oRowsBinding = oTable.getBinding("rows");
+			var oTableTitle = this.getView().byId("title");          
+			oRowsBinding.attachChange(function(){
+				var oLength = oRowsBinding.getLength();       
+				oTableTitle.setText(`Registros (${oLength})`);
+
+			});
+		},		
 		
 		createAddModel: function(){
 			var oModelAdd = new sap.ui.model.json.JSONModel({

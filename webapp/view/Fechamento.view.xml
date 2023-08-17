@@ -18,8 +18,8 @@
 				rows="{/OZPSTA_FECH_CONTABSet}" 
 				selectionMode="MultiToggle"
 				visibleRowCount="13"
-				paste="onPaste"
-				ariaLabelledBy="title"
+				paste="onPaste"				
+				ariaLabelledBy="title"				
 				id="idFechamentoTable">
 				<t:extension>
 					<OverflowToolbar id="_IDGenOverflowToolbar1" design="Auto">
