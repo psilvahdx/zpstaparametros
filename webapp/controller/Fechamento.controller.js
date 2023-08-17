@@ -401,6 +401,7 @@ sap.ui.define([
 		},
 		
 		onFilterDialog: function(){
+				var that = this;
 			if (!this.oDialogFil) {
 				this.oDialogFil = Fragment.load({
 					name: "portoseguro.zpstaparametros.view.dialogs.FilterFechamento",
@@ -408,7 +409,10 @@ sap.ui.define([
 				    });
 				}
 				this.oDialogFil.then(function (oDialogFil){
-				    oDialogFil.open();
+					that.getView().addDependent(oDialogFil);  
+				    oDialogFil.setModel(that.getView().getModel("FechIFRS17Serv"));
+					oDialogFil.open();
+
 				    }.bind(this));
 				    
 		},
@@ -417,7 +421,7 @@ sap.ui.define([
 			var oTable = this.byId('idFechamentoTable');
 			var aFilter = [];
 			var filDialog = sap.ui.getCore().byId('idFiltrosFechamento');
-			var iptEmp = filDialog.getContent()[0].getValue();
+			var iptEmp = filDialog.getContent()[0].getSelectedKey();
 			var iptEve = filDialog.getContent()[1].getValue();
 			var iptAno = filDialog.getContent()[2].getValue();
 			

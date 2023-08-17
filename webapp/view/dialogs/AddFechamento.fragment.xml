@@ -28,16 +28,18 @@
 						<ComboBox
 							id="iptEmp"
 							required="true"							
-							selectedKey="{oModelAdd>/Empresa}">
+							selectedKey="{oModelAdd>/Empresa}"
+							items="{FechIFRS17Serv>/EmpresaSet}">
 						<items>
-							<core:Item id="_IDGenItemA1" key="P001" text="P001 - PORTO SEGURO CIA SEGUROS" />
+							<core:Item id="_IDGenItemA1"  key="{FechIFRS17Serv>Bukrs}" text="{FechIFRS17Serv>Bukrs} - {FechIFRS17Serv>Description}" />
+							<!--<core:Item id="_IDGenItemA1" key="P001" text="P001 - PORTO SEGURO CIA SEGUROS" />
 							<core:Item id="_IDGenItemA2" key="P014" text="P014 - P S VIDA E PREVIDÊNCIA S" />
 							<core:Item id="_IDGenItemA3" key="P031" text="P031 - PORTOMED - SERV SAÚDE" />
 							<core:Item id="_IDGenItemA4" key="P032" text="P032 - PORTO SEGURO ODONTO" />
 							<core:Item id="_IDGenItemA5" key="P035" text="P035 - AZUL COMPANHIA SEG.GERAIS" />	
 							<core:Item id="_IDGenItemA6" key="P050" text="P050 - P S - SEGURO SAÚDE S A" />	
 							<core:Item id="_IDGenItemA7" key="P084" text="P084 - ITAÚ AUTO E RESIDÊNCIA" />	
-							<core:Item id="_IDGenItemA8" key="P086" text="P086 - FUNDACAO SAUDE ITAU" />	
+							<core:Item id="_IDGenItemA8" key="P086" text="P086 - FUNDACAO SAUDE ITAU" />	-->
 						</items>
 						</ComboBox>
 						

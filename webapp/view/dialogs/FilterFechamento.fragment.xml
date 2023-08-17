@@ -23,7 +23,16 @@
 			<core:Item key="{EMPRESA}" text="{EMPRESA}"/>
 		</MultiComboBox>
         </l:VerticalLayout>-->
-			<Input id="iptEmp_fil" type="Text" placeholder="Empresa" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTopBottom" width="95%"/>
+			<!--<Input id="iptEmp_fil" type="Text" placeholder="Empresa" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTopBottom" width="95%"/>-->
+            <ComboBox class="sapUiTinyMarginBeginEnd sapUiSmallMarginTopBottom" width="95%"
+                    placeholder="Empresa"
+					id="iptEmpFilter"														
+					items="{FechIFRS17Serv>/EmpresaSet}">
+			    	<items>
+						<core:Item id="_IDGenItemA1Filt"  key="{FechIFRS17Serv>Bukrs}" text="{FechIFRS17Serv>Bukrs} - {FechIFRS17Serv>Description}" />							
+					</items>
+			</ComboBox>
+
 			<Input id="iptEve_fil" type="Number" placeholder="Evento Negócio" class="sapUiTinyMarginBeginEnd" width="95%"/>
 			<Input id="iptAno_fil" type="Number" placeholder="Ano" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTopBottom" width="95%"/>
         <buttons>
