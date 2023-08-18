@@ -97,6 +97,8 @@ sap.ui.define([
 					that.getView().addDependent(oDialogAdd);  
 					oDialogAdd.setModel(that.getView().getModel('oModelAdd'));
 				    oDialogAdd.open();
+					sap.ui.getCore().byId('idDate').setMinDate(new Date(1900, 0, 1));
+					sap.ui.getCore().byId('idDate').setMaxDate(new Date(2999,11, 31));
 				    }.bind(this));
 		},
 		
@@ -248,6 +250,8 @@ sap.ui.define([
 				that.getView().addDependent(oDialog);  
 				oDialog.setModel( new JSONModel(oRow) , "oModelUpd");
 			    oDialog.open();
+				sap.ui.getCore().byId('idDateUpd').setMinDate(new Date(1900, 0, 1));
+				sap.ui.getCore().byId('idDateUpd').setMaxDate(new Date(2999,11, 31));
 		    }.bind(this));
 
 		},
@@ -262,6 +266,7 @@ sap.ui.define([
 			 	sPath = oTable.getContextByIndex(selRowsIdx[0]).getPath(),
 			 	currDay, currMonth, currYear, fullDateStr;     
 
+		
 
 			if(!sap.ui.getCore().byId('idDateUpd').getDateValue()){
 					sap.ui.getCore().byId('idDateUpd').setValueState('Error');
