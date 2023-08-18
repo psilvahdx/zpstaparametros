@@ -107,10 +107,23 @@ sap.ui.define([
 			var oModelAdd = this.getView().getModel('oModelAdd');
 			var oParams = oModelAdd.getData();		
 
-			if(!oParams.HoraInclusao){
-				MessageBox.error("Hora de Inclusão Inválida ou em branco");
+			if(!sap.ui.getCore().byId('idDate').getDateValue()){
+				sap.ui.getCore().byId('idDate').setValueState('Error');
 				return;
 			}
+
+			if(!sap.ui.getCore().byId('idDate').isValidValue()){
+				sap.ui.getCore().byId('idDate').setValueState('Error');
+				return;
+			}				
+			sap.ui.getCore().byId('idDate').setValueState('Success');
+
+			if(!oParams.HoraInclusao){
+				MessageBox.error("Hora de Inclusão Inválida ou em branco");
+				sap.ui.getCore().byId('iptHrs').setValueState('Error');
+				return;
+			}			
+			sap.ui.getCore().byId('iptHrs').setValueState('Success');
 		
 			oModel.setUseBatch(false);
 
@@ -248,6 +261,28 @@ sap.ui.define([
 			 	selRowsIdx = oTable.getSelectedIndices(),
 			 	sPath = oTable.getContextByIndex(selRowsIdx[0]).getPath(),
 			 	currDay, currMonth, currYear, fullDateStr;     
+
+
+			if(!sap.ui.getCore().byId('idDateUpd').getDateValue()){
+					sap.ui.getCore().byId('idDateUpd').setValueState('Error');
+					return;
+			}
+
+			if(!sap.ui.getCore().byId('idDateUpd').isValidValue()){
+				sap.ui.getCore().byId('idDateUpd').setValueState('Error');
+				return;
+			}	
+
+			sap.ui.getCore().byId('idDateUpd').setValueState('Success');
+
+
+			if(!arrfechamento.HoraInclusao){
+				MessageBox.error("Hora de Inclusão Inválida ou em branco");
+				sap.ui.getCore().byId('iptHrs_upd').setValueState('Error');
+				return;
+			}			
+			sap.ui.getCore().byId('iptHrs_upd').setValueState('Success');
+
 
             currDay = date.getDate();
             currMonth = date.getMonth() + 1;

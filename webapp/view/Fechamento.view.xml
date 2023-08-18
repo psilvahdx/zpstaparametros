@@ -71,7 +71,7 @@
 					<t:Column id="_IDGenColumn6" width="7%">
 						<Label id="_IDGenLabel6" text="Hora" />
 						<t:template>
-							<Text id="_IDGenText6" text="{ path: 'HoraInclusao', formatter: '.formatter.formatTimeShow' }" wrapping="false" />
+							<Text id="_IDGenText6" text="{ path: 'HoraInclusao', type: 'sap.ui.model.odata.type.Time',  formatOptions: { format: 'Hms' } }" wrapping="false" />
 						</t:template>
 					</t:Column>
 					<t:Column id="_IDGenColumn7" hAlign="Center">
